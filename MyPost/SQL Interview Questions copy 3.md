@@ -312,3 +312,107 @@ LIMIT 3;
 </blockquote>
 
 <hr style="border:1px solid #2E86C1;">
+
+## <h2 style="color:#2874A6;font-weight:bold;">8. Explain the Difference Between UNION and UNION ALL</h2>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<code>UNION</code> and <code>UNION ALL</code> are used to combine the results of two or more <code>SELECT</code> queries. The key difference is that <code>UNION</code> removes duplicate rows from the result set, while <code>UNION ALL</code> includes all rows, even duplicates.
+</p>
+
+<p><b style="color:#B9770E;">Example:</b><br>
+Suppose you have two tables, <code>customers_2023</code> and <code>customers_2024</code>, both with a <code>customer_id</code> column.
+</p>
+
+<p><b style="color:#2874A6;">Using UNION:</b> Removes duplicates.</p>
+
+```sql
+SELECT customer_id FROM customers_2023
+UNION
+SELECT customer_id FROM customers_2024;
+```
+
+<p><b style="color:#2874A6;">Using UNION ALL:</b> Includes duplicates.</p>
+
+```sql
+SELECT customer_id FROM customers_2023
+UNION ALL
+SELECT customer_id FROM customers_2024;
+```
+
+<p>
+<b style="color:#2874A6;">Comparison Table:</b>
+</p>
+
+<table style="width:100%; border-collapse:collapse;">
+    <tr style="background-color:#D6EAF8;">
+        <th style="border:1px solid #2E86C1; padding:8px;">Feature</th>
+        <th style="border:1px solid #2E86C1; padding:8px;">UNION</th>
+        <th style="border:1px solid #2E86C1; padding:8px;">UNION ALL</th>
+    </tr>
+    <tr>
+        <td style="border:1px solid #2E86C1; padding:8px;">Duplicates</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Removes duplicates</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Keeps all rows, including duplicates</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #2E86C1; padding:8px;">Performance</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Slower (due to duplicate removal)</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Faster (no duplicate check)</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #2E86C1; padding:8px;">Use Case</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">When you want unique results</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">When you want all results, including duplicates</td>
+    </tr>
+</table>
+
+<p>
+<b style="color:#2874A6;">Explanation:</b>
+<ul>
+    <li><b>UNION</b> combines result sets and removes any duplicate rows.</li>
+    <li><b>UNION ALL</b> combines result sets and includes all rows, even if they are duplicates.</li>
+    <li>Both require the same number of columns and compatible data types in each <code>SELECT</code> statement.</li>
+</ul>
+</p>
+
+<blockquote style="border-left: 4px solid #F1C40F; background: #FCF3CF; padding: 0.5em 1em;">
+    <b>Tip:</b> Use <code>UNION ALL</code> for better performance when you are sure there are no duplicates or you want to keep them.
+</blockquote>
+
+## <h2 style="color:#2874A6;font-weight:bold;">9. How Do You Use a CASE Statement in SQL? Provide an Example.</h2>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+The <code>CASE</code> statement in SQL allows you to perform conditional logic within your queries. It works like an IF-THEN-ELSE statement, letting you return different values based on specified conditions.
+</p>
+
+<p><b style="color:#B9770E;">Example:</b><br>
+Suppose you have an <code>employees</code> table with a <code>salary</code> column, and you want to categorize employees as 'High', 'Medium', or 'Low' earners based on their salary.
+</p>
+
+```sql
+SELECT
+    name,
+    salary,
+    CASE
+        WHEN salary >= 100000 THEN 'High'
+        WHEN salary >= 50000 THEN 'Medium'
+        ELSE 'Low'
+    END AS salary_category
+FROM
+    employees;
+```
+
+<p>
+<b style="color:#2874A6;">Explanation:</b>
+<ul>
+  <li><b>CASE</b> checks each condition in order and returns the corresponding value for the first true condition.</li>
+  <li>If none of the conditions are met, the <b>ELSE</b> value is returned.</li>
+  <li>The result is a new column (<code>salary_category</code>) that classifies each employee based on their salary.</li>
+</ul>
+</p>
+
+<blockquote style="border-left: 4px solid #F1C40F; background: #FCF3CF; padding: 0.5em 1em;">
+  <b>Tip:</b> Use <code>CASE</code> for conditional transformations, custom groupings, or to replace IF/ELSE logic in your SQL queries.
+</blockquote>
+9. How do you use a CASE statement in SQL? Provide an
+example.
