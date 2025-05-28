@@ -496,3 +496,132 @@ WHERE
 <blockquote style="border-left: 4px solid #F1C40F; background: #FCF3CF; padding: 0.5em 1em;">
     <b>Tip:</b> Use CTEs to improve query readability and maintainability, especially for complex or multi-step data transformations.
 </blockquote>
+
+
+<hr style="border:1px solid #2E86C1;">
+
+
+<h2 style="color:#2874A6;font-weight:bold;">12. Write a Query to Identify Customers Who Have Made Transactions Above $5,000 Multiple Times</h2>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    To find customers who have made transactions greater than $5,000 more than once, filter the transactions above $5,000 and group by <code>customer_id</code>, then use the <code>HAVING</code> clause to select those with a count greater than 1.
+</p>
+
+<p><b style="color:#B9770E;">Example:</b><br>
+    Suppose you have a table called <code>transactions</code> with columns <code>customer_id</code> and <code>transaction_amount</code>.
+</p>
+
+```sql
+SELECT
+    customer_id,
+    COUNT(*) AS high_value_transactions
+FROM
+    transactions
+WHERE
+    transaction_amount > 5000
+GROUP BY
+    customer_id
+HAVING
+    COUNT(*) > 1;
+```
+
+<p>
+    <b style="color:#2874A6;">Explanation:</b>
+    <ul>
+        <li><b>WHERE transaction_amount &gt; 5000</b> filters for transactions above $5,000.</li>
+        <li><b>GROUP BY customer_id</b> groups the results by customer.</li>
+        <li><b>COUNT(*)</b> counts the number of high-value transactions per customer.</li>
+        <li><b>HAVING COUNT(*) &gt; 1</b> selects only those customers who have made such transactions more than once.</li>
+    </ul>
+</p>
+
+<blockquote style="border-left: 4px solid #F1C40F; background: #FCF3CF; padding: 0.5em 1em;">
+    <b>Tip:</b> Adjust the threshold or grouping as needed to match your business requirements.
+</blockquote>
+
+<hr style="border:1px solid #2E86C1;">
+
+<h2 style="color:#2874A6;font-weight:bold;">13. Explain the Difference Between DELETE and TRUNCATE Commands</h2>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Both <code>DELETE</code> and <code>TRUNCATE</code> are used to remove data from a table, but they differ in how they operate and their effects on the table and its data.
+</p>
+
+<p>
+    <b style="color:#2874A6;">Comparison Table:</b>
+</p>
+
+<table style="width:100%; border-collapse:collapse;">
+    <tr style="background-color:#D6EAF8;">
+        <th style="border:1px solid #2E86C1; padding:8px;">Feature</th>
+        <th style="border:1px solid #2E86C1; padding:8px;">DELETE</th>
+        <th style="border:1px solid #2E86C1; padding:8px;">TRUNCATE</th>
+    </tr>
+    <tr>
+        <td style="border:1px solid #2E86C1; padding:8px;">Removes Rows</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Removes specified rows (can use WHERE clause)</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Removes all rows (cannot use WHERE clause)</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #2E86C1; padding:8px;">Transaction Logging</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Row-by-row logging (slower for large tables)</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Minimal logging (faster for large tables)</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #2E86C1; padding:8px;">Can Be Rolled Back</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Yes, if used within a transaction</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Yes, in most databases if used within a transaction</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #2E86C1; padding:8px;">Resets Identity Column</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">No</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Yes</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #2E86C1; padding:8px;">Triggers</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Activates DELETE triggers</td>
+        <td style="border:1px solid #2E86C1; padding:8px;">Does not activate DELETE triggers</td>
+    </tr>
+</table>
+
+<p>
+    <b style="color:#2874A6;">Explanation:</b>
+    <ul>
+        <li><b>DELETE</b> is used when you need to remove specific rows and can be filtered using a <code>WHERE</code> clause.</li>
+        <li><b>TRUNCATE</b> quickly removes all rows from a table and resets identity columns, but cannot be used to delete specific rows.</li>
+        <li>Use <code>DELETE</code> for selective removal and <code>TRUNCATE</code> for fast, complete data removal.</li>
+    </ul>
+</p>
+
+<blockquote style="border-left: 4px solid #F1C40F; background: #FCF3CF; padding: 0.5em 1em;">
+    <b>Tip:</b> Use <code>TRUNCATE</code> with caution, as it cannot be used if the table is referenced by a foreign key constraint.
+</blockquote>
+<h2 style="color:#2874A6;font-weight:bold;">14. How Do You Optimize SQL Queries for Better Performance?</h2>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Optimizing SQL queries involves improving their efficiency to reduce execution time and resource usage. This can be achieved through indexing, query rewriting, and analyzing execution plans.
+</p>
+
+<p><b style="color:#B9770E;">Example Strategies:</b></p>
+<ul>
+    <li><b>Use Indexes:</b> Create indexes on columns used in <code>WHERE</code>, <code>JOIN</code>, and <code>ORDER BY</code> clauses to speed up data retrieval.</li>
+    <li><b>Write Selective Queries:</b> Retrieve only the columns and rows you need using specific <code>SELECT</code> and <code>WHERE</code> clauses.</li>
+    <li><b>Avoid SELECT *:</b> Specify only required columns to reduce data transfer and processing.</li>
+    <li><b>Use Joins Efficiently:</b> Prefer appropriate join types and ensure join columns are indexed.</li>
+    <li><b>Analyze Execution Plans:</b> Use tools like <code>EXPLAIN</code> to understand how queries are executed and identify bottlenecks.</li>
+    <li><b>Optimize Subqueries:</b> Replace correlated subqueries with joins or CTEs when possible.</li>
+    <li><b>Limit Result Sets:</b> Use <code>LIMIT</code> or <code>TOP</code> to restrict the number of rows returned.</li>
+</ul>
+
+<p>
+    <b style="color:#2874A6;">Explanation:</b>
+    <ul>
+        <li>Indexes help the database find data faster, especially for large tables.</li>
+        <li>Efficient queries reduce unnecessary data processing and network load.</li>
+        <li>Reviewing execution plans helps identify slow operations like full table scans.</li>
+    </ul>
+</p>
+
+<blockquote style="border-left: 4px solid #F1C40F; background: #FCF3CF; padding: 0.5em 1em;">
+    <b>Tip:</b> Regularly monitor query performance and update indexes or rewrite queries as your data grows and changes.
+</blockquote>
