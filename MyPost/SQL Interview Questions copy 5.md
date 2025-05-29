@@ -912,22 +912,3 @@ GROUP BY
 <blockquote style="border-left: 4px solid #F1C40F; background: #FCF3CF; padding: 0.5em 1em;">
     <b>Tip:</b> This metric helps analyze customer purchase frequency and can inform retention strategies.
 </blockquote>
-
----
-
-
-
-<div align="center" style="margin-top:2em; margin-bottom:2em;">
-
-# 🙏 Thank You!
-
-Thank you for reading these SQL interview notes!  
-I hope they help you succeed in your learning and interviews.
-
-If you found this helpful, consider sharing with others or revisiting whenever you need a quick refresher.
-
-**Keep practicing, stay curious, and happy querying!**
-
-</div>
-
----
