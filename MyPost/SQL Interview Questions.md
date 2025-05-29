@@ -421,7 +421,7 @@ FROM
 
 
 <hr style="border:1px solid #2E86C1;">
-
+<bR>
 
 <h2 style="color:#2874A6;font-weight:bold;">10. Write a Query to Calculate the Cumulative Sum of Sales</h2>
 10. Write a query to calculate the cumulative sum of sales.
@@ -727,8 +727,6 @@ ORDER BY
 
 <hr style="border:1px solid #2E86C1;">
 
-
-<hr style="border:1px solid #2E86C1;">
 
 
 <h2 style="color:#2874A6;font-weight:bold;">17. Rank Sales Representatives by Quarterly Performance</h2>
