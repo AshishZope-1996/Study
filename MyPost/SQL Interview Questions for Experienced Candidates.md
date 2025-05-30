@@ -1412,6 +1412,15 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
+What is a database view, and can you update data in the base tables through it?
+What is the difference between a standard view and a materialized (or indexed) view?
+What happens if a materialized view is being refreshed (complete refresh) and a user queries it at the same time?
+When would you use a view in a database design? What benefits do views provide (e.g. security, abstraction)?
+Can you create an index on a view? If so, what are the implications (e.g. indexed view in SQL Server)?
+How do you modify or drop a view if the underlying table schema changes?
+What is the difference between a view and a temporary table?
+
+<hr style="border:1px solidrgb(0, 0, 0);">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
     <b style="color:#154360; font-size:1.5em;">Stored Procedures & Functions</b>
 </blockquote>
