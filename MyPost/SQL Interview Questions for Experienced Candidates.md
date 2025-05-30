@@ -1,10 +1,10 @@
-<h1 style="color:#154360; text-align:center; font-size:2.5em; font-weight:bold; margin-bottom:0; letter-spacing:1px;">
+<h1 style="color:#154360; text-align:left; font-size:2.5em; font-weight:bold; margin-bottom:0; letter-spacing:1px;">
     <span style="color:#1C4980;">SQL Interview Questions for Experienced Candidates (3+ years)</span>
 </h1>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Data Types & Miscellaneous Concepts</b>
 </blockquote>
 
@@ -12,7 +12,7 @@
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Normalization & Schema Design</b>
 </blockquote>
 
@@ -21,7 +21,7 @@
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Database Design Principles</b>
 </blockquote>
 
@@ -29,12 +29,12 @@
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Indexing Strategies & Keys</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Indexing Strategies & Keys</b>
 </blockquote>
 
@@ -377,7 +377,7 @@ ALTER INDEX idx_emp_id ON Employees REORGANIZE;
 </p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Mastering SQL Joins</b>
 </blockquote>
 
@@ -1406,41 +1406,892 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Working with Views</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">1. What is a database view, and can you update data in the base tables through it?</b>
 
-What is a database view, and can you update data in the base tables through it?
-What is the difference between a standard view and a materialized (or indexed) view?
-What happens if a materialized view is being refreshed (complete refresh) and a user queries it at the same time?
-When would you use a view in a database design? What benefits do views provide (e.g. security, abstraction)?
-Can you create an index on a view? If so, what are the implications (e.g. indexed view in SQL Server)?
-How do you modify or drop a view if the underlying table schema changes?
-What is the difference between a view and a temporary table?
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>view</b> is a virtual table based on the result of a SQL query. It does not store data itself but presents data from one or more tables. You can often update base tables through a view if the view is <b>simple</b> (e.g., based on a single table, no aggregates, no GROUP BY). Complex views (with joins, aggregates, etc.) are usually <b>read-only</b>.
+</p>
+
+<ul>
+    <li><b>Updatable View:</b> Simple SELECT from one table, no aggregates or DISTINCT.</li>
+    <li><b>Read-Only View:</b> Contains joins, GROUP BY, aggregate functions, or DISTINCT.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- Simple updatable view
+CREATE VIEW vw_EmployeeNames AS
+SELECT EmployeeID, FirstName, LastName FROM Employees;
+
+-- Update through the view
+UPDATE vw_EmployeeNames SET FirstName = 'John' WHERE EmployeeID = 1;
+```
+
+<p>
+    <b>Summary:</b> Views provide a way to simplify queries and restrict access. Updates are allowed only for simple views.
+</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+
+<b style="color:#1C4980;font-weight:bold;">2. What is the difference between a standard view and a materialized (or indexed) view?</b>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        Standard View vs Materialized View
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Feature</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Standard View</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Materialized/Indexed View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Storage</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No data stored; query runs each time</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Stores result set physically</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Performance</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Slower for complex queries</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Faster for repeated access</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Refresh</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Always current</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Needs refresh (manual or automatic)</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <b>Summary:</b> Use standard views for abstraction; use materialized views for performance on large, complex queries.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">3. What happens if a materialized view is being refreshed (complete refresh) and a user queries it at the same time?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    During a <b>complete refresh</b>, the materialized view is rebuilt. If a user queries it during refresh:
+</p>
+<ul>
+    <li>Most databases (e.g., Oracle) serve the <b>old data</b> until the refresh completes, ensuring consistency.</li>
+    <li>Some systems may block queries or return an error if the view is unavailable.</li>
+</ul>
+<p>
+    <b>Tip:</b> Use <code>FAST REFRESH</code> or schedule refreshes during low-traffic periods to minimize impact.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">4. When would you use a view in a database design? What benefits do views provide (e.g. security, abstraction)?</b>
+
+<ul>
+    <li><b>Security:</b> Restrict access to sensitive columns or rows.</li>
+    <li><b>Abstraction:</b> Hide complex joins or calculations from end users.</li>
+    <li><b>Simplification:</b> Provide a simple interface for reporting or applications.</li>
+    <li><b>Consistency:</b> Standardize business logic in one place.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- Hide salary details from most users
+CREATE VIEW vw_PublicEmployees AS
+SELECT EmployeeID, FirstName, LastName FROM Employees;
+```
+
+<p>
+    <b>Summary:</b> Views help enforce security, simplify access, and centralize logic.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">5. Can you create an index on a view? If so, what are the implications (e.g. indexed view in SQL Server)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Yes, in some databases (like SQL Server), you can create an <b>indexed view</b> (also called a materialized view). This physically stores the view's result set and creates an index on it.
+</p>
+<ul>
+    <li><b>Benefits:</b> Greatly improves performance for complex aggregations or joins.</li>
+    <li><b>Drawbacks:</b> Increases storage and maintenance overhead; restrictions on view definition (e.g., must be deterministic).</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example (SQL Server):</b></p>
+
+```sql
+CREATE VIEW vw_SalesSummary WITH SCHEMABINDING AS
+SELECT StoreID, SUM(SalesAmount) AS TotalSales
+FROM dbo.Sales
+GROUP BY StoreID;
+
+CREATE UNIQUE CLUSTERED INDEX idx_SalesSummary_StoreID ON vw_SalesSummary(StoreID);
+```
+
+<p>
+    <b>Summary:</b> Indexed views boost performance but add complexity and storage cost.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">6. How do you modify or drop a view if the underlying table schema changes?</b>
+
+<ul>
+    <li><b>Modify:</b> Use <code>CREATE OR REPLACE VIEW</code> (Oracle, PostgreSQL) or <code>ALTER VIEW</code> (SQL Server) to update the view definition.</li>
+    <li><b>Drop:</b> Use <code>DROP VIEW view_name;</code> to remove the view.</li>
+    <li><b>Tip:</b> If a column used in the view is dropped from the base table, the view becomes invalid and must be recreated or altered.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- Modify a view
+CREATE OR REPLACE VIEW vw_EmployeeNames AS
+SELECT EmployeeID, FirstName FROM Employees;
+
+-- Drop a view
+DROP VIEW vw_EmployeeNames;
+```
+
+<p>
+    <b>Summary:</b> Always update or drop dependent views after schema changes to base tables.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">7. What is the difference between a view and a temporary table?</b>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        View vs Temporary Table
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Aspect</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">View</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Temporary Table</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Persistence</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Definition persists; data is always current</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Exists only for session or transaction</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Storage</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No data stored (unless materialized)</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Physically stores data</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Use Case</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Reusable query abstraction, security</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Intermediate results, complex processing</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <b>Summary:</b> Use views for abstraction and security; use temporary tables for storing intermediate results in complex queries.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Stored Procedures & Functions</b>
 </blockquote>
+<b style="color:#1C4980;font-weight:bold;">1. What is the difference between a stored procedure and a user-defined function in SQL (aside from return value)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>stored procedure</b> is a precompiled collection of SQL statements that can perform actions such as modifying data, controlling transactions, and returning results. A <b>user-defined function (UDF)</b> is a routine that returns a value (scalar or table) and is typically used in SELECT, WHERE, or JOIN clauses.
+</p>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        Stored Procedure vs User-Defined Function
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Aspect</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Stored Procedure</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">User-Defined Function</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Can modify data</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Yes</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No (except in some DBs with special permissions)</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Can be used in SELECT</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Yes</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Transaction control</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Yes</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Return type</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">None, scalar, or result set</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Scalar or table</td>
+        </tr>
+    </tbody>
+</table>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<b style="color:#1C4980;font-weight:bold;">2. What are the advantages and disadvantages of using stored procedures?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Advantages:</b>
+</p>
+<ul>
+    <li>Encapsulate business logic in the database</li>
+    <li>Improve performance via precompilation</li>
+    <li>Enhance security (grant EXECUTE instead of table access)</li>
+    <li>Reduce network traffic (batch multiple statements)</li>
+</ul>
+<p><b>Disadvantages:</b></p>
+<ul>
+    <li>Harder to version and deploy than application code</li>
+    <li>May increase database server load</li>
+    <li>Logic split between app and DB can complicate maintenance</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">3. Can you perform INSERT/UPDATE/DELETE operations inside a SQL function? Why or why not?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    In most databases (e.g., SQL Server, PostgreSQL), <b>user-defined functions cannot perform INSERT/UPDATE/DELETE</b> operations on tables. This restriction ensures functions are deterministic and side-effect free, making them safe for use in queries. Some databases (like Oracle with autonomous transactions) allow limited exceptions.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">4. What is a table-valued function and when would you use one in a query?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>table-valued function (TVF)</b> returns a table as its result. You use TVFs in the FROM clause of a query, similar to a regular table or view. TVFs are useful for encapsulating reusable query logic that returns sets of rows.
+</p>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- SQL Server example
+CREATE FUNCTION dbo.GetEmployeesByDept(@DeptID INT)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT EmployeeID, FirstName, LastName
+    FROM Employees
+    WHERE DepartmentID = @DeptID
+);
+
+-- Usage
+SELECT * FROM dbo.GetEmployeesByDept(10);
+```
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">5. When would you use a stored procedure instead of inline SQL queries in an application?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use a <b>stored procedure</b> when you want to:</p>
+<ul>
+    <li>Centralize and reuse business logic</li>
+    <li>Improve security by restricting direct table access</li>
+    <li>Reduce SQL injection risk (parameterized execution)</li>
+    <li>Optimize performance for complex or repetitive operations</li>
+    <li>Batch multiple statements in a single call</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">6. How do you pass parameters to and receive results from stored procedures?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Parameters</b> are passed to stored procedures as input, output, or input/output arguments. Results can be returned via output parameters, result sets (SELECT), or return values.
+</p>
+
+<p><b style="color:#B9770E;">Example (SQL Server):</b></p>
+
+```sql
+-- Define procedure
+CREATE PROCEDURE GetEmployeeByID
+    @EmpID INT,
+    @FirstName NVARCHAR(50) OUTPUT
+AS
+BEGIN
+    SELECT @FirstName = FirstName FROM Employees WHERE EmployeeID = @EmpID;
+END;
+
+-- Execute procedure
+DECLARE @Name NVARCHAR(50);
+EXEC GetEmployeeByID 1, @Name OUTPUT;
+SELECT @Name;
+```
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">7. How would you debug or test a slow or failing stored procedure in production?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <ul>
+        <li>Capture execution plans to identify bottlenecks</li>
+        <li>Use logging or print statements for tracing</li>
+        <li>Test with sample data in a development environment</li>
+        <li>Check for blocking, deadlocks, or resource waits</li>
+        <li>Review recent schema or data changes</li>
+        <li>Use database profiling tools (e.g., SQL Profiler, Extended Events)</li>
+    </ul>
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">8. How do you grant a user permission to execute a specific stored procedure?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use the <code>GRANT EXECUTE</code> statement to allow a user to run a stored procedure.
+</p>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+GRANT EXECUTE ON OBJECT::GetEmployeeByID TO username;
+```
+<p><i>This grants the user permission to execute the <code>GetEmployeeByID</code> procedure.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Triggers & Automation</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<b style="color:#1C4980;font-weight:bold;">1. What is a trigger in SQL, and when would you use one? Give an example use case.</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>trigger</b> is a special kind of stored procedure that automatically executes in response to certain events on a table or view (such as <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code>). Triggers are used for enforcing business rules, auditing changes, maintaining derived data, or automating tasks.
+</p>
+
+<ul>
+    <li><b>Use Cases:</b> Auditing changes, enforcing complex constraints, cascading updates/deletes, logging, or synchronizing tables.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- Audit trigger: Log every employee salary change
+CREATE TRIGGER trg_AuditSalaryChange
+ON Employees
+AFTER UPDATE
+AS
+BEGIN
+    INSERT INTO SalaryAudit (EmployeeID, OldSalary, NewSalary, ChangedAt)
+    SELECT i.EmployeeID, d.Salary, i.Salary, GETDATE()
+    FROM inserted i
+    JOIN deleted d ON i.EmployeeID = d.EmployeeID
+    WHERE i.Salary <> d.Salary;
+END;
+```
+<p><i>This trigger logs salary changes to an audit table whenever an employee's salary is updated.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">2. What is the difference between an AFTER trigger and an INSTEAD OF trigger (e.g. in SQL Server)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>AFTER triggers</b> execute after the triggering event (e.g., after a row is inserted/updated/deleted). <b>INSTEAD OF triggers</b> execute in place of the triggering event, allowing you to override or customize the default action (commonly used on views).
+</p>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        AFTER vs INSTEAD OF Triggers
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Type</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">When It Fires</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Typical Use</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">AFTER</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">After the event completes</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Auditing, logging, enforcing business rules</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:iggers to override default behavior.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">3. What are the “inserted” and “deleted” magic tables in SQL Server triggers?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    In SQL Server, <b>inserted</b> and <b>deleted</b> are special (magic) tables available inside triggers:
+</p>
+
+<ul>
+    <li><b>inserted:</b> Holds the new rows for <code>INSERT</code> and <code>UPDATE</code> operations.</li>
+    <li><b>deleted:</b> Holds the old rows for <code>DELETE</code> and <code>UPDATE</code> operations.</li>
+</ul>
+
+<p>
+    <b>Example:</b> In an <code>AFTER UPDATE</code> trigger, <code>inserted</code> has new values, <code>deleted</code> has old values.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">4. How can triggers be used to enforce business rules or data integrity (e.g. auditing changes, simulating foreign keys)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Triggers can enforce business rules by validating data, preventing invalid changes, logging modifications, or simulating constraints not natively supported (e.g., cascading deletes, custom referential integrity).
+</p>
+
+<ul>
+    <li><b>Auditing:</b> Log changes to sensitive data (e.g., salary updates).</li>
+    <li><b>Enforcing Rules:</b> Prevent deletion of parent rows if child rows exist (simulate foreign key).</li>
+    <li><b>Data Integrity:</b> Automatically update related tables or maintain derived columns.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- Prevent deleting a department if employees exist
+CREATE TRIGGER trg_PreventDeptDelete
+ON Departments
+INSTEAD OF DELETE
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM Employees e JOIN deleted d ON e.DepartmentID = d.DepartmentID)
+        RAISERROR('Cannot delete department with employees.', 16, 1);
+    ELSE
+        DELETE FROM Departments WHERE DepartmentID IN (SELECT DepartmentID FROM deleted);
+END;
+```
+<p><i>This trigger blocks deletion of a department if employees are assigned to it.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">5. What are the potential drawbacks of using triggers (such as performance impact or hidden logic)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Triggers can introduce hidden logic and performance overhead:
+</p>
+
+<ul>
+    <li><b>Performance:</b> Triggers add extra processing to DML operations, potentially slowing down inserts, updates, or deletes.</li>
+    <li><b>Hidden Logic:</b> Business rules in triggers may not be obvious to developers, making debugging and maintenance harder.</li>
+    <li><b>Complexity:</b> Nested or recursive triggers can cause unexpected behavior.</li>
+    <li><b>Portability:</b> Trigger syntax and behavior can vary between database systems.</li>
+</ul>
+
+<p>
+    <b>Summary:</b> Use triggers judiciously; document their behavior and monitor performance.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">6. How do INSTEAD OF triggers on a view work?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>INSTEAD OF triggers</b> on a view intercept <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code> operations and allow you to define custom logic for how those operations are handled. This is useful for updatable views that join multiple tables or require special handling.
+</p>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- Allow updates to a view that joins Employees and Departments
+CREATE VIEW vw_EmployeeDept AS
+SELECT e.EmployeeID, e.FirstName, d.DepartmentName
+FROM Employees e
+JOIN Departments d ON e.DepartmentID = d.DepartmentID;
+
+CREATE TRIGGER trg_UpdateEmpDept
+ON vw_EmployeeDept
+INSTEAD OF UPDATE
+AS
+BEGIN
+    UPDATE Employees
+    SET FirstName = i.FirstName
+    FROM inserted i
+    WHERE Employees.EmployeeID = i.EmployeeID;
+END;
+```
+<p><i>This trigger allows updates to the <code>FirstName</code> column via the view.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">7. Can triggers call stored procedures, and are there any limitations to doing that?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Yes, triggers can call stored procedures. However, there are limitations:
+</p>
+
+<ul>
+    <li><b>Side Effects:</b> Procedures called from triggers should not commit/rollback transactions independently.</li>
+    <li><b>Performance:</b> Long-running procedures can slow down DML operations.</li>
+    <li><b>Recursion:</b> Be careful to avoid recursive trigger/procedure calls.</li>
+    <li><b>Permissions:</b> The trigger must have permission to execute the procedure.</li>
+</ul>
+
+<p>
+    <b>Summary:</b> Triggers can call stored procedures, but keep logic efficient and avoid transactional conflicts.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Transactions & Concurrency Control</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+<b style="color:#1C4980;font-weight:bold;">1. What are the ACID properties of a database transaction (atomicity, consistency, isolation, durability)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>ACID</b> stands for:
+</p>
+<ul>
+    <li><b>Atomicity:</b> All operations in a transaction succeed or all fail (no partial changes).</li>
+    <li><b>Consistency:</b> Transactions bring the database from one valid state to another, preserving rules.</li>
+    <li><b>Isolation:</b> Concurrent transactions do not interfere; intermediate states are hidden.</li>
+    <li><b>Durability:</b> Once committed, changes are permanent even after a crash.</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">2. What are the different SQL isolation levels (READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE), and what phenomena do they prevent (dirty reads, non-repeatable reads, phantom reads)?</b>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        SQL Isolation Levels and Phenomena
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Level</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Dirty Reads</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Non-Repeatable Reads</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Phantom Reads</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">READ UNCOMMITTED</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">READ COMMITTED</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">REPEATABLE READ</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">SERIALIZABLE</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <b>Summary:</b> Higher isolation = fewer anomalies, but more locking and lower concurrency.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">3. What is a deadlock in database terms, and how can you prevent or resolve deadlocks?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>deadlock</b> occurs when two or more transactions block each other, each waiting for the other to release locks. Neither can proceed.
+</p>
+<ul>
+    <li><b>Prevention:</b> Access tables in the same order, keep transactions short, use lower isolation levels if possible.</li>
+    <li><b>Resolution:</b> The database detects deadlocks and aborts (rolls back) one transaction (the "victim").</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">4. How do you control transactions in SQL (BEGIN, COMMIT, ROLLBACK)? Give an example of using a transaction in a stored procedure or batch.</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use <code>BEGIN TRANSACTION</code> to start, <code>COMMIT</code> to save, and <code>ROLLBACK</code> to undo.
+</p>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+BEGIN TRANSACTION;
+    UPDATE Accounts SET Balance = Balance - 100 WHERE AccountID = 1;
+    UPDATE Accounts SET Balance = Balance + 100 WHERE AccountID = 2;
+IF @@ERROR <> 0
+    ROLLBACK;
+ELSE
+    COMMIT;
+```
+<p><i>This ensures both updates succeed or both are undone.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">5. If you run a long SELECT query on a table while another transaction is updating rows in that table, will your session see the old data or new data by default? (Consider default isolation level behavior.)</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    By default (READ COMMITTED), your SELECT sees only committed data at the time each row is read. You may see new data if the update commits before your SELECT reads that row.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">6. What is the difference between pessimistic and optimistic locking, and when would you use each?</b>
+
+<ul>
+    <li><b>Pessimistic Locking:</b> Locks data when read, blocking others until transaction ends. Use for high-conflict scenarios.</li>
+    <li><b>Optimistic Locking:</b> No locks when reading; checks for changes before writing (e.g., using a version column). Use when conflicts are rare.</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">7. What is a savepoint in a transaction, and how do you use it?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>savepoint</b> marks a point within a transaction to which you can roll back without affecting earlier work.
+</p>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+BEGIN TRANSACTION;
+    UPDATE Accounts SET Balance = Balance - 100 WHERE AccountID = 1;
+    SAVE TRANSACTION Save1;
+    UPDATE Accounts SET Balance = Balance + 100 WHERE AccountID = 2;
+    -- If needed:
+    ROLLBACK TRANSACTION Save1;
+COMMIT;
+```
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">8. How do two-phase commit protocols work in distributed transactions?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Two-phase commit</b> ensures all participants in a distributed transaction agree to commit or roll back:
+</p>
+<ol>
+    <li><b>Prepare phase:</b> Coordinator asks all nodes if they can commit.</li>
+    <li><b>Commit phase:</b> If all agree, coordinator tells all to commit; otherwise, tells all to roll back.</li>
+</ol>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">9. How can you identify and terminate a blocking or long-running transaction in a SQL database?</b>
+
+<ul>
+    <li><b>Identify:</b> Use system views (e.g., <code>sys.dm_exec_requests</code>, <code>sp_who2</code> in SQL Server) to find blocking sessions.</li>
+    <li><b>Terminate:</b> Use <code>KILL session_id</code> (SQL Server) or <code>ALTER SYSTEM KILL SESSION</code> (Oracle) to end the session.</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">10. What is deadlock detection, and how does the database engine choose a deadlock victim?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    The database periodically checks for deadlocks. When found, it picks a "victim" transaction to roll back (usually the one with the least cost or least work done) to break the cycle and let others proceed.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Performance Tuning & Query Optimization</b>
 </blockquote>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">1. What is a query execution plan and how do you use it to improve performance?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>query execution plan</b> is a detailed roadmap generated by the database engine showing how a SQL query will be executed (e.g., which indexes will be used, join order, scan types). Reviewing the plan helps identify bottlenecks, such as full table scans or missing indexes, and guides query optimization.
+</p>
+
+<ul>
+    <li><b>How to view:</b> Use <code>EXPLAIN</code> (MySQL/PostgreSQL), <code>SET SHOWPLAN</code> (SQL Server), or graphical tools.</li>
+    <li><b>Optimization:</b> Add indexes, rewrite queries, or adjust schema based on plan findings.</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">2. How would you optimize a slow SQL query in production?</b>
+
+<ul>
+    <li>Add appropriate indexes on columns used in WHERE, JOIN, and ORDER BY clauses.</li>
+    <li>Rewrite queries to avoid unnecessary subqueries or correlated subqueries.</li>
+    <li>Avoid <code>SELECT *</code>; select only needed columns.</li>
+    <li>Use query execution plans to identify bottlenecks.</li>
+    <li>Partition large tables if appropriate.</li>
+    <li>Update statistics and rebuild fragmented indexes.</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">3. What is the difference between UNION and UNION ALL in SQL, and when would you use each?</b>
+
+<ul>
+    <li><b>UNION:</b> Combines results from two queries and removes duplicate rows.</li>
+    <li><b>UNION ALL:</b> Combines results and keeps all duplicates.</li>
+    <li><b>Use UNION ALL</b> for better performance if you do not need to remove duplicates.</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">4. How can you find duplicate rows in a table using SQL?</b>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+SELECT column1, column2, COUNT(*)
+FROM table_name
+GROUP BY column1, column2
+HAVING COUNT(*) > 1;
+```
+<p><i>This finds rows where (column1, column2) are duplicated.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">5. Write a SQL query to find the 10th highest salary in an Employee table.</b>
+
+```sql
+SELECT MIN(Salary) AS TenthHighestSalary
+FROM (
+    SELECT DISTINCT Salary
+    FROM Employee
+    ORDER BY Salary DESC
+    LIMIT 10
+) AS Top10;
+```
+<p><i>This returns the 10th highest unique salary.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">6. How would you retrieve the last 5 records (by date or ID) from a table?</b>
+
+```sql
+SELECT *
+FROM table_name
+ORDER BY date_column DESC
+LIMIT 5;
+```
+<p><i>Replace <code>date_column</code> with your ordering column.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">7. Write a SQL query to exclude specific values (e.g., select all rows except those where ID is X or Y).</b>
+
+```sql
+SELECT *
+FROM Student
+WHERE ID NOT IN (X, Y);
+```
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">8. How do you retrieve the Nth record (e.g., the 3rd record) from a table?</b>
+
+```sql
+SELECT *
+FROM table_name
+ORDER BY ordering_column
+LIMIT 1 OFFSET 2; -- 0-based offset; 2 = 3rd row
+```
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">9. How do you obtain the CREATE TABLE DDL for an existing table in SQL?</b>
+
+<ul>
+    <li><b>MySQL:</b> <code>SHOW CREATE TABLE table_name;</code></li>
+    <li><b>PostgreSQL:</b> Use <code>pg_dump</code> or query <code>information_schema</code>.</li>
+    <li><b>SQL Server:</b> Use SSMS "Script Table as" or <code>sp_helptext</code> for views/procs.</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">10. Explain the difference between the RANK() and DENSE_RANK() window functions.</b>
+
+<ul>
+    <li><b>RANK():</b> Assigns a unique rank, skipping numbers after ties (e.g., 1, 2, 2, 4).</li>
+    <li><b>DENSE_RANK():</b> Assigns consecutive ranks, no gaps after ties (e.g., 1, 2, 2, 3).</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">11. When would you use ROW_NUMBER(), RANK(), or DENSE_RANK() in a query? Give a use case.</b>
+
+<ul>
+    <li><b>ROW_NUMBER():</b> To assign a unique sequential number to each row (e.g., pagination).</li>
+    <li><b>RANK():</b> To rank rows with possible gaps after ties (e.g., competition ranking).</li>
+    <li><b>DENSE_RANK():</b> To rank rows without gaps after ties (e.g., leaderboard with shared positions).</li>
+</ul>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">12. Write a SQL query to compute the median number of searches made by users, given a summary table of search counts.</b>
+
+```sql
+SELECT AVG(search_count) AS median_searches
+FROM (
+    SELECT search_count,
+           ROW_NUMBER() OVER (ORDER BY search_count) AS rn,
+           COUNT(*) OVER () AS total
+    FROM user_search_summary
+) t
+WHERE rn IN (FLOOR((total + 1) / 2), CEIL((total + 1) / 2));
+```
+<p><i>This works for both even and odd row counts.</i></p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">13. Write a SQL query to calculate the sum of odd-numbered and even-numbered measurements separately for each day.</b>
+
+```sql
+SELECT
+    day,
+    SUM(CASE WHEN MOD(measurement_number, 2) = 1 THEN value ELSE 0 END) AS odd_sum,
+    SUM(CASE WHEN MOD(measurement_number, 2) = 0 THEN value ELSE 0 END) AS even_sum
+FROM measurements
+GROUP BY day;
+```
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">14. Write a SQL query to get the average review rating for each product for each month.</b>
+
+```sql
+SELECT
+    product_id,
+    DATE_TRUNC('month', review_date) AS review_month,
+    AVG(rating) AS avg_rating
+FROM reviews
+GROUP BY product_id, DATE_TRUNC('month', review_date);
+```
+<p><i>Replace <code>DATE_TRUNC</code> with the appropriate function for your SQL dialect.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">

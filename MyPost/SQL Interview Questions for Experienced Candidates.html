@@ -365,31 +365,275 @@ code {
           : 'default'
     });
   </script>
-<h1 style="color:#154360; text-align:center; font-size:2.5em; font-weight:bold; margin-bottom:0; letter-spacing:1px;">
-    <span style="color:#2471A3;">SQL Interview Questions for Experienced Candidates (3+ years)</span>
+<h1 style="color:#154360; text-align:left; font-size:2.5em; font-weight:bold; margin-bottom:0; letter-spacing:1px;">
+    <span style="color:#1C4980;">SQL Interview Questions for Experienced Candidates (3+ years)</span>
 </h1>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Data Types & Miscellaneous Concepts</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Data Types & Miscellaneous Concepts</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Normalization & Schema Design</b>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Normalization & Schema Design</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Database Design Principles</b>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Database Design Principles</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Indexing Strategies & Keys</b>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Indexing Strategies & Keys</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Mastering SQL Joins</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Indexing Strategies & Keys</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">1. What are the different types of SQL joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, <code>FULL JOIN</code>, <code>CROSS JOIN</code>, etc.) and when would you use each?</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">1. What is a SQL index and what are different types of indexes (clustered, non-clustered, unique, etc.)?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    An <b>index</b> in SQL is a database object that improves the speed of data retrieval operations on a table at the cost of additional storage and maintenance overhead. Indexes work like a book's index, allowing the database engine to find rows quickly without scanning the entire table.
+</p>
+<ul>
+    <li><b>Clustered Index:</b> Determines the physical order of data in the table. Each table can have only one clustered index.</li>
+    <li><b>Non-Clustered Index:</b> A separate structure from the table data, containing pointers to the actual data rows. A table can have multiple non-clustered indexes.</li>
+    <li><b>Unique Index:</b> Ensures that all values in the indexed column(s) are unique.</li>
+    <li><b>Composite Index:</b> An index on two or more columns.</li>
+    <li><b>Full-Text Index:</b> Used for efficient text searching.</li>
+    <li><b>Spatial Index:</b> Used for spatial data types (e.g., geometry, geography).</li>
+</ul>
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+<ul>
+    <li><b>Clustered Index:</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> CLUSTERED <span class="hljs-keyword">INDEX</span> idx_employee_id <span class="hljs-keyword">ON</span> Employees(EmployeeID);
+</div></code></pre>
+<p><i>This creates a clustered index on the <code>EmployeeID</code> column of the <code>Employees</code> table. The data rows will be physically ordered by <code>EmployeeID</code>.</i></p>
+<ul>
+    <li><b>Non-Clustered Index:</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> NONCLUSTERED <span class="hljs-keyword">INDEX</span> idx_employee_lastname <span class="hljs-keyword">ON</span> Employees(LastName);
+</div></code></pre>
+<p><i>This creates a non-clustered index on the <code>LastName</code> column. The index is stored separately from the table data and contains pointers to the actual rows.</i></p>
+<ul>
+    <li><b>Unique Index:</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">INDEX</span> idx_employee_email <span class="hljs-keyword">ON</span> Employees(Email);
+</div></code></pre>
+<p><i>This ensures that all values in the <code>Email</code> column are unique.</i></p>
+<ul>
+    <li><b>Composite Index:</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> idx_employee_dept_salary <span class="hljs-keyword">ON</span> Employees(DepartmentID, Salary);
+</div></code></pre>
+<p><i>This creates an index on both <code>DepartmentID</code> and <code>Salary</code>. Useful for queries filtering or sorting by both columns.</i></p>
+<p>
+    <b>Summary:</b> Indexes speed up SELECT queries but can slow down data modification operations (INSERT, UPDATE, DELETE).
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">2. What is the difference between a heap (no clustered index) and a table with a clustered index, and how can you identify a heap table?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>heap</b> is a table without a clustered index. Data is stored in no particular order, and row locations are tracked by row identifiers (RIDs). A table with a <b>clustered index</b> stores data rows in the order of the index key.
+</p>
+<ul>
+    <li><b>Heap Table:</b> No clustered index; data is unordered. Identified by querying system catalog views (e.g., <code>sys.indexes</code> in SQL Server) and checking for <code>index_id = 0</code>.</li>
+    <li><b>Clustered Index Table:</b> Data is physically ordered by the clustered index key; <code>index_id = 1</code>.</li>
+</ul>
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+<ul>
+    <li><b>Create a heap (no clustered index):</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> HeapTable (
+    <span class="hljs-keyword">ID</span> <span class="hljs-built_in">INT</span>,
+    <span class="hljs-keyword">Name</span> <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>)
+);
+<span class="hljs-comment">-- No clustered index created, so this is a heap.</span>
+</div></code></pre>
+<p><i>This table is a heap because no clustered index is defined.</i></p>
+<ul>
+    <li><b>Add a clustered index:</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> CLUSTERED <span class="hljs-keyword">INDEX</span> idx_id <span class="hljs-keyword">ON</span> HeapTable(<span class="hljs-keyword">ID</span>);
+</div></code></pre>
+<p><i>Now, <code>HeapTable</code> is no longer a heap; it is ordered by <code>ID</code>.</i></p>
+<ul>
+    <li><b>Identify a heap in SQL Server:</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, index_id
+<span class="hljs-keyword">FROM</span> sys.indexes
+<span class="hljs-keyword">WHERE</span> object_id = OBJECT_ID(<span class="hljs-string">'HeapTable'</span>);
+</div></code></pre>
+<p><i>If <code>index_id = 0</code> exists, the table is a heap.</i></p>
+<p>
+    <b>Summary:</b> Heaps are faster for bulk inserts but slower for searches; clustered indexes improve search performance.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">3. What is the difference between a PRIMARY KEY and a UNIQUE KEY (or unique index) in SQL?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Both <b>PRIMARY KEY</b> and <b>UNIQUE KEY</b> enforce uniqueness on columns, but there are differences:
+</p>
+<ul>
+    <li><b>PRIMARY KEY:</b> Uniquely identifies each row; only one per table; cannot contain NULLs; automatically creates a unique clustered index (if none exists).</li>
+    <li><b>UNIQUE KEY:</b> Enforces uniqueness; multiple unique keys allowed per table; columns can contain a single NULL (in most databases); creates a unique non-clustered index by default.</li>
+</ul>
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+<ul>
+    <li><b>PRIMARY KEY:</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Employees (
+    EmployeeID <span class="hljs-built_in">INT</span> PRIMARY <span class="hljs-keyword">KEY</span>,
+    Email <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">UNIQUE</span>
+);
+</div></code></pre>
+<p><i><code>EmployeeID</code> is the primary key (unique, not null). <code>Email</code> is a unique key (can be null in some databases).</i></p>
+<ul>
+    <li><b>UNIQUE KEY (explicit):</b></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> Employees <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CONSTRAINT</span> uq_emp_phone <span class="hljs-keyword">UNIQUE</span> (PhoneNumber);
+</div></code></pre>
+<p><i>This adds a unique constraint to <code>PhoneNumber</code>.</i></p>
+<p>
+    <b>Summary:</b> Use PRIMARY KEY for the main identifier; use UNIQUE KEY for alternate unique constraints.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">4. What are index “forwarding pointers” in a heap table, and how do they affect query performance?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    In a <b>heap table</b>, when a row is updated and no longer fits in its original location, it may be moved elsewhere. A <b>forwarding pointer</b> is left at the original location, pointing to the new location.
+</p>
+<ul>
+    <li><b>Impact:</b> Causes extra I/O because the database must follow the pointer to find the actual row, slowing down queries.</li>
+    <li><b>Resolution:</b> Rebuilding the table or adding a clustered index removes forwarding pointers.</li>
+</ul>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Update a row in a heap table that causes it to move</span>
+<span class="hljs-keyword">UPDATE</span> HeapTable <span class="hljs-keyword">SET</span> <span class="hljs-keyword">Name</span> = <span class="hljs-keyword">REPLICATE</span>(<span class="hljs-string">'A'</span>, <span class="hljs-number">1000</span>) <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">ID</span> = <span class="hljs-number">1</span>;
+<span class="hljs-comment">-- This may create a forwarding pointer if the row can't fit in its original page.</span>
+</div></code></pre>
+<p><i>Queries that access this row will incur extra I/O to follow the pointer.</i></p>
+<p>
+    <b>Summary:</b> Forwarding pointers degrade performance in heaps with frequent updates.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">5. What is a composite index, and how do you choose the order of columns in it for optimal performance?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>composite index</b> is an index on two or more columns. The order of columns matters for query optimization.
+</p>
+<ul>
+    <li><b>Column Order:</b> Place the most selective (most unique) column first, or the column most often used in WHERE or JOIN conditions.</li>
+    <li><b>Index Usage:</b> The index is most effective when queries filter on the leading column(s).</li>
+</ul>
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> idx_dept_salary <span class="hljs-keyword">ON</span> Employees(DepartmentID, Salary);
+</div></code></pre>
+<p><i>This index is useful for queries like <code>WHERE DepartmentID = ? AND Salary &gt; ?</code>. If you filter only on <code>Salary</code>, the index may not be used efficiently.</i></p>
+<p>
+    <b>Summary:</b> Choose column order based on query patterns and selectivity.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">6. When should you use a covering index, and how does it improve the performance of a query?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>covering index</b> includes all columns needed by a query (in the index key or as included columns), so the database can satisfy the query using only the index, without accessing the table data.
+</p>
+<ul>
+    <li><b>Use Case:</b> For frequently run queries that select a small set of columns.</li>
+    <li><b>Performance:</b> Reduces I/O and improves speed by avoiding lookups in the base table (bookmark lookups).</li>
+</ul>
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> idx_covering <span class="hljs-keyword">ON</span> Employees(DepartmentID) <span class="hljs-keyword">INCLUDE</span> (Salary, FirstName);
+</div></code></pre>
+<p><i>This index covers queries like <code>SELECT Salary, FirstName FROM Employees WHERE DepartmentID = ?</code> because all needed columns are in the index.</i></p>
+<p>
+    <b>Summary:</b> Covering indexes are powerful for read-heavy workloads with predictable queries.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">7. How does the existence of an index on a column affect INSERT, UPDATE, and DELETE performance on a table?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Indexes speed up SELECT queries but add overhead to data modification operations.
+</p>
+<ul>
+    <li><b>INSERT:</b> Indexes must be updated for each new row, increasing insert time.</li>
+    <li><b>UPDATE:</b> If indexed columns are updated, the index must be modified, adding overhead.</li>
+    <li><b>DELETE:</b> Index entries must be removed, which can slow down deletes.</li>
+</ul>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Insert into a table with indexes</span>
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Employees (EmployeeID, FirstName, LastName) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-string">'Ashish'</span>, <span class="hljs-string">'Zope'</span>);
+<span class="hljs-comment">-- The database updates all relevant indexes after the insert.</span>
+</div></code></pre>
+<p><i>More indexes mean more work for each insert, update, or delete operation.</i></p>
+<p>
+    <b>Summary:</b> More indexes = faster reads, slower writes. Balance based on workload.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">8. What is index selectivity, and why is it important for query optimization?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Index selectivity</b> is the ratio of the number of distinct values in an indexed column to the total number of rows. High selectivity means many unique values; low selectivity means many duplicates.
+</p>
+<ul>
+    <li><b>Importance:</b> High selectivity indexes are more useful for filtering queries, as they reduce the number of rows scanned.</li>
+    <li><b>Low Selectivity:</b> Indexes on columns with few unique values (e.g., gender) are less effective.</li>
+</ul>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- High selectivity: EmployeeID (unique for each row)</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> idx_employee_id <span class="hljs-keyword">ON</span> Employees(EmployeeID);
+
+<span class="hljs-comment">-- Low selectivity: Gender (few unique values)</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> idx_gender <span class="hljs-keyword">ON</span> Employees(Gender);
+</div></code></pre>
+<p><i>The <code>idx_employee_id</code> index is highly selective and efficient for lookups. The <code>idx_gender</code> index is less useful because many rows share the same value.</i></p>
+<p>
+    <b>Summary:</b> Use indexes on columns with high selectivity for best performance.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">9. How many clustered indexes can a table have, and why?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A table can have <b>only one clustered index</b> because the data rows can be physically ordered in only one way.
+</p>
+<ul>
+    <li><b>Reason:</b> The clustered index defines the physical storage order of the table.</li>
+    <li><b>Non-Clustered Indexes:</b> Multiple non-clustered indexes are allowed.</li>
+</ul>
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Only one clustered index allowed</span>
+<span class="hljs-keyword">CREATE</span> CLUSTERED <span class="hljs-keyword">INDEX</span> idx_emp_id <span class="hljs-keyword">ON</span> Employees(EmployeeID);
+
+<span class="hljs-comment">-- Multiple non-clustered indexes allowed</span>
+<span class="hljs-keyword">CREATE</span> NONCLUSTERED <span class="hljs-keyword">INDEX</span> idx_emp_email <span class="hljs-keyword">ON</span> Employees(Email);
+<span class="hljs-keyword">CREATE</span> NONCLUSTERED <span class="hljs-keyword">INDEX</span> idx_emp_phone <span class="hljs-keyword">ON</span> Employees(PhoneNumber);
+</div></code></pre>
+<p><i>Attempting to create a second clustered index will result in an error.</i></p>
+<p>
+    <b>Summary:</b> One clustered index per table; unlimited non-clustered indexes (within system limits).
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">10. What is index fragmentation, and how can it be resolved or mitigated in a large database?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Index fragmentation</b> occurs when the logical order of index pages does not match the physical order, leading to inefficient I/O and slower queries.
+</p>
+<ul>
+    <li><b>Causes:</b> Frequent INSERT, UPDATE, DELETE operations.</li>
+    <li><b>Resolution:</b> Rebuild or reorganize indexes using database maintenance commands (e.g., <code>ALTER INDEX REBUILD</code> or <code>REORGANIZE</code> in SQL Server).</li>
+    <li><b>Mitigation:</b> Schedule regular index maintenance, monitor fragmentation levels.</li>
+</ul>
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Rebuild an index (removes fragmentation)</span>
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">INDEX</span> idx_emp_id <span class="hljs-keyword">ON</span> Employees <span class="hljs-keyword">REBUILD</span>;
+
+<span class="hljs-comment">-- Reorganize an index (less intensive)</span>
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">INDEX</span> idx_emp_id <span class="hljs-keyword">ON</span> Employees REORGANIZE;
+</div></code></pre>
+<p><i>Use these commands regularly to keep indexes efficient, especially in large, busy databases.</i></p>
+<p>
+    <b>Summary:</b> Regular index maintenance is essential for optimal performance in large databases.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Mastering SQL Joins</b>
+</blockquote>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">1. What are the different types of SQL joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, <code>FULL JOIN</code>, <code>CROSS JOIN</code>, etc.) and when would you use each?</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     SQL joins are used to combine rows from two or more tables based on related columns. The main types are:
 </p>
@@ -444,16 +688,16 @@ code {
     - Use <b>CROSS JOIN</b> to get every combination of rows from both tables (rarely used in practice).
 </p>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">2. What is the difference between a <code>CROSS JOIN</code> and a <code>FULL OUTER JOIN</code>?</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">2. What is the difference between a <code>CROSS JOIN</code> and a <code>FULL OUTER JOIN</code>?</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     <code>CROSS JOIN</code> and <code>FULL OUTER JOIN</code> are both used to combine rows from two tables, but they operate very differently:
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Join Type Comparison
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Feature</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">CROSS JOIN</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FULL OUTER JOIN</th>
@@ -499,7 +743,7 @@ code {
     - <b>FULL OUTER JOIN</b> returns all rows from both tables, matching where possible, and filling with NULLs where there is no match.
 </p>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">3. Write a SQL query to retrieve the first and last names of employees along with the names of their managers (given <code>Employees</code> and <code>Managers</code> tables).</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">3. Write a SQL query to retrieve the first and last names of employees along with the names of their managers (given <code>Employees</code> and <code>Managers</code> tables).</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     To retrieve employee names along with their managers' names, you typically join the <code>Employees</code> table with the <code>Managers</code> table using a foreign key (e.g., <code>ManagerID</code> in <code>Employees</code> referencing <code>Managers.ManagerID</code>).
 </p>
@@ -522,11 +766,11 @@ code {
     - <b>INNER JOIN</b> would exclude employees without a manager.
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees and Managers Join Result
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Result</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Use Case</th>
@@ -546,7 +790,7 @@ code {
     </tbody>
 </table>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">4. Write a SQL query to find the average salary for each department, given tables <code>Employees</code> (with <code>DepartmentID</code>) and <code>Departments</code> (with <code>DepartmentName</code>).</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">4. Write a SQL query to find the average salary for each department, given tables <code>Employees</code> (with <code>DepartmentID</code>) and <code>Departments</code> (with <code>DepartmentName</code>).</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     To calculate the average salary for each department, join the <code>Employees</code> table with the <code>Departments</code> table on <code>DepartmentID</code>, then use <code>GROUP BY</code> to aggregate by department.
 </p>
@@ -569,7 +813,7 @@ code {
     - <b>GROUP BY d.DepartmentName</b> groups results by department.
 </p>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">5. Write a SQL query to list all products that have never been ordered (products in a <code>Product</code> table with no matching rows in the <code>Orders</code> table).</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">5. Write a SQL query to list all products that have never been ordered (products in a <code>Product</code> table with no matching rows in the <code>Orders</code> table).</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     To find products that have never been ordered, you need to identify products in the <code>Product</code> table that do not have any corresponding entries in the <code>Orders</code> table. This is typically done using a <b>LEFT JOIN</b> and checking for <code>NULL</code> in the joined table, or by using a <code>NOT EXISTS</code> or <code>NOT IN</code> subquery.
 </p>
@@ -606,11 +850,11 @@ code {
 </p>
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Sample Products Data
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">ProductID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">ProductName</th>
         </tr>
@@ -630,11 +874,11 @@ code {
     If <code>Ashish's SQL Book</code> and <code>Sunil's Data Guide</code> have never been ordered, they will appear in the result.
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Approaches to Find Unordered Products
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Approach</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">When to Use</th>
         </tr>
@@ -655,7 +899,7 @@ code {
     </tbody>
 </table>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">6. Write a SQL query to list all employees who are also managers (for example, employees who appear as managers in the same table).</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">6. Write a SQL query to list all employees who are also managers (for example, employees who appear as managers in the same table).</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     To find employees who are also managers, you typically use a <b>self-join</b> on the <code>Employees</code> table. This means joining the table to itself, matching employees whose <code>EmployeeID</code> appears as a <code>ManagerID</code> for other employees.
 </p>
@@ -681,11 +925,11 @@ code {
 </p>
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -723,11 +967,11 @@ code {
     In this example, <b>Ashish Zope</b> (EmployeeID 1) is a manager for Sunil Patil and Ravi Chaudhari. <b>Sunil Patil</b> (EmployeeID 2) is a manager for Ashish Nehara. The query will return both Ashish Zope and Sunil Patil as employees who are also managers.
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Who Are Also Managers
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -753,7 +997,7 @@ code {
     - The approach can be extended to retrieve additional information, such as the number of direct reports each manager has.
 </p>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">7. What is a <code>self-join</code>, and when might you use it? Provide an example scenario.</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">7. What is a <code>self-join</code>, and when might you use it? Provide an example scenario.</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     A <b>self-join</b> is a regular join, but the table is joined with itself. This is useful when you want to compare rows within the same table or establish relationships between rows in the same table, such as hierarchical or recursive relationships (e.g., employees and their managers).
 </p>
@@ -765,11 +1009,11 @@ code {
     Suppose you have an <code>Employees</code> table where each employee may have a manager, and both employees and managers are stored in the same table.
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -822,11 +1066,11 @@ code {
     - <b>LEFT JOIN</b> ensures employees without a manager (e.g., Ashish Zope) are included, with manager fields as NULL.
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employee and Manager Self-Join Result
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Employee</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Manager</th>
         </tr>
@@ -859,11 +1103,11 @@ code {
     </ul>
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Self-Join vs Regular Join
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Purpose</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Example</th>
@@ -889,7 +1133,7 @@ code {
     - Use table aliases to clearly distinguish the roles of each instance of the table in the query.
 </p>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">8. How would you join more than two tables in a single SQL query? What factors affect the performance when joining multiple tables?</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">8. How would you join more than two tables in a single SQL query? What factors affect the performance when joining multiple tables?</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     Joining more than two tables in a single SQL query is common in real-world scenarios, such as retrieving employee details along with their department and manager information. This is achieved by chaining multiple <b>JOIN</b> clauses together, each connecting two tables at a time.
 </p>
@@ -928,11 +1172,11 @@ code {
 </p>
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -961,11 +1205,11 @@ code {
     </tbody>
 </table>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Departments Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
         </tr>
@@ -982,11 +1226,11 @@ code {
     </tbody>
 </table>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Managers Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">ManagerID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -1002,11 +1246,11 @@ code {
 </table>
 <p><b style="color:#B9770E;">Result:</b></p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Query Result for Employee, Department, and Manager
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeFirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeLastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1036,11 +1280,11 @@ code {
 </table>
 <p><b style="color:#B9770E;">Performance Factors When Joining Multiple Tables:</b></p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Performance Factors
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Factor</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Impact</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Best Practice</th>
@@ -1082,7 +1326,7 @@ code {
     - Always test and optimize queries, especially as the number of joins increases.
 </p>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<p><b style="color:#2874A6;font-weight:bold;">9. Explain how an <code>OUTER JOIN</code> works when one side has no matching rows. How does this differ from an <code>INNER JOIN</code> in practice?</b></p>
+<p><b style="color:#1C4980;font-weight:bold;">9. Explain how an <code>OUTER JOIN</code> works when one side has no matching rows. How does this differ from an <code>INNER JOIN</code> in practice?</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     An <b>OUTER JOIN</b> returns all rows from one (or both) tables, even if there are no matching rows in the joined table. When there is no match, the columns from the missing side are filled with <code>NULL</code> values. In contrast, an <b>INNER JOIN</b> only returns rows where there is a match in both tables.
 </p>
@@ -1096,11 +1340,11 @@ code {
     Suppose you have the following tables:
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -1129,11 +1373,11 @@ code {
     </tbody>
 </table>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Departments Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
         </tr>
@@ -1163,11 +1407,11 @@ code {
 </div></code></pre>
 <p><b>Result:</b></p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         LEFT OUTER JOIN Result
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1204,11 +1448,11 @@ code {
 </div></code></pre>
 <p><b>Result:</b></p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         INNER JOIN Result
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1234,11 +1478,11 @@ code {
     - Use <b>OUTER JOIN</b> when you want to see all records from one side, even if there are no matches on the other side (e.g., all employees, even those without a department).
 </p>
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         INNER JOIN vs OUTER JOIN
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Rows Returned</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">NULLs for Missing Data?</th>
@@ -1279,25 +1523,690 @@ code {
     - In practice, <b>OUTER JOIN</b> helps in reporting, auditing, and identifying missing relationships in your data.
 </p>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Working with Views</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Working with Views</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Stored Procedures & Functions</b>
+<b style="color:#1C4980;font-weight:bold;">1. What is a database view, and can you update data in the base tables through it?</b>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>view</b> is a virtual table based on the result of a SQL query. It does not store data itself but presents data from one or more tables. You can often update base tables through a view if the view is <b>simple</b> (e.g., based on a single table, no aggregates, no GROUP BY). Complex views (with joins, aggregates, etc.) are usually <b>read-only</b>.
+</p>
+<ul>
+    <li><b>Updatable View:</b> Simple SELECT from one table, no aggregates or DISTINCT.</li>
+    <li><b>Read-Only View:</b> Contains joins, GROUP BY, aggregate functions, or DISTINCT.</li>
+</ul>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Simple updatable view</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_EmployeeNames <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> EmployeeID, FirstName, LastName <span class="hljs-keyword">FROM</span> Employees;
+
+<span class="hljs-comment">-- Update through the view</span>
+<span class="hljs-keyword">UPDATE</span> vw_EmployeeNames <span class="hljs-keyword">SET</span> FirstName = <span class="hljs-string">'John'</span> <span class="hljs-keyword">WHERE</span> EmployeeID = <span class="hljs-number">1</span>;
+</div></code></pre>
+<p>
+    <b>Summary:</b> Views provide a way to simplify queries and restrict access. Updates are allowed only for simple views.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">2. What is the difference between a standard view and a materialized (or indexed) view?</b></p>
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        Standard View vs Materialized View
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Feature</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Standard View</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Materialized/Indexed View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Storage</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No data stored; query runs each time</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Stores result set physically</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Performance</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Slower for complex queries</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Faster for repeated access</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Refresh</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Always current</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Needs refresh (manual or automatic)</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <b>Summary:</b> Use standard views for abstraction; use materialized views for performance on large, complex queries.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">3. What happens if a materialized view is being refreshed (complete refresh) and a user queries it at the same time?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    During a <b>complete refresh</b>, the materialized view is rebuilt. If a user queries it during refresh:
+</p>
+<ul>
+    <li>Most databases (e.g., Oracle) serve the <b>old data</b> until the refresh completes, ensuring consistency.</li>
+    <li>Some systems may block queries or return an error if the view is unavailable.</li>
+</ul>
+<p>
+    <b>Tip:</b> Use <code>FAST REFRESH</code> or schedule refreshes during low-traffic periods to minimize impact.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">4. When would you use a view in a database design? What benefits do views provide (e.g. security, abstraction)?</b></p>
+<ul>
+    <li><b>Security:</b> Restrict access to sensitive columns or rows.</li>
+    <li><b>Abstraction:</b> Hide complex joins or calculations from end users.</li>
+    <li><b>Simplification:</b> Provide a simple interface for reporting or applications.</li>
+    <li><b>Consistency:</b> Standardize business logic in one place.</li>
+</ul>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Hide salary details from most users</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_PublicEmployees <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> EmployeeID, FirstName, LastName <span class="hljs-keyword">FROM</span> Employees;
+</div></code></pre>
+<p>
+    <b>Summary:</b> Views help enforce security, simplify access, and centralize logic.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">5. Can you create an index on a view? If so, what are the implications (e.g. indexed view in SQL Server)?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Yes, in some databases (like SQL Server), you can create an <b>indexed view</b> (also called a materialized view). This physically stores the view's result set and creates an index on it.
+</p>
+<ul>
+    <li><b>Benefits:</b> Greatly improves performance for complex aggregations or joins.</li>
+    <li><b>Drawbacks:</b> Increases storage and maintenance overhead; restrictions on view definition (e.g., must be deterministic).</li>
+</ul>
+<p><b style="color:#B9770E;">Example (SQL Server):</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_SalesSummary <span class="hljs-keyword">WITH</span> SCHEMABINDING <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> StoreID, <span class="hljs-keyword">SUM</span>(SalesAmount) <span class="hljs-keyword">AS</span> TotalSales
+<span class="hljs-keyword">FROM</span> dbo.Sales
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> StoreID;
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">UNIQUE</span> CLUSTERED <span class="hljs-keyword">INDEX</span> idx_SalesSummary_StoreID <span class="hljs-keyword">ON</span> vw_SalesSummary(StoreID);
+</div></code></pre>
+<p>
+    <b>Summary:</b> Indexed views boost performance but add complexity and storage cost.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">6. How do you modify or drop a view if the underlying table schema changes?</b></p>
+<ul>
+    <li><b>Modify:</b> Use <code>CREATE OR REPLACE VIEW</code> (Oracle, PostgreSQL) or <code>ALTER VIEW</code> (SQL Server) to update the view definition.</li>
+    <li><b>Drop:</b> Use <code>DROP VIEW view_name;</code> to remove the view.</li>
+    <li><b>Tip:</b> If a column used in the view is dropped from the base table, the view becomes invalid and must be recreated or altered.</li>
+</ul>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Modify a view</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">VIEW</span> vw_EmployeeNames <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> EmployeeID, FirstName <span class="hljs-keyword">FROM</span> Employees;
+
+<span class="hljs-comment">-- Drop a view</span>
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">VIEW</span> vw_EmployeeNames;
+</div></code></pre>
+<p>
+    <b>Summary:</b> Always update or drop dependent views after schema changes to base tables.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">7. What is the difference between a view and a temporary table?</b></p>
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        View vs Temporary Table
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Aspect</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">View</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Temporary Table</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Persistence</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Definition persists; data is always current</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Exists only for session or transaction</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Storage</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No data stored (unless materialized)</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Physically stores data</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Use Case</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Reusable query abstraction, security</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Intermediate results, complex processing</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <b>Summary:</b> Use views for abstraction and security; use temporary tables for storing intermediate results in complex queries.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Stored Procedures & Functions</b>
+</blockquote>
+<b style="color:#1C4980;font-weight:bold;">1. What is the difference between a stored procedure and a user-defined function in SQL (aside from return value)?</b>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>stored procedure</b> is a precompiled collection of SQL statements that can perform actions such as modifying data, controlling transactions, and returning results. A <b>user-defined function (UDF)</b> is a routine that returns a value (scalar or table) and is typically used in SELECT, WHERE, or JOIN clauses.
+</p>
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        Stored Procedure vs User-Defined Function
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Aspect</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Stored Procedure</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">User-Defined Function</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Can modify data</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Yes</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No (except in some DBs with special permissions)</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Can be used in SELECT</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Yes</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Transaction control</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Yes</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Return type</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">None, scalar, or result set</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Scalar or table</td>
+        </tr>
+    </tbody>
+</table>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">2. What are the advantages and disadvantages of using stored procedures?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Advantages:</b>
+</p>
+<ul>
+    <li>Encapsulate business logic in the database</li>
+    <li>Improve performance via precompilation</li>
+    <li>Enhance security (grant EXECUTE instead of table access)</li>
+    <li>Reduce network traffic (batch multiple statements)</li>
+</ul>
+<p><b>Disadvantages:</b></p>
+<ul>
+    <li>Harder to version and deploy than application code</li>
+    <li>May increase database server load</li>
+    <li>Logic split between app and DB can complicate maintenance</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">3. Can you perform INSERT/UPDATE/DELETE operations inside a SQL function? Why or why not?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    In most databases (e.g., SQL Server, PostgreSQL), <b>user-defined functions cannot perform INSERT/UPDATE/DELETE</b> operations on tables. This restriction ensures functions are deterministic and side-effect free, making them safe for use in queries. Some databases (like Oracle with autonomous transactions) allow limited exceptions.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">4. What is a table-valued function and when would you use one in a query?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>table-valued function (TVF)</b> returns a table as its result. You use TVFs in the FROM clause of a query, similar to a regular table or view. TVFs are useful for encapsulating reusable query logic that returns sets of rows.
+</p>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- SQL Server example</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> dbo.GetEmployeesByDept(@DeptID <span class="hljs-built_in">INT</span>)
+<span class="hljs-keyword">RETURNS</span> <span class="hljs-keyword">TABLE</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">RETURN</span> (
+    <span class="hljs-keyword">SELECT</span> EmployeeID, FirstName, LastName
+    <span class="hljs-keyword">FROM</span> Employees
+    <span class="hljs-keyword">WHERE</span> DepartmentID = @DeptID
+);
+
+<span class="hljs-comment">-- Usage</span>
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> dbo.GetEmployeesByDept(<span class="hljs-number">10</span>);
+</div></code></pre>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">5. When would you use a stored procedure instead of inline SQL queries in an application?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use a <b>stored procedure</b> when you want to:</p>
+<ul>
+    <li>Centralize and reuse business logic</li>
+    <li>Improve security by restricting direct table access</li>
+    <li>Reduce SQL injection risk (parameterized execution)</li>
+    <li>Optimize performance for complex or repetitive operations</li>
+    <li>Batch multiple statements in a single call</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">6. How do you pass parameters to and receive results from stored procedures?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Parameters</b> are passed to stored procedures as input, output, or input/output arguments. Results can be returned via output parameters, result sets (SELECT), or return values.
+</p>
+<p><b style="color:#B9770E;">Example (SQL Server):</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Define procedure</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> GetEmployeeByID
+    @EmpID <span class="hljs-built_in">INT</span>,
+    @FirstName <span class="hljs-keyword">NVARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">OUTPUT</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">SELECT</span> @FirstName = FirstName <span class="hljs-keyword">FROM</span> Employees <span class="hljs-keyword">WHERE</span> EmployeeID = @EmpID;
+<span class="hljs-keyword">END</span>;
+
+<span class="hljs-comment">-- Execute procedure</span>
+<span class="hljs-keyword">DECLARE</span> @<span class="hljs-keyword">Name</span> <span class="hljs-keyword">NVARCHAR</span>(<span class="hljs-number">50</span>);
+EXEC GetEmployeeByID 1, @Name OUTPUT;
+<span class="hljs-keyword">SELECT</span> @<span class="hljs-keyword">Name</span>;
+</div></code></pre>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">7. How would you debug or test a slow or failing stored procedure in production?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <ul>
+        <li>Capture execution plans to identify bottlenecks</li>
+        <li>Use logging or print statements for tracing</li>
+        <li>Test with sample data in a development environment</li>
+        <li>Check for blocking, deadlocks, or resource waits</li>
+        <li>Review recent schema or data changes</li>
+        <li>Use database profiling tools (e.g., SQL Profiler, Extended Events)</li>
+    </ul>
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">8. How do you grant a user permission to execute a specific stored procedure?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use the <code>GRANT EXECUTE</code> statement to allow a user to run a stored procedure.
+</p>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">EXECUTE</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">OBJECT</span>::GetEmployeeByID <span class="hljs-keyword">TO</span> username;
+</div></code></pre>
+<p><i>This grants the user permission to execute the <code>GetEmployeeByID</code> procedure.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Triggers & Automation</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Triggers & Automation</b>
+<p><b style="color:#1C4980;font-weight:bold;">1. What is a trigger in SQL, and when would you use one? Give an example use case.</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>trigger</b> is a special kind of stored procedure that automatically executes in response to certain events on a table or view (such as <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code>). Triggers are used for enforcing business rules, auditing changes, maintaining derived data, or automating tasks.
+</p>
+<ul>
+    <li><b>Use Cases:</b> Auditing changes, enforcing complex constraints, cascading updates/deletes, logging, or synchronizing tables.</li>
+</ul>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Audit trigger: Log every employee salary change</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> trg_AuditSalaryChange
+<span class="hljs-keyword">ON</span> Employees
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">UPDATE</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> SalaryAudit (EmployeeID, OldSalary, NewSalary, ChangedAt)
+    <span class="hljs-keyword">SELECT</span> i.EmployeeID, d.Salary, i.Salary, <span class="hljs-keyword">GETDATE</span>()
+    <span class="hljs-keyword">FROM</span> inserted i
+    <span class="hljs-keyword">JOIN</span> deleted d <span class="hljs-keyword">ON</span> i.EmployeeID = d.EmployeeID
+    <span class="hljs-keyword">WHERE</span> i.Salary &lt;&gt; d.Salary;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<p><i>This trigger logs salary changes to an audit table whenever an employee's salary is updated.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">2. What is the difference between an AFTER trigger and an INSTEAD OF trigger (e.g. in SQL Server)?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>AFTER triggers</b> execute after the triggering event (e.g., after a row is inserted/updated/deleted). <b>INSTEAD OF triggers</b> execute in place of the triggering event, allowing you to override or customize the default action (commonly used on views).
+</p>
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        AFTER vs INSTEAD OF Triggers
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Type</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">When It Fires</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Typical Use</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">AFTER</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">After the event completes</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Auditing, logging, enforcing business rules</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:iggers to override default behavior.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">3. What are the “inserted” and “deleted” magic tables in SQL Server triggers?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    In SQL Server, <b>inserted</b> and <b>deleted</b> are special (magic) tables available inside triggers:
+</p>
+<ul>
+    <li><b>inserted:</b> Holds the new rows for <code>INSERT</code> and <code>UPDATE</code> operations.</li>
+    <li><b>deleted:</b> Holds the old rows for <code>DELETE</code> and <code>UPDATE</code> operations.</li>
+</ul>
+<p>
+    <b>Example:</b> In an <code>AFTER UPDATE</code> trigger, <code>inserted</code> has new values, <code>deleted</code> has old values.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">4. How can triggers be used to enforce business rules or data integrity (e.g. auditing changes, simulating foreign keys)?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Triggers can enforce business rules by validating data, preventing invalid changes, logging modifications, or simulating constraints not natively supported (e.g., cascading deletes, custom referential integrity).
+</p>
+<ul>
+    <li><b>Auditing:</b> Log changes to sensitive data (e.g., salary updates).</li>
+    <li><b>Enforcing Rules:</b> Prevent deletion of parent rows if child rows exist (simulate foreign key).</li>
+    <li><b>Data Integrity:</b> Automatically update related tables or maintain derived columns.</li>
+</ul>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Prevent deleting a department if employees exist</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> trg_PreventDeptDelete
+<span class="hljs-keyword">ON</span> Departments
+INSTEAD <span class="hljs-keyword">OF</span> <span class="hljs-keyword">DELETE</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-number">1</span> <span class="hljs-keyword">FROM</span> Employees e <span class="hljs-keyword">JOIN</span> deleted d <span class="hljs-keyword">ON</span> e.DepartmentID = d.DepartmentID)
+        RAISERROR(<span class="hljs-string">'Cannot delete department with employees.'</span>, <span class="hljs-number">16</span>, <span class="hljs-number">1</span>);
+    ELSE
+        <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> Departments <span class="hljs-keyword">WHERE</span> DepartmentID <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> DepartmentID <span class="hljs-keyword">FROM</span> deleted);
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<p><i>This trigger blocks deletion of a department if employees are assigned to it.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">5. What are the potential drawbacks of using triggers (such as performance impact or hidden logic)?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Triggers can introduce hidden logic and performance overhead:
+</p>
+<ul>
+    <li><b>Performance:</b> Triggers add extra processing to DML operations, potentially slowing down inserts, updates, or deletes.</li>
+    <li><b>Hidden Logic:</b> Business rules in triggers may not be obvious to developers, making debugging and maintenance harder.</li>
+    <li><b>Complexity:</b> Nested or recursive triggers can cause unexpected behavior.</li>
+    <li><b>Portability:</b> Trigger syntax and behavior can vary between database systems.</li>
+</ul>
+<p>
+    <b>Summary:</b> Use triggers judiciously; document their behavior and monitor performance.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">6. How do INSTEAD OF triggers on a view work?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>INSTEAD OF triggers</b> on a view intercept <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code> operations and allow you to define custom logic for how those operations are handled. This is useful for updatable views that join multiple tables or require special handling.
+</p>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Allow updates to a view that joins Employees and Departments</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_EmployeeDept <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> e.EmployeeID, e.FirstName, d.DepartmentName
+<span class="hljs-keyword">FROM</span> Employees e
+<span class="hljs-keyword">JOIN</span> Departments d <span class="hljs-keyword">ON</span> e.DepartmentID = d.DepartmentID;
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> trg_UpdateEmpDept
+<span class="hljs-keyword">ON</span> vw_EmployeeDept
+INSTEAD <span class="hljs-keyword">OF</span> <span class="hljs-keyword">UPDATE</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">UPDATE</span> Employees
+    <span class="hljs-keyword">SET</span> FirstName = i.FirstName
+    <span class="hljs-keyword">FROM</span> inserted i
+    <span class="hljs-keyword">WHERE</span> Employees.EmployeeID = i.EmployeeID;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<p><i>This trigger allows updates to the <code>FirstName</code> column via the view.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">7. Can triggers call stored procedures, and are there any limitations to doing that?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Yes, triggers can call stored procedures. However, there are limitations:
+</p>
+<ul>
+    <li><b>Side Effects:</b> Procedures called from triggers should not commit/rollback transactions independently.</li>
+    <li><b>Performance:</b> Long-running procedures can slow down DML operations.</li>
+    <li><b>Recursion:</b> Be careful to avoid recursive trigger/procedure calls.</li>
+    <li><b>Permissions:</b> The trigger must have permission to execute the procedure.</li>
+</ul>
+<p>
+    <b>Summary:</b> Triggers can call stored procedures, but keep logic efficient and avoid transactional conflicts.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Transactions & Concurrency Control</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Transactions & Concurrency Control</b>
+<p><b style="color:#1C4980;font-weight:bold;">1. What are the ACID properties of a database transaction (atomicity, consistency, isolation, durability)?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>ACID</b> stands for:
+</p>
+<ul>
+    <li><b>Atomicity:</b> All operations in a transaction succeed or all fail (no partial changes).</li>
+    <li><b>Consistency:</b> Transactions bring the database from one valid state to another, preserving rules.</li>
+    <li><b>Isolation:</b> Concurrent transactions do not interfere; intermediate states are hidden.</li>
+    <li><b>Durability:</b> Once committed, changes are permanent even after a crash.</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">2. What are the different SQL isolation levels (READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE), and what phenomena do they prevent (dirty reads, non-repeatable reads, phantom reads)?</b></p>
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        SQL Isolation Levels and Phenomena
+    </caption>
+    <thead>
+        <tr style="background:#FCF3CF;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Level</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Dirty Reads</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Non-Repeatable Reads</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Phantom Reads</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">READ UNCOMMITTED</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">READ COMMITTED</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">REPEATABLE READ</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Possible</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">SERIALIZABLE</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Prevented</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <b>Summary:</b> Higher isolation = fewer anomalies, but more locking and lower concurrency.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">3. What is a deadlock in database terms, and how can you prevent or resolve deadlocks?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>deadlock</b> occurs when two or more transactions block each other, each waiting for the other to release locks. Neither can proceed.
+</p>
+<ul>
+    <li><b>Prevention:</b> Access tables in the same order, keep transactions short, use lower isolation levels if possible.</li>
+    <li><b>Resolution:</b> The database detects deadlocks and aborts (rolls back) one transaction (the "victim").</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">4. How do you control transactions in SQL (BEGIN, COMMIT, ROLLBACK)? Give an example of using a transaction in a stored procedure or batch.</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use <code>BEGIN TRANSACTION</code> to start, <code>COMMIT</code> to save, and <code>ROLLBACK</code> to undo.
+</p>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">BEGIN</span> <span class="hljs-keyword">TRANSACTION</span>;
+    <span class="hljs-keyword">UPDATE</span> Accounts <span class="hljs-keyword">SET</span> Balance = Balance - <span class="hljs-number">100</span> <span class="hljs-keyword">WHERE</span> AccountID = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">UPDATE</span> Accounts <span class="hljs-keyword">SET</span> Balance = Balance + <span class="hljs-number">100</span> <span class="hljs-keyword">WHERE</span> AccountID = <span class="hljs-number">2</span>;
+IF @@ERROR &lt;&gt; 0
+    <span class="hljs-keyword">ROLLBACK</span>;
+ELSE
+    <span class="hljs-keyword">COMMIT</span>;
+</div></code></pre>
+<p><i>This ensures both updates succeed or both are undone.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">5. If you run a long SELECT query on a table while another transaction is updating rows in that table, will your session see the old data or new data by default? (Consider default isolation level behavior.)</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    By default (READ COMMITTED), your SELECT sees only committed data at the time each row is read. You may see new data if the update commits before your SELECT reads that row.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">6. What is the difference between pessimistic and optimistic locking, and when would you use each?</b></p>
+<ul>
+    <li><b>Pessimistic Locking:</b> Locks data when read, blocking others until transaction ends. Use for high-conflict scenarios.</li>
+    <li><b>Optimistic Locking:</b> No locks when reading; checks for changes before writing (e.g., using a version column). Use when conflicts are rare.</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">7. What is a savepoint in a transaction, and how do you use it?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>savepoint</b> marks a point within a transaction to which you can roll back without affecting earlier work.
+</p>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">BEGIN</span> <span class="hljs-keyword">TRANSACTION</span>;
+    <span class="hljs-keyword">UPDATE</span> Accounts <span class="hljs-keyword">SET</span> Balance = Balance - <span class="hljs-number">100</span> <span class="hljs-keyword">WHERE</span> AccountID = <span class="hljs-number">1</span>;
+    SAVE TRANSACTION Save1;
+    <span class="hljs-keyword">UPDATE</span> Accounts <span class="hljs-keyword">SET</span> Balance = Balance + <span class="hljs-number">100</span> <span class="hljs-keyword">WHERE</span> AccountID = <span class="hljs-number">2</span>;
+    <span class="hljs-comment">-- If needed:</span>
+    <span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TRANSACTION</span> Save1;
+<span class="hljs-keyword">COMMIT</span>;
+</div></code></pre>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">8. How do two-phase commit protocols work in distributed transactions?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Two-phase commit</b> ensures all participants in a distributed transaction agree to commit or roll back:
+</p>
+<ol>
+    <li><b>Prepare phase:</b> Coordinator asks all nodes if they can commit.</li>
+    <li><b>Commit phase:</b> If all agree, coordinator tells all to commit; otherwise, tells all to roll back.</li>
+</ol>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">9. How can you identify and terminate a blocking or long-running transaction in a SQL database?</b></p>
+<ul>
+    <li><b>Identify:</b> Use system views (e.g., <code>sys.dm_exec_requests</code>, <code>sp_who2</code> in SQL Server) to find blocking sessions.</li>
+    <li><b>Terminate:</b> Use <code>KILL session_id</code> (SQL Server) or <code>ALTER SYSTEM KILL SESSION</code> (Oracle) to end the session.</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">10. What is deadlock detection, and how does the database engine choose a deadlock victim?</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    The database periodically checks for deadlocks. When found, it picks a "victim" transaction to roll back (usually the one with the least cost or least work done) to break the cycle and let others proceed.
+</p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+    <b style="color:#154360; font-size:1.5em;">Performance Tuning & Query Optimization</b>
 </blockquote>
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Performance Tuning & Query Optimization</b>
-</blockquote>
+<b style="color:#1C4980;font-weight:bold;">1. What is a query execution plan and how do you use it to improve performance?</b>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>query execution plan</b> is a detailed roadmap generated by the database engine showing how a SQL query will be executed (e.g., which indexes will be used, join order, scan types). Reviewing the plan helps identify bottlenecks, such as full table scans or missing indexes, and guides query optimization.
+</p>
+<ul>
+    <li><b>How to view:</b> Use <code>EXPLAIN</code> (MySQL/PostgreSQL), <code>SET SHOWPLAN</code> (SQL Server), or graphical tools.</li>
+    <li><b>Optimization:</b> Add indexes, rewrite queries, or adjust schema based on plan findings.</li>
+</ul>
 <hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">2. How would you optimize a slow SQL query in production?</b></p>
+<ul>
+    <li>Add appropriate indexes on columns used in WHERE, JOIN, and ORDER BY clauses.</li>
+    <li>Rewrite queries to avoid unnecessary subqueries or correlated subqueries.</li>
+    <li>Avoid <code>SELECT *</code>; select only needed columns.</li>
+    <li>Use query execution plans to identify bottlenecks.</li>
+    <li>Partition large tables if appropriate.</li>
+    <li>Update statistics and rebuild fragmented indexes.</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">3. What is the difference between UNION and UNION ALL in SQL, and when would you use each?</b></p>
+<ul>
+    <li><b>UNION:</b> Combines results from two queries and removes duplicate rows.</li>
+    <li><b>UNION ALL:</b> Combines results and keeps all duplicates.</li>
+    <li><b>Use UNION ALL</b> for better performance if you do not need to remove duplicates.</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">4. How can you find duplicate rows in a table using SQL?</b></p>
+<p><b style="color:#B9770E;">Example:</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column1, column2, <span class="hljs-keyword">COUNT</span>(*)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> column1, column2
+<span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">COUNT</span>(*) &gt; <span class="hljs-number">1</span>;
+</div></code></pre>
+<p><i>This finds rows where (column1, column2) are duplicated.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">5. Write a SQL query to find the 10th highest salary in an Employee table.</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">MIN</span>(Salary) <span class="hljs-keyword">AS</span> TenthHighestSalary
+<span class="hljs-keyword">FROM</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> Salary
+    <span class="hljs-keyword">FROM</span> Employee
+    <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Salary <span class="hljs-keyword">DESC</span>
+    <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>
+) <span class="hljs-keyword">AS</span> Top10;
+</div></code></pre>
+<p><i>This returns the 10th highest unique salary.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">6. How would you retrieve the last 5 records (by date or ID) from a table?</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> date_column <span class="hljs-keyword">DESC</span>
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">5</span>;
+</div></code></pre>
+<p><i>Replace <code>date_column</code> with your ordering column.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">7. Write a SQL query to exclude specific values (e.g., select all rows except those where ID is X or Y).</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> Student
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">ID</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (X, Y);
+</div></code></pre>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">8. How do you retrieve the Nth record (e.g., the 3rd record) from a table?</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ordering_column
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">1</span> <span class="hljs-keyword">OFFSET</span> <span class="hljs-number">2</span>; <span class="hljs-comment">-- 0-based offset; 2 = 3rd row</span>
+</div></code></pre>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">9. How do you obtain the CREATE TABLE DDL for an existing table in SQL?</b></p>
+<ul>
+    <li><b>MySQL:</b> <code>SHOW CREATE TABLE table_name;</code></li>
+    <li><b>PostgreSQL:</b> Use <code>pg_dump</code> or query <code>information_schema</code>.</li>
+    <li><b>SQL Server:</b> Use SSMS "Script Table as" or <code>sp_helptext</code> for views/procs.</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">10. Explain the difference between the RANK() and DENSE_RANK() window functions.</b></p>
+<ul>
+    <li><b>RANK():</b> Assigns a unique rank, skipping numbers after ties (e.g., 1, 2, 2, 4).</li>
+    <li><b>DENSE_RANK():</b> Assigns consecutive ranks, no gaps after ties (e.g., 1, 2, 2, 3).</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">11. When would you use ROW_NUMBER(), RANK(), or DENSE_RANK() in a query? Give a use case.</b></p>
+<ul>
+    <li><b>ROW_NUMBER():</b> To assign a unique sequential number to each row (e.g., pagination).</li>
+    <li><b>RANK():</b> To rank rows with possible gaps after ties (e.g., competition ranking).</li>
+    <li><b>DENSE_RANK():</b> To rank rows without gaps after ties (e.g., leaderboard with shared positions).</li>
+</ul>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">12. Write a SQL query to compute the median number of searches made by users, given a summary table of search counts.</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(search_count) <span class="hljs-keyword">AS</span> median_searches
+<span class="hljs-keyword">FROM</span> (
+    <span class="hljs-keyword">SELECT</span> search_count,
+           ROW_NUMBER() <span class="hljs-keyword">OVER</span> (<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> search_count) <span class="hljs-keyword">AS</span> rn,
+           <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">OVER</span> () <span class="hljs-keyword">AS</span> total
+    <span class="hljs-keyword">FROM</span> user_search_summary
+) t
+<span class="hljs-keyword">WHERE</span> rn <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">FLOOR</span>((total + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>), <span class="hljs-keyword">CEIL</span>((total + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>));
+</div></code></pre>
+<p><i>This works for both even and odd row counts.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">13. Write a SQL query to calculate the sum of odd-numbered and even-numbered measurements separately for each day.</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span>
+    <span class="hljs-keyword">day</span>,
+    <span class="hljs-keyword">SUM</span>(<span class="hljs-keyword">CASE</span> <span class="hljs-keyword">WHEN</span> <span class="hljs-keyword">MOD</span>(measurement_number, <span class="hljs-number">2</span>) = <span class="hljs-number">1</span> <span class="hljs-keyword">THEN</span> <span class="hljs-keyword">value</span> <span class="hljs-keyword">ELSE</span> <span class="hljs-number">0</span> <span class="hljs-keyword">END</span>) <span class="hljs-keyword">AS</span> odd_sum,
+    <span class="hljs-keyword">SUM</span>(<span class="hljs-keyword">CASE</span> <span class="hljs-keyword">WHEN</span> <span class="hljs-keyword">MOD</span>(measurement_number, <span class="hljs-number">2</span>) = <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span> <span class="hljs-keyword">value</span> <span class="hljs-keyword">ELSE</span> <span class="hljs-number">0</span> <span class="hljs-keyword">END</span>) <span class="hljs-keyword">AS</span> even_sum
+<span class="hljs-keyword">FROM</span> measurements
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">day</span>;
+</div></code></pre>
+<hr style="border:1px solidrgb(0, 0, 0);">
+<p><b style="color:#1C4980;font-weight:bold;">14. Write a SQL query to get the average review rating for each product for each month.</b></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span>
+    product_id,
+    DATE_TRUNC(<span class="hljs-string">'month'</span>, review_date) <span class="hljs-keyword">AS</span> review_month,
+    <span class="hljs-keyword">AVG</span>(rating) <span class="hljs-keyword">AS</span> avg_rating
+<span class="hljs-keyword">FROM</span> reviews
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> product_id, DATE_TRUNC(<span class="hljs-string">'month'</span>, review_date);
+</div></code></pre>
+<p><i>Replace <code>DATE_TRUNC</code> with the appropriate function for your SQL dialect.</i></p>
+<hr style="border:1px solidrgb(0, 0, 0);">
+
 </body>
 </html>
