@@ -32,6 +32,8 @@
     <b style="color:#154360; font-size:1.1em;">Mastering SQL Joins</b>
 </blockquote>
 
+<hr style="border:1px solid #D5D8DC;">
+
 <b style="color:#2874A6;font-weight:bold;">1. What are the different types of SQL joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, <code>FULL JOIN</code>, <code>CROSS JOIN</code>, etc.) and when would you use each?</b>
 <p><b style="color:#B9770E;">Answer:</b><br>
     SQL joins are used to combine rows from two or more tables based on related columns. The main types are:
@@ -104,6 +106,8 @@ CROSS JOIN TableB b;
     - Use <b>CROSS JOIN</b> to get every combination of rows from both tables (rarely used in practice).
 </p>
 
+<hr style="border:1px solid #D5D8DC;">
+
 <b style="color:#2874A6;font-weight:bold;">2. What is the difference between a <code>CROSS JOIN</code> and a <code>FULL OUTER JOIN</code>?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -111,6 +115,9 @@ CROSS JOIN TableB b;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Join Type Comparison
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Feature</th>
@@ -166,6 +173,8 @@ FULL OUTER JOIN TableB b ON a.id = b.a_id;
     - <b>FULL OUTER JOIN</b> returns all rows from both tables, matching where possible, and filling with NULLs where there is no match.
 </p>
 
+<hr style="border:1px solid #D5D8DC;">
+
 <b style="color:#2874A6;font-weight:bold;">3. Write a SQL query to retrieve the first and last names of employees along with the names of their managers (given <code>Employees</code> and <code>Managers</code> tables).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -196,6 +205,9 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Employees and Managers Join Result
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
@@ -216,6 +228,8 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
+
+<hr style="border:1px solid #D5D8DC;">
 
 <b style="color:#2874A6;font-weight:bold;">4. Write a SQL query to find the average salary for each department, given tables <code>Employees</code> (with <code>DepartmentID</code>) and <code>Departments</code> (with <code>DepartmentName</code>).</b>
 
@@ -245,6 +259,9 @@ GROUP BY d.DepartmentName;
     - <b>AVG(e.Salary)</b> computes the average salary per department.<br>
     - <b>GROUP BY d.DepartmentName</b> groups results by department.
 </p>
+
+<hr style="border:1px solid #D5D8DC;">
+
 <b style="color:#2874A6;font-weight:bold;">5. Write a SQL query to list all products that have never been ordered (products in a <code>Product</code> table with no matching rows in the <code>Orders</code> table).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -296,6 +313,9 @@ WHERE p.ProductID NOT IN (
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Sample Products Data
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">ProductID</th>
@@ -319,6 +339,9 @@ WHERE p.ProductID NOT IN (
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Approaches to Find Unordered Products
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Approach</th>
@@ -340,6 +363,8 @@ WHERE p.ProductID NOT IN (
         </tr>
     </tbody>
 </table>
+
+<hr style="border:1px solid #D5D8DC;">
 
 <b style="color:#2874A6;font-weight:bold;">6. Write a SQL query to list all employees who are also managers (for example, employees who appear as managers in the same table).</b>
 
@@ -375,6 +400,9 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Employees Table
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
@@ -416,6 +444,9 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Employees Who Are Also Managers
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
@@ -444,6 +475,8 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
     - The approach can be extended to retrieve additional information, such as the number of direct reports each manager has.
 </p>
 
+<hr style="border:1px solid #D5D8DC;">
+
 <b style="color:#2874A6;font-weight:bold;">7. What is a <code>self-join</code>, and when might you use it? Provide an example scenario.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -460,6 +493,9 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Employees Table
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
@@ -519,6 +555,9 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Employee and Manager Self-Join Result
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Employee</th>
@@ -555,6 +594,9 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Self-Join vs Regular Join
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
@@ -582,6 +624,8 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
     - It is commonly used for organizational charts, bill of materials, and other recursive relationships.<br>
     - Use table aliases to clearly distinguish the roles of each instance of the table in the query.
 </p>
+
+<hr style="border:1px solid #D5D8DC;">
 
 <b style="color:#2874A6;font-weight:bold;">8. How would you join more than two tables in a single SQL query? What factors affect the performance when joining multiple tables?</b>
 
@@ -632,6 +676,9 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Employees Table
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
@@ -663,6 +710,9 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </table>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Departments Table
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentID</th>
@@ -682,6 +732,9 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </table>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Managers Table
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">ManagerID</th>
@@ -701,6 +754,9 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 <p><b style="color:#B9770E;">Result:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Query Result for Employee, Department, and Manager
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeFirstName</th>
@@ -734,6 +790,9 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 <p><b style="color:#B9770E;">Performance Factors When Joining Multiple Tables:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Performance Factors
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Factor</th>
@@ -778,6 +837,8 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
     - Always test and optimize queries, especially as the number of joins increases.
 </p>
 
+<hr style="border:1px solid #D5D8DC;">
+
 <b style="color:#2874A6;font-weight:bold;">9. Explain how an <code>OUTER JOIN</code> works when one side has no matching rows. How does this differ from an <code>INNER JOIN</code> in practice?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -796,6 +857,9 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Employees Table
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
@@ -827,6 +891,9 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </table>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        Departments Table
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentID</th>
@@ -863,6 +930,9 @@ LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 <p><b>Result:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        LEFT OUTER JOIN Result
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
@@ -907,6 +977,9 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 <p><b>Result:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        INNER JOIN Result
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
@@ -936,6 +1009,9 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+        INNER JOIN vs OUTER JOIN
+    </caption>
     <thead>
         <tr style="background:#F4F6F7;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
