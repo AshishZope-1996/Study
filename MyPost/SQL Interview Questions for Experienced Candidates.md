@@ -4,31 +4,38 @@
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Data Types & Miscellaneous Concepts</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Data Types & Miscellaneous Concepts</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Normalization & Schema Design</b>
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Normalization & Schema Design</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Database Design Principles</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Database Design Principles</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Indexing Strategies & Keys</b>
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Indexing Strategies & Keys</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Indexing Strategies & Keys</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Indexing Strategies & Keys</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
@@ -370,8 +377,8 @@ ALTER INDEX idx_emp_id ON Employees REORGANIZE;
 </p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Mastering SQL Joins</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Mastering SQL Joins</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
@@ -461,7 +468,7 @@ CROSS JOIN TableB b;
         Join Type Comparison
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Feature</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">CROSS JOIN</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FULL OUTER JOIN</th>
@@ -551,7 +558,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Employees and Managers Join Result
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Result</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Use Case</th>
@@ -659,7 +666,7 @@ WHERE p.ProductID NOT IN (
         Sample Products Data
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">ProductID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">ProductName</th>
         </tr>
@@ -685,7 +692,7 @@ WHERE p.ProductID NOT IN (
         Approaches to Find Unordered Products
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Approach</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">When to Use</th>
         </tr>
@@ -746,7 +753,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -790,7 +797,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         Employees Who Are Also Managers
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -839,7 +846,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -901,7 +908,7 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
         Employee and Manager Self-Join Result
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Employee</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Manager</th>
         </tr>
@@ -940,7 +947,7 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
         Self-Join vs Regular Join
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Purpose</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Example</th>
@@ -1022,7 +1029,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -1056,7 +1063,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Departments Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
         </tr>
@@ -1078,7 +1085,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Managers Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">ManagerID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -1100,7 +1107,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Query Result for Employee, Department, and Manager
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeFirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeLastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1136,7 +1143,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Performance Factors
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Factor</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Impact</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Best Practice</th>
@@ -1203,7 +1210,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -1237,7 +1244,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Departments Table
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
         </tr>
@@ -1276,7 +1283,7 @@ LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         LEFT OUTER JOIN Result
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1323,7 +1330,7 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         INNER JOIN Result
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1355,7 +1362,7 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         INNER JOIN vs OUTER JOIN
     </caption>
     <thead>
-        <tr style="background:#F4F6F7;">
+        <tr style="background:#FCF3CF;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Rows Returned</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">NULLs for Missing Data?</th>
@@ -1399,32 +1406,32 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Working with Views</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Working with Views</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Stored Procedures & Functions</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Stored Procedures & Functions</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Triggers & Automation</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Triggers & Automation</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Transactions & Concurrency Control</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Transactions & Concurrency Control</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
-    <b style="color:#154360; font-size:1.1em;">Performance Tuning & Query Optimization</b>
+<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:center;">
+    <b style="color:#154360; font-size:1.5em;">Performance Tuning & Query Optimization</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
