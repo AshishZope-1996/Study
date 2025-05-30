@@ -1,44 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SQL Interview Questions for Experienced Candidates.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
 <h1 style="color:#154360; text-align:center; font-size:2.5em; font-weight:bold; margin-bottom:0; letter-spacing:1px;">
     <span style="color:#2471A3;">SQL Interview Questions for Experienced Candidates (3+ years)</span>
 </h1>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Data Types & Miscellaneous Concepts</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Normalization & Schema Design</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Database Design Principles</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Indexing Strategies & Keys</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Mastering SQL Joins</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">1. What are the different types of SQL joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, <code>FULL JOIN</code>, <code>CROSS JOIN</code>, etc.) and when would you use each?</b>
+<p><b style="color:#2874A6;font-weight:bold;">1. What are the different types of SQL joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, <code>FULL JOIN</code>, <code>CROSS JOIN</code>, etc.) and when would you use each?</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     SQL joins are used to combine rows from two or more tables based on related columns. The main types are:
 </p>
-
 <ul>
     <li><b>INNER JOIN:</b> Returns only rows with matching values in both tables. Use when you need records present in both tables.</li>
     <li><b>LEFT JOIN (LEFT OUTER JOIN):</b> Returns all rows from the left table and matched rows from the right table. Unmatched rows from the right table return NULLs. Use when you want all records from the left table, regardless of matches.</li>
@@ -46,57 +400,41 @@
     <li><b>FULL JOIN (FULL OUTER JOIN):</b> Returns all rows when there is a match in either table. Unmatched rows from either side return NULLs. Use when you want all records from both tables.</li>
     <li><b>CROSS JOIN:</b> Returns the Cartesian product of both tables (every row of the first table joined with every row of the second). Use rarely, typically for generating combinations.</li>
 </ul>
-
 <p><b style="color:#B9770E;">Example:</b><br>
     <b>INNER JOIN:</b>
 </p>
-
-```sql
-SELECT a.*, b.*
-FROM TableA a
-INNER JOIN TableB b ON a.id = b.a_id;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> a.*, b.*
+<span class="hljs-keyword">FROM</span> TableA a
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> TableB b <span class="hljs-keyword">ON</span> a.id = b.a_id;
+</div></code></pre>
 <p>
     <b>LEFT JOIN:</b>
 </p>
-
-```sql
-SELECT a.*, b.*
-FROM TableA a
-LEFT JOIN TableB b ON a.id = b.a_id;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> a.*, b.*
+<span class="hljs-keyword">FROM</span> TableA a
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> TableB b <span class="hljs-keyword">ON</span> a.id = b.a_id;
+</div></code></pre>
 <p>
     <b>RIGHT JOIN:</b>
 </p>
-
-```sql
-SELECT a.*, b.*
-FROM TableA a
-RIGHT JOIN TableB b ON a.id = b.a_id;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> a.*, b.*
+<span class="hljs-keyword">FROM</span> TableA a
+<span class="hljs-keyword">RIGHT</span> <span class="hljs-keyword">JOIN</span> TableB b <span class="hljs-keyword">ON</span> a.id = b.a_id;
+</div></code></pre>
 <p>
     <b>FULL OUTER JOIN:</b>
 </p>
-
-```sql
-SELECT a.*, b.*
-FROM TableA a
-FULL OUTER JOIN TableB b ON a.id = b.a_id;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> a.*, b.*
+<span class="hljs-keyword">FROM</span> TableA a
+<span class="hljs-keyword">FULL</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> TableB b <span class="hljs-keyword">ON</span> a.id = b.a_id;
+</div></code></pre>
 <p>
     <b>CROSS JOIN:</b>
 </p>
-
-```sql
-SELECT a.*, b.*
-FROM TableA a
-CROSS JOIN TableB b;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> a.*, b.*
+<span class="hljs-keyword">FROM</span> TableA a
+<span class="hljs-keyword">CROSS</span> <span class="hljs-keyword">JOIN</span> TableB b;
+</div></code></pre>
 <p>
     <b>Explanation:</b><br>
     - Use <b>INNER JOIN</b> when you only want rows with matches in both tables.<br>
@@ -105,15 +443,11 @@ CROSS JOIN TableB b;
     - Use <b>FULL OUTER JOIN</b> to get all rows from both tables, with NULLs where there are no matches.<br>
     - Use <b>CROSS JOIN</b> to get every combination of rows from both tables (rarely used in practice).
 </p>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">2. What is the difference between a <code>CROSS JOIN</code> and a <code>FULL OUTER JOIN</code>?</b>
-
+<p><b style="color:#2874A6;font-weight:bold;">2. What is the difference between a <code>CROSS JOIN</code> and a <code>FULL OUTER JOIN</code>?</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     <code>CROSS JOIN</code> and <code>FULL OUTER JOIN</code> are both used to combine rows from two tables, but they operate very differently:
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Join Type Comparison
@@ -148,62 +482,45 @@ CROSS JOIN TableB b;
         </tr>
     </tbody>
 </table>
-
 <p><b style="color:#B9770E;">Example:</b></p>
-
 <p><b>CROSS JOIN:</b></p>
-
-```sql
-SELECT a.*, b.*
-FROM TableA a
-CROSS JOIN TableB b;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> a.*, b.*
+<span class="hljs-keyword">FROM</span> TableA a
+<span class="hljs-keyword">CROSS</span> <span class="hljs-keyword">JOIN</span> TableB b;
+</div></code></pre>
 <p><b>FULL OUTER JOIN:</b></p>
-
-```sql
-SELECT a.*, b.*
-FROM TableA a
-FULL OUTER JOIN TableB b ON a.id = b.a_id;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> a.*, b.*
+<span class="hljs-keyword">FROM</span> TableA a
+<span class="hljs-keyword">FULL</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> TableB b <span class="hljs-keyword">ON</span> a.id = b.a_id;
+</div></code></pre>
 <p>
     <b>Summary:</b><br>
     - <b>CROSS JOIN</b> creates every possible pair of rows from both tables.<br>
     - <b>FULL OUTER JOIN</b> returns all rows from both tables, matching where possible, and filling with NULLs where there is no match.
 </p>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">3. Write a SQL query to retrieve the first and last names of employees along with the names of their managers (given <code>Employees</code> and <code>Managers</code> tables).</b>
-
+<p><b style="color:#2874A6;font-weight:bold;">3. Write a SQL query to retrieve the first and last names of employees along with the names of their managers (given <code>Employees</code> and <code>Managers</code> tables).</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     To retrieve employee names along with their managers' names, you typically join the <code>Employees</code> table with the <code>Managers</code> table using a foreign key (e.g., <code>ManagerID</code> in <code>Employees</code> referencing <code>Managers.ManagerID</code>).
 </p>
-
 <ul>
     <li><b>INNER JOIN:</b> Returns only employees who have a matching manager.</li>
     <li><b>LEFT JOIN:</b> Returns all employees, including those without a manager (manager fields will be NULL).</li>
 </ul>
-
 <p><b style="color:#B9770E;">Example:</b></p>
-
-```sql
-SELECT 
-    e.FirstName AS EmployeeFirstName,
-    e.LastName AS EmployeeLastName,
-    m.FirstName AS ManagerFirstName,
-    m.LastName AS ManagerLastName
-FROM Employees e
-LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> 
+    e.FirstName <span class="hljs-keyword">AS</span> EmployeeFirstName,
+    e.LastName <span class="hljs-keyword">AS</span> EmployeeLastName,
+    m.FirstName <span class="hljs-keyword">AS</span> ManagerFirstName,
+    m.LastName <span class="hljs-keyword">AS</span> ManagerLastName
+<span class="hljs-keyword">FROM</span> Employees e
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Managers m <span class="hljs-keyword">ON</span> e.ManagerID = m.ManagerID;
+</div></code></pre>
 <p>
     <b>Explanation:</b><br>
     - <b>LEFT JOIN</b> is used to include employees who may not have a manager.<br>
     - <b>INNER JOIN</b> would exclude employees without a manager.
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Employees and Managers Join Result
@@ -228,90 +545,66 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">4. Write a SQL query to find the average salary for each department, given tables <code>Employees</code> (with <code>DepartmentID</code>) and <code>Departments</code> (with <code>DepartmentName</code>).</b>
-
+<p><b style="color:#2874A6;font-weight:bold;">4. Write a SQL query to find the average salary for each department, given tables <code>Employees</code> (with <code>DepartmentID</code>) and <code>Departments</code> (with <code>DepartmentName</code>).</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     To calculate the average salary for each department, join the <code>Employees</code> table with the <code>Departments</code> table on <code>DepartmentID</code>, then use <code>GROUP BY</code> to aggregate by department.
 </p>
-
 <ul>
     <li><b>INNER JOIN:</b> Returns only departments that have at least one employee.</li>
     <li><b>LEFT JOIN:</b> Returns all departments, showing <code>NULL</code> for average salary if there are no employees in a department.</li>
 </ul>
-
 <p><b style="color:#B9770E;">Example:</b></p>
-
-```sql
-SELECT 
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> 
     d.DepartmentName,
-    AVG(e.Salary) AS AverageSalary
-FROM Departments d
-LEFT JOIN Employees e ON d.DepartmentID = e.DepartmentID
-GROUP BY d.DepartmentName;
-```
-
+    <span class="hljs-keyword">AVG</span>(e.Salary) <span class="hljs-keyword">AS</span> AverageSalary
+<span class="hljs-keyword">FROM</span> Departments d
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Employees e <span class="hljs-keyword">ON</span> d.DepartmentID = e.DepartmentID
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> d.DepartmentName;
+</div></code></pre>
 <p>
     <b>Explanation:</b><br>
     - <b>LEFT JOIN</b> ensures all departments are listed, even those without employees.<br>
     - <b>AVG(e.Salary)</b> computes the average salary per department.<br>
     - <b>GROUP BY d.DepartmentName</b> groups results by department.
 </p>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">5. Write a SQL query to list all products that have never been ordered (products in a <code>Product</code> table with no matching rows in the <code>Orders</code> table).</b>
-
+<p><b style="color:#2874A6;font-weight:bold;">5. Write a SQL query to list all products that have never been ordered (products in a <code>Product</code> table with no matching rows in the <code>Orders</code> table).</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     To find products that have never been ordered, you need to identify products in the <code>Product</code> table that do not have any corresponding entries in the <code>Orders</code> table. This is typically done using a <b>LEFT JOIN</b> and checking for <code>NULL</code> in the joined table, or by using a <code>NOT EXISTS</code> or <code>NOT IN</code> subquery.
 </p>
-
 <ul>
     <li><b>LEFT JOIN:</b> Returns all products, and for those with no matching order, the order fields will be <code>NULL</code>. Filter these using <code>WHERE Orders.OrderID IS NULL</code>.</li>
     <li><b>NOT EXISTS:</b> Checks for products where no matching order exists.</li>
     <li><b>NOT IN:</b> Selects products whose IDs are not present in the <code>Orders</code> table.</li>
 </ul>
-
 <p><b style="color:#B9770E;">Example using LEFT JOIN:</b></p>
-
-```sql
-SELECT p.ProductID, p.ProductName
-FROM Product p
-LEFT JOIN Orders o ON p.ProductID = o.ProductID
-WHERE o.OrderID IS NULL;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.ProductID, p.ProductName
+<span class="hljs-keyword">FROM</span> Product p
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Orders o <span class="hljs-keyword">ON</span> p.ProductID = o.ProductID
+<span class="hljs-keyword">WHERE</span> o.OrderID <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>;
+</div></code></pre>
 <p><b style="color:#B9770E;">Example using NOT EXISTS:</b></p>
-
-```sql
-SELECT p.ProductID, p.ProductName
-FROM Product p
-WHERE NOT EXISTS (
-    SELECT 1 FROM Orders o WHERE o.ProductID = p.ProductID
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.ProductID, p.ProductName
+<span class="hljs-keyword">FROM</span> Product p
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-number">1</span> <span class="hljs-keyword">FROM</span> Orders o <span class="hljs-keyword">WHERE</span> o.ProductID = p.ProductID
 );
-```
-
+</div></code></pre>
 <p><b style="color:#B9770E;">Example using NOT IN:</b></p>
-
-```sql
-SELECT p.ProductID, p.ProductName
-FROM Product p
-WHERE p.ProductID NOT IN (
-    SELECT o.ProductID FROM Orders o
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.ProductID, p.ProductName
+<span class="hljs-keyword">FROM</span> Product p
+<span class="hljs-keyword">WHERE</span> p.ProductID <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> o.ProductID <span class="hljs-keyword">FROM</span> Orders o
 );
-```
-
+</div></code></pre>
 <p>
     <b>Explanation:</b><br>
     - <b>LEFT JOIN</b> with <code>WHERE o.OrderID IS NULL</code> finds products with no orders.<br>
     - <b>NOT EXISTS</b> and <b>NOT IN</b> are alternative approaches, often preferred for readability or performance depending on the database.<br>
     - These queries help identify products that may need promotion or removal due to lack of sales.
 </p>
-
 <p><b style="color:#B9770E;">Sample Data:</b></p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Sample Products Data
@@ -333,11 +626,9 @@ WHERE p.ProductID NOT IN (
         </tr>
     </tbody>
 </table>
-
 <p>
     If <code>Ashish's SQL Book</code> and <code>Sunil's Data Guide</code> have never been ordered, they will appear in the result.
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Approaches to Find Unordered Products
@@ -363,32 +654,24 @@ WHERE p.ProductID NOT IN (
         </tr>
     </tbody>
 </table>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">6. Write a SQL query to list all employees who are also managers (for example, employees who appear as managers in the same table).</b>
-
+<p><b style="color:#2874A6;font-weight:bold;">6. Write a SQL query to list all employees who are also managers (for example, employees who appear as managers in the same table).</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     To find employees who are also managers, you typically use a <b>self-join</b> on the <code>Employees</code> table. This means joining the table to itself, matching employees whose <code>EmployeeID</code> appears as a <code>ManagerID</code> for other employees.
 </p>
-
 <ul>
     <li><b>Self-Join:</b> The <code>Employees</code> table is joined to itself, using aliases to distinguish between the "employee" and the "manager" roles.</li>
     <li><b>INNER JOIN:</b> Returns only those employees who are referenced as managers by at least one other employee.</li>
     <li><b>DISTINCT:</b> Used to avoid duplicate rows if an employee manages multiple people.</li>
 </ul>
-
 <p><b style="color:#B9770E;">Example:</b></p>
-
-```sql
-SELECT DISTINCT
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span>
     e.EmployeeID,
     e.FirstName,
     e.LastName
-FROM Employees e
-INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
-```
-
+<span class="hljs-keyword">FROM</span> Employees e
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Employees m <span class="hljs-keyword">ON</span> e.EmployeeID = m.ManagerID;
+</div></code></pre>
 <p>
     <b>Explanation:</b><br>
     - <b>e</b> represents the employee who is also a manager.<br>
@@ -396,9 +679,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
     - The join condition <code>e.EmployeeID = m.ManagerID</code> finds all employees who are listed as a manager for someone else.<br>
     - <b>DISTINCT</b> ensures each manager appears only once, even if they manage multiple employees.
 </p>
-
 <p><b style="color:#B9770E;">Sample Data:</b></p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Employees Table
@@ -438,11 +719,9 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <p>
     In this example, <b>Ashish Zope</b> (EmployeeID 1) is a manager for Sunil Patil and Ravi Chaudhari. <b>Sunil Patil</b> (EmployeeID 2) is a manager for Ashish Nehara. The query will return both Ashish Zope and Sunil Patil as employees who are also managers.
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Employees Who Are Also Managers
@@ -467,31 +746,24 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <p>
     <b>Summary:</b><br>
     - Use a <b>self-join</b> to identify employees who are also managers.<br>
     - This pattern is common in organizational hierarchies where the manager and employee data are stored in the same table.<br>
     - The approach can be extended to retrieve additional information, such as the number of direct reports each manager has.
 </p>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">7. What is a <code>self-join</code>, and when might you use it? Provide an example scenario.</b>
-
+<p><b style="color:#2874A6;font-weight:bold;">7. What is a <code>self-join</code>, and when might you use it? Provide an example scenario.</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     A <b>self-join</b> is a regular join, but the table is joined with itself. This is useful when you want to compare rows within the same table or establish relationships between rows in the same table, such as hierarchical or recursive relationships (e.g., employees and their managers).
 </p>
-
 <ul>
     <li><b>Self-Join:</b> The same table is referenced twice in the query, using different aliases to distinguish between the two roles (e.g., employee and manager).</li>
     <li><b>Common Use Cases:</b> Organizational hierarchies, bill of materials, finding pairs of related records, comparing rows within a table.</li>
 </ul>
-
 <p><b style="color:#B9770E;">Example Scenario:</b><br>
     Suppose you have an <code>Employees</code> table where each employee may have a manager, and both employees and managers are stored in the same table.
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Employees Table
@@ -531,21 +803,17 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <p><b style="color:#B9770E;">Example Query:</b><br>
     To list each employee along with their manager's name, you can use a self-join:
 </p>
-
-```sql
-SELECT 
-    e.FirstName AS EmployeeFirstName,
-    e.LastName AS EmployeeLastName,
-    m.FirstName AS ManagerFirstName,
-    m.LastName AS ManagerLastName
-FROM Employees e
-LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
-```
-
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> 
+    e.FirstName <span class="hljs-keyword">AS</span> EmployeeFirstName,
+    e.LastName <span class="hljs-keyword">AS</span> EmployeeLastName,
+    m.FirstName <span class="hljs-keyword">AS</span> ManagerFirstName,
+    m.LastName <span class="hljs-keyword">AS</span> ManagerLastName
+<span class="hljs-keyword">FROM</span> Employees e
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Employees m <span class="hljs-keyword">ON</span> e.ManagerID = m.EmployeeID;
+</div></code></pre>
 <p>
     <b>Explanation:</b><br>
     - <b>e</b> is the alias for the employee.<br>
@@ -553,7 +821,6 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
     - The join condition <code>e.ManagerID = m.EmployeeID</code> links each employee to their manager.<br>
     - <b>LEFT JOIN</b> ensures employees without a manager (e.g., Ashish Zope) are included, with manager fields as NULL.
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Employee and Manager Self-Join Result
@@ -583,7 +850,6 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
         </tr>
     </tbody>
 </table>
-
 <p>
     <b>Other Example Use Cases:</b>
     <ul>
@@ -592,7 +858,6 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
         <li>Hierarchical queries, such as finding all subordinates of a manager.</li>
     </ul>
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Self-Join vs Regular Join
@@ -617,64 +882,51 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
         </tr>
     </tbody>
 </table>
-
 <p>
     <b>Summary:</b><br>
     - A <b>self-join</b> is a powerful tool for querying hierarchical or related data within the same table.<br>
     - It is commonly used for organizational charts, bill of materials, and other recursive relationships.<br>
     - Use table aliases to clearly distinguish the roles of each instance of the table in the query.
 </p>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">8. How would you join more than two tables in a single SQL query? What factors affect the performance when joining multiple tables?</b>
-
+<p><b style="color:#2874A6;font-weight:bold;">8. How would you join more than two tables in a single SQL query? What factors affect the performance when joining multiple tables?</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     Joining more than two tables in a single SQL query is common in real-world scenarios, such as retrieving employee details along with their department and manager information. This is achieved by chaining multiple <b>JOIN</b> clauses together, each connecting two tables at a time.
 </p>
-
 <ul>
     <li><b>Multiple Joins:</b> You can join as many tables as needed by specifying additional <code>JOIN</code> clauses, using appropriate join conditions for each pair.</li>
     <li><b>Types of Joins:</b> Any combination of <code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, etc., can be used depending on the data you want to retrieve.</li>
     <li><b>Aliases:</b> Table aliases help keep queries readable, especially when joining several tables.</li>
 </ul>
-
 <p><b style="color:#B9770E;">Example:</b><br>
     Suppose you have the following tables:
 </p>
-
 <ul>
     <li><b>Employees</b> (<code>EmployeeID</code>, <code>FirstName</code>, <code>LastName</code>, <code>DepartmentID</code>, <code>ManagerID</code>, <code>Salary</code>)</li>
     <li><b>Departments</b> (<code>DepartmentID</code>, <code>DepartmentName</code>)</li>
     <li><b>Managers</b> (<code>ManagerID</code>, <code>FirstName</code>, <code>LastName</code>)</li>
 </ul>
-
 <p>
     To retrieve each employee's name, department, manager's name, and salary:
 </p>
-
-```sql
-SELECT 
-    e.FirstName AS EmployeeFirstName,
-    e.LastName AS EmployeeLastName,
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> 
+    e.FirstName <span class="hljs-keyword">AS</span> EmployeeFirstName,
+    e.LastName <span class="hljs-keyword">AS</span> EmployeeLastName,
     d.DepartmentName,
-    m.FirstName AS ManagerFirstName,
-    m.LastName AS ManagerLastName,
+    m.FirstName <span class="hljs-keyword">AS</span> ManagerFirstName,
+    m.LastName <span class="hljs-keyword">AS</span> ManagerLastName,
     e.Salary
-FROM Employees e
-LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID
-LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
-```
-
+<span class="hljs-keyword">FROM</span> Employees e
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Departments d <span class="hljs-keyword">ON</span> e.DepartmentID = d.DepartmentID
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Managers m <span class="hljs-keyword">ON</span> e.ManagerID = m.ManagerID;
+</div></code></pre>
 <p>
     <b>Explanation:</b><br>
     - <b>LEFT JOIN</b> is used to include all employees, even if they do not have a department or manager.<br>
     - Each <code>JOIN</code> connects two tables at a time, building up the result set.<br>
     - Aliases (<code>e</code>, <code>d</code>, <code>m</code>) make the query concise and readable.
 </p>
-
 <p><b style="color:#B9770E;">Sample Data:</b></p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Employees Table
@@ -708,7 +960,6 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Departments Table
@@ -730,7 +981,6 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Managers Table
@@ -750,9 +1000,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <p><b style="color:#B9770E;">Result:</b></p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Query Result for Employee, Department, and Manager
@@ -786,9 +1034,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <p><b style="color:#B9770E;">Performance Factors When Joining Multiple Tables:</b></p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Performance Factors
@@ -828,7 +1074,6 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <p>
     <b>Summary:</b><br>
     - You can join multiple tables by chaining <code>JOIN</code> clauses.<br>
@@ -836,26 +1081,20 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
     - Performance depends on indexes, join order, join type, data volume, and query complexity.<br>
     - Always test and optimize queries, especially as the number of joins increases.
 </p>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
-<b style="color:#2874A6;font-weight:bold;">9. Explain how an <code>OUTER JOIN</code> works when one side has no matching rows. How does this differ from an <code>INNER JOIN</code> in practice?</b>
-
+<p><b style="color:#2874A6;font-weight:bold;">9. Explain how an <code>OUTER JOIN</code> works when one side has no matching rows. How does this differ from an <code>INNER JOIN</code> in practice?</b></p>
 <p><b style="color:#B9770E;">Answer:</b><br>
     An <b>OUTER JOIN</b> returns all rows from one (or both) tables, even if there are no matching rows in the joined table. When there is no match, the columns from the missing side are filled with <code>NULL</code> values. In contrast, an <b>INNER JOIN</b> only returns rows where there is a match in both tables.
 </p>
-
 <ul>
     <li><b>LEFT OUTER JOIN (LEFT JOIN):</b> Returns all rows from the left table (<code>Employees</code>), and matched rows from the right table (<code>Departments</code>). If there is no match, right table columns are <code>NULL</code>.</li>
     <li><b>RIGHT OUTER JOIN (RIGHT JOIN):</b> Returns all rows from the right table, and matched rows from the left table. If there is no match, left table columns are <code>NULL</code>.</li>
     <li><b>FULL OUTER JOIN:</b> Returns all rows from both tables, with <code>NULL</code> in columns where there is no match.</li>
     <li><b>INNER JOIN:</b> Returns only rows where there is a match in both tables.</li>
 </ul>
-
 <p><b style="color:#B9770E;">Example Scenario:</b><br>
     Suppose you have the following tables:
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Employees Table
@@ -889,7 +1128,6 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         Departments Table
@@ -915,20 +1153,15 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         </tr>
     </tbody>
 </table>
-
 <p><b style="color:#B9770E;">LEFT OUTER JOIN Example:</b></p>
-
-```sql
-SELECT 
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> 
     e.FirstName, 
     e.LastName, 
     d.DepartmentName
-FROM Employees e
-LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
-```
-
+<span class="hljs-keyword">FROM</span> Employees e
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Departments d <span class="hljs-keyword">ON</span> e.DepartmentID = d.DepartmentID;
+</div></code></pre>
 <p><b>Result:</b></p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         LEFT OUTER JOIN Result
@@ -958,24 +1191,18 @@ LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         </tr>
     </tbody>
 </table>
-
 <p>
     Notice that <b>Ravi Chaudhari</b> has no department, so <code>DepartmentName</code> is <code>NULL</code>. If you used an <b>INNER JOIN</b>, Ravi would not appear in the result.
 </p>
-
 <p><b style="color:#B9770E;">INNER JOIN Example:</b></p>
-
-```sql
-SELECT 
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> 
     e.FirstName, 
     e.LastName, 
     d.DepartmentName
-FROM Employees e
-INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
-```
-
+<span class="hljs-keyword">FROM</span> Employees e
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Departments d <span class="hljs-keyword">ON</span> e.DepartmentID = d.DepartmentID;
+</div></code></pre>
 <p><b>Result:</b></p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         INNER JOIN Result
@@ -1000,14 +1227,12 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         </tr>
     </tbody>
 </table>
-
 <p>
     <b>Explanation:</b><br>
     - <b>OUTER JOIN</b> includes all rows from one or both tables, filling in <code>NULL</code> where there is no match.<br>
     - <b>INNER JOIN</b> only includes rows where there is a match in both tables.<br>
     - Use <b>OUTER JOIN</b> when you want to see all records from one side, even if there are no matches on the other side (e.g., all employees, even those without a department).
 </p>
-
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
     <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
         INNER JOIN vs OUTER JOIN
@@ -1047,42 +1272,32 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         </tr>
     </tbody>
 </table>
-
 <p>
     <b>Summary:</b><br>
     - <b>OUTER JOIN</b> is useful for finding unmatched data (e.g., employees without departments, or departments without employees).<br>
     - <b>INNER JOIN</b> is used when you only care about records that exist in both tables.<br>
     - In practice, <b>OUTER JOIN</b> helps in reporting, auditing, and identifying missing relationships in your data.
 </p>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Working with Views</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Stored Procedures & Functions</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Triggers & Automation</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Transactions & Concurrency Control</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Performance Tuning & Query Optimization</b>
 </blockquote>
-
 <hr style="border:1px solidrgb(0, 0, 0);">
+</body>
+</html>
