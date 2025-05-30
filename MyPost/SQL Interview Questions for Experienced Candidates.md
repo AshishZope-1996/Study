@@ -1,5 +1,5 @@
 <h1 style="color:#154360; text-align:center; font-size:2.5em; font-weight:bold; margin-bottom:0; letter-spacing:1px;">
-    <span style="color:#2471A3;">SQL Interview Questions for Experienced Candidates (3+ years)</span>
+    <span style="color:#1C4980;">SQL Interview Questions for Experienced Candidates (3+ years)</span>
 </h1>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
@@ -27,14 +27,356 @@
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
+<blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
+    <b style="color:#154360; font-size:1.1em;">Indexing Strategies & Keys</b>
+</blockquote>
 
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">1. What is a SQL index and what are different types of indexes (clustered, non-clustered, unique, etc.)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    An <b>index</b> in SQL is a database object that improves the speed of data retrieval operations on a table at the cost of additional storage and maintenance overhead. Indexes work like a book's index, allowing the database engine to find rows quickly without scanning the entire table.
+</p>
+
+<ul>
+    <li><b>Clustered Index:</b> Determines the physical order of data in the table. Each table can have only one clustered index.</li>
+    <li><b>Non-Clustered Index:</b> A separate structure from the table data, containing pointers to the actual data rows. A table can have multiple non-clustered indexes.</li>
+    <li><b>Unique Index:</b> Ensures that all values in the indexed column(s) are unique.</li>
+    <li><b>Composite Index:</b> An index on two or more columns.</li>
+    <li><b>Full-Text Index:</b> Used for efficient text searching.</li>
+    <li><b>Spatial Index:</b> Used for spatial data types (e.g., geometry, geography).</li>
+</ul>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+<ul>
+    <li><b>Clustered Index:</b></li>
+</ul>
+
+```sql
+CREATE CLUSTERED INDEX idx_employee_id ON Employees(EmployeeID);
+```
+<p><i>This creates a clustered index on the <code>EmployeeID</code> column of the <code>Employees</code> table. The data rows will be physically ordered by <code>EmployeeID</code>.</i></p>
+
+<ul>
+    <li><b>Non-Clustered Index:</b></li>
+</ul>
+
+```sql
+CREATE NONCLUSTERED INDEX idx_employee_lastname ON Employees(LastName);
+```
+<p><i>This creates a non-clustered index on the <code>LastName</code> column. The index is stored separately from the table data and contains pointers to the actual rows.</i></p>
+
+<ul>
+    <li><b>Unique Index:</b></li>
+</ul>
+
+```sql
+CREATE UNIQUE INDEX idx_employee_email ON Employees(Email);
+```
+<p><i>This ensures that all values in the <code>Email</code> column are unique.</i></p>
+
+<ul>
+    <li><b>Composite Index:</b></li>
+</ul>
+
+```sql
+CREATE INDEX idx_employee_dept_salary ON Employees(DepartmentID, Salary);
+```
+<p><i>This creates an index on both <code>DepartmentID</code> and <code>Salary</code>. Useful for queries filtering or sorting by both columns.</i></p>
+
+<p>
+    <b>Summary:</b> Indexes speed up SELECT queries but can slow down data modification operations (INSERT, UPDATE, DELETE).
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">2. What is the difference between a heap (no clustered index) and a table with a clustered index, and how can you identify a heap table?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>heap</b> is a table without a clustered index. Data is stored in no particular order, and row locations are tracked by row identifiers (RIDs). A table with a <b>clustered index</b> stores data rows in the order of the index key.
+</p>
+
+<ul>
+    <li><b>Heap Table:</b> No clustered index; data is unordered. Identified by querying system catalog views (e.g., <code>sys.indexes</code> in SQL Server) and checking for <code>index_id = 0</code>.</li>
+    <li><b>Clustered Index Table:</b> Data is physically ordered by the clustered index key; <code>index_id = 1</code>.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+<ul>
+    <li><b>Create a heap (no clustered index):</b></li>
+</ul>
+
+```sql
+CREATE TABLE HeapTable (
+    ID INT,
+    Name VARCHAR(50)
+);
+-- No clustered index created, so this is a heap.
+```
+<p><i>This table is a heap because no clustered index is defined.</i></p>
+
+<ul>
+    <li><b>Add a clustered index:</b></li>
+</ul>
+
+```sql
+CREATE CLUSTERED INDEX idx_id ON HeapTable(ID);
+```
+<p><i>Now, <code>HeapTable</code> is no longer a heap; it is ordered by <code>ID</code>.</i></p>
+
+<ul>
+    <li><b>Identify a heap in SQL Server:</b></li>
+</ul>
+
+```sql
+SELECT name, index_id
+FROM sys.indexes
+WHERE object_id = OBJECT_ID('HeapTable');
+```
+<p><i>If <code>index_id = 0</code> exists, the table is a heap.</i></p>
+
+<p>
+    <b>Summary:</b> Heaps are faster for bulk inserts but slower for searches; clustered indexes improve search performance.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">3. What is the difference between a PRIMARY KEY and a UNIQUE KEY (or unique index) in SQL?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Both <b>PRIMARY KEY</b> and <b>UNIQUE KEY</b> enforce uniqueness on columns, but there are differences:
+</p>
+
+<ul>
+    <li><b>PRIMARY KEY:</b> Uniquely identifies each row; only one per table; cannot contain NULLs; automatically creates a unique clustered index (if none exists).</li>
+    <li><b>UNIQUE KEY:</b> Enforces uniqueness; multiple unique keys allowed per table; columns can contain a single NULL (in most databases); creates a unique non-clustered index by default.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+<ul>
+    <li><b>PRIMARY KEY:</b></li>
+</ul>
+
+```sql
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Email VARCHAR(100) UNIQUE
+);
+```
+<p><i><code>EmployeeID</code> is the primary key (unique, not null). <code>Email</code> is a unique key (can be null in some databases).</i></p>
+
+<ul>
+    <li><b>UNIQUE KEY (explicit):</b></li>
+</ul>
+
+```sql
+ALTER TABLE Employees ADD CONSTRAINT uq_emp_phone UNIQUE (PhoneNumber);
+```
+<p><i>This adds a unique constraint to <code>PhoneNumber</code>.</i></p>
+
+<p>
+    <b>Summary:</b> Use PRIMARY KEY for the main identifier; use UNIQUE KEY for alternate unique constraints.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">4. What are index “forwarding pointers” in a heap table, and how do they affect query performance?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    In a <b>heap table</b>, when a row is updated and no longer fits in its original location, it may be moved elsewhere. A <b>forwarding pointer</b> is left at the original location, pointing to the new location.
+</p>
+
+<ul>
+    <li><b>Impact:</b> Causes extra I/O because the database must follow the pointer to find the actual row, slowing down queries.</li>
+    <li><b>Resolution:</b> Rebuilding the table or adding a clustered index removes forwarding pointers.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- Update a row in a heap table that causes it to move
+UPDATE HeapTable SET Name = REPLICATE('A', 1000) WHERE ID = 1;
+-- This may create a forwarding pointer if the row can't fit in its original page.
+```
+<p><i>Queries that access this row will incur extra I/O to follow the pointer.</i></p>
+
+<p>
+    <b>Summary:</b> Forwarding pointers degrade performance in heaps with frequent updates.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">5. What is a composite index, and how do you choose the order of columns in it for optimal performance?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>composite index</b> is an index on two or more columns. The order of columns matters for query optimization.
+</p>
+
+<ul>
+    <li><b>Column Order:</b> Place the most selective (most unique) column first, or the column most often used in WHERE or JOIN conditions.</li>
+    <li><b>Index Usage:</b> The index is most effective when queries filter on the leading column(s).</li>
+</ul>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+```sql
+CREATE INDEX idx_dept_salary ON Employees(DepartmentID, Salary);
+```
+<p><i>This index is useful for queries like <code>WHERE DepartmentID = ? AND Salary &gt; ?</code>. If you filter only on <code>Salary</code>, the index may not be used efficiently.</i></p>
+
+<p>
+    <b>Summary:</b> Choose column order based on query patterns and selectivity.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">6. When should you use a covering index, and how does it improve the performance of a query?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A <b>covering index</b> includes all columns needed by a query (in the index key or as included columns), so the database can satisfy the query using only the index, without accessing the table data.
+</p>
+
+<ul>
+    <li><b>Use Case:</b> For frequently run queries that select a small set of columns.</li>
+    <li><b>Performance:</b> Reduces I/O and improves speed by avoiding lookups in the base table (bookmark lookups).</li>
+</ul>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+```sql
+CREATE INDEX idx_covering ON Employees(DepartmentID) INCLUDE (Salary, FirstName);
+```
+<p><i>This index covers queries like <code>SELECT Salary, FirstName FROM Employees WHERE DepartmentID = ?</code> because all needed columns are in the index.</i></p>
+
+<p>
+    <b>Summary:</b> Covering indexes are powerful for read-heavy workloads with predictable queries.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">7. How does the existence of an index on a column affect INSERT, UPDATE, and DELETE performance on a table?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Indexes speed up SELECT queries but add overhead to data modification operations.
+</p>
+
+<ul>
+    <li><b>INSERT:</b> Indexes must be updated for each new row, increasing insert time.</li>
+    <li><b>UPDATE:</b> If indexed columns are updated, the index must be modified, adding overhead.</li>
+    <li><b>DELETE:</b> Index entries must be removed, which can slow down deletes.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- Insert into a table with indexes
+INSERT INTO Employees (EmployeeID, FirstName, LastName) VALUES (1, 'Ashish', 'Zope');
+-- The database updates all relevant indexes after the insert.
+```
+<p><i>More indexes mean more work for each insert, update, or delete operation.</i></p>
+
+<p>
+    <b>Summary:</b> More indexes = faster reads, slower writes. Balance based on workload.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">8. What is index selectivity, and why is it important for query optimization?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Index selectivity</b> is the ratio of the number of distinct values in an indexed column to the total number of rows. High selectivity means many unique values; low selectivity means many duplicates.
+</p>
+
+<ul>
+    <li><b>Importance:</b> High selectivity indexes are more useful for filtering queries, as they reduce the number of rows scanned.</li>
+    <li><b>Low Selectivity:</b> Indexes on columns with few unique values (e.g., gender) are less effective.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Example:</b></p>
+
+```sql
+-- High selectivity: EmployeeID (unique for each row)
+CREATE INDEX idx_employee_id ON Employees(EmployeeID);
+
+-- Low selectivity: Gender (few unique values)
+CREATE INDEX idx_gender ON Employees(Gender);
+```
+<p><i>The <code>idx_employee_id</code> index is highly selective and efficient for lookups. The <code>idx_gender</code> index is less useful because many rows share the same value.</i></p>
+
+<p>
+    <b>Summary:</b> Use indexes on columns with high selectivity for best performance.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">9. How many clustered indexes can a table have, and why?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    A table can have <b>only one clustered index</b> because the data rows can be physically ordered in only one way.
+</p>
+
+<ul>
+    <li><b>Reason:</b> The clustered index defines the physical storage order of the table.</li>
+    <li><b>Non-Clustered Indexes:</b> Multiple non-clustered indexes are allowed.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+```sql
+-- Only one clustered index allowed
+CREATE CLUSTERED INDEX idx_emp_id ON Employees(EmployeeID);
+
+-- Multiple non-clustered indexes allowed
+CREATE NONCLUSTERED INDEX idx_emp_email ON Employees(Email);
+CREATE NONCLUSTERED INDEX idx_emp_phone ON Employees(PhoneNumber);
+```
+<p><i>Attempting to create a second clustered index will result in an error.</i></p>
+
+<p>
+    <b>Summary:</b> One clustered index per table; unlimited non-clustered indexes (within system limits).
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+
+<b style="color:#1C4980;font-weight:bold;">10. What is index fragmentation, and how can it be resolved or mitigated in a large database?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>Index fragmentation</b> occurs when the logical order of index pages does not match the physical order, leading to inefficient I/O and slower queries.
+</p>
+
+<ul>
+    <li><b>Causes:</b> Frequent INSERT, UPDATE, DELETE operations.</li>
+    <li><b>Resolution:</b> Rebuild or reorganize indexes using database maintenance commands (e.g., <code>ALTER INDEX REBUILD</code> or <code>REORGANIZE</code> in SQL Server).</li>
+    <li><b>Mitigation:</b> Schedule regular index maintenance, monitor fragmentation levels.</li>
+</ul>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+```sql
+-- Rebuild an index (removes fragmentation)
+ALTER INDEX idx_emp_id ON Employees REBUILD;
+
+-- Reorganize an index (less intensive)
+ALTER INDEX idx_emp_id ON Employees REORGANIZE;
+```
+<p><i>Use these commands regularly to keep indexes efficient, especially in large, busy databases.</i></p>
+
+<p>
+    <b>Summary:</b> Regular index maintenance is essential for optimal performance in large databases.
+</p>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
 <blockquote style="border-left: 5px solid #2980B9; background: #F4F6F7; padding: 0.7em 1.2em; border-radius:5px;">
     <b style="color:#154360; font-size:1.1em;">Mastering SQL Joins</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">1. What are the different types of SQL joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, <code>FULL JOIN</code>, <code>CROSS JOIN</code>, etc.) and when would you use each?</b>
+<b style="color:#1C4980;font-weight:bold;">1. What are the different types of SQL joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, <code>FULL JOIN</code>, <code>CROSS JOIN</code>, etc.) and when would you use each?</b>
 <p><b style="color:#B9770E;">Answer:</b><br>
     SQL joins are used to combine rows from two or more tables based on related columns. The main types are:
 </p>
@@ -108,14 +450,14 @@ CROSS JOIN TableB b;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">2. What is the difference between a <code>CROSS JOIN</code> and a <code>FULL OUTER JOIN</code>?</b>
+<b style="color:#1C4980;font-weight:bold;">2. What is the difference between a <code>CROSS JOIN</code> and a <code>FULL OUTER JOIN</code>?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
     <code>CROSS JOIN</code> and <code>FULL OUTER JOIN</code> are both used to combine rows from two tables, but they operate very differently:
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Join Type Comparison
     </caption>
     <thead>
@@ -175,7 +517,7 @@ FULL OUTER JOIN TableB b ON a.id = b.a_id;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">3. Write a SQL query to retrieve the first and last names of employees along with the names of their managers (given <code>Employees</code> and <code>Managers</code> tables).</b>
+<b style="color:#1C4980;font-weight:bold;">3. Write a SQL query to retrieve the first and last names of employees along with the names of their managers (given <code>Employees</code> and <code>Managers</code> tables).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
     To retrieve employee names along with their managers' names, you typically join the <code>Employees</code> table with the <code>Managers</code> table using a foreign key (e.g., <code>ManagerID</code> in <code>Employees</code> referencing <code>Managers.ManagerID</code>).
@@ -205,7 +547,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees and Managers Join Result
     </caption>
     <thead>
@@ -231,7 +573,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">4. Write a SQL query to find the average salary for each department, given tables <code>Employees</code> (with <code>DepartmentID</code>) and <code>Departments</code> (with <code>DepartmentName</code>).</b>
+<b style="color:#1C4980;font-weight:bold;">4. Write a SQL query to find the average salary for each department, given tables <code>Employees</code> (with <code>DepartmentID</code>) and <code>Departments</code> (with <code>DepartmentName</code>).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
     To calculate the average salary for each department, join the <code>Employees</code> table with the <code>Departments</code> table on <code>DepartmentID</code>, then use <code>GROUP BY</code> to aggregate by department.
@@ -262,7 +604,7 @@ GROUP BY d.DepartmentName;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">5. Write a SQL query to list all products that have never been ordered (products in a <code>Product</code> table with no matching rows in the <code>Orders</code> table).</b>
+<b style="color:#1C4980;font-weight:bold;">5. Write a SQL query to list all products that have never been ordered (products in a <code>Product</code> table with no matching rows in the <code>Orders</code> table).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
     To find products that have never been ordered, you need to identify products in the <code>Product</code> table that do not have any corresponding entries in the <code>Orders</code> table. This is typically done using a <b>LEFT JOIN</b> and checking for <code>NULL</code> in the joined table, or by using a <code>NOT EXISTS</code> or <code>NOT IN</code> subquery.
@@ -313,7 +655,7 @@ WHERE p.ProductID NOT IN (
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Sample Products Data
     </caption>
     <thead>
@@ -339,7 +681,7 @@ WHERE p.ProductID NOT IN (
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Approaches to Find Unordered Products
     </caption>
     <thead>
@@ -366,7 +708,7 @@ WHERE p.ProductID NOT IN (
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">6. Write a SQL query to list all employees who are also managers (for example, employees who appear as managers in the same table).</b>
+<b style="color:#1C4980;font-weight:bold;">6. Write a SQL query to list all employees who are also managers (for example, employees who appear as managers in the same table).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
     To find employees who are also managers, you typically use a <b>self-join</b> on the <code>Employees</code> table. This means joining the table to itself, matching employees whose <code>EmployeeID</code> appears as a <code>ManagerID</code> for other employees.
@@ -400,7 +742,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Table
     </caption>
     <thead>
@@ -444,7 +786,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Who Are Also Managers
     </caption>
     <thead>
@@ -477,7 +819,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">7. What is a <code>self-join</code>, and when might you use it? Provide an example scenario.</b>
+<b style="color:#1C4980;font-weight:bold;">7. What is a <code>self-join</code>, and when might you use it? Provide an example scenario.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
     A <b>self-join</b> is a regular join, but the table is joined with itself. This is useful when you want to compare rows within the same table or establish relationships between rows in the same table, such as hierarchical or recursive relationships (e.g., employees and their managers).
@@ -493,7 +835,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Table
     </caption>
     <thead>
@@ -555,7 +897,7 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employee and Manager Self-Join Result
     </caption>
     <thead>
@@ -594,7 +936,7 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Self-Join vs Regular Join
     </caption>
     <thead>
@@ -627,7 +969,7 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">8. How would you join more than two tables in a single SQL query? What factors affect the performance when joining multiple tables?</b>
+<b style="color:#1C4980;font-weight:bold;">8. How would you join more than two tables in a single SQL query? What factors affect the performance when joining multiple tables?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
     Joining more than two tables in a single SQL query is common in real-world scenarios, such as retrieving employee details along with their department and manager information. This is achieved by chaining multiple <b>JOIN</b> clauses together, each connecting two tables at a time.
@@ -676,7 +1018,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Table
     </caption>
     <thead>
@@ -710,7 +1052,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </table>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Departments Table
     </caption>
     <thead>
@@ -732,7 +1074,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </table>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Managers Table
     </caption>
     <thead>
@@ -754,7 +1096,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 <p><b style="color:#B9770E;">Result:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Query Result for Employee, Department, and Manager
     </caption>
     <thead>
@@ -790,7 +1132,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 <p><b style="color:#B9770E;">Performance Factors When Joining Multiple Tables:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Performance Factors
     </caption>
     <thead>
@@ -839,7 +1181,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-<b style="color:#2874A6;font-weight:bold;">9. Explain how an <code>OUTER JOIN</code> works when one side has no matching rows. How does this differ from an <code>INNER JOIN</code> in practice?</b>
+<b style="color:#1C4980;font-weight:bold;">9. Explain how an <code>OUTER JOIN</code> works when one side has no matching rows. How does this differ from an <code>INNER JOIN</code> in practice?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
     An <b>OUTER JOIN</b> returns all rows from one (or both) tables, even if there are no matching rows in the joined table. When there is no match, the columns from the missing side are filled with <code>NULL</code> values. In contrast, an <b>INNER JOIN</b> only returns rows where there is a match in both tables.
@@ -857,7 +1199,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Employees Table
     </caption>
     <thead>
@@ -891,7 +1233,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
 </table>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         Departments Table
     </caption>
     <thead>
@@ -930,7 +1272,7 @@ LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 <p><b>Result:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         LEFT OUTER JOIN Result
     </caption>
     <thead>
@@ -977,7 +1319,7 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 <p><b>Result:</b></p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         INNER JOIN Result
     </caption>
     <thead>
@@ -1009,7 +1351,7 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 </p>
 
 <table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #2874A6; padding: 6px;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
         INNER JOIN vs OUTER JOIN
     </caption>
     <thead>
