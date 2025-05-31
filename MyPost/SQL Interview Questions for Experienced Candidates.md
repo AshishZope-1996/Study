@@ -468,7 +468,7 @@ CROSS JOIN TableB b;
         Join Type Comparison
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Feature</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">CROSS JOIN</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FULL OUTER JOIN</th>
@@ -558,7 +558,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Employees and Managers Join Result
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Result</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Use Case</th>
@@ -666,7 +666,7 @@ WHERE p.ProductID NOT IN (
         Sample Products Data
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">ProductID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">ProductName</th>
         </tr>
@@ -692,7 +692,7 @@ WHERE p.ProductID NOT IN (
         Approaches to Find Unordered Products
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Approach</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">When to Use</th>
         </tr>
@@ -753,7 +753,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -797,7 +797,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         Employees Who Are Also Managers
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -846,7 +846,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -908,7 +908,7 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
         Employee and Manager Self-Join Result
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Employee</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Manager</th>
         </tr>
@@ -947,7 +947,7 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
         Self-Join vs Regular Join
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Purpose</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Example</th>
@@ -1029,7 +1029,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -1063,7 +1063,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Departments Table
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
         </tr>
@@ -1085,7 +1085,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Managers Table
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">ManagerID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -1107,7 +1107,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Query Result for Employee, Department, and Manager
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeFirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeLastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1143,7 +1143,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Performance Factors
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Factor</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Impact</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Best Practice</th>
@@ -1210,7 +1210,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Employees Table
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">EmployeeID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
@@ -1244,7 +1244,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
         Departments Table
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentID</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
         </tr>
@@ -1283,7 +1283,7 @@ LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         LEFT OUTER JOIN Result
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1330,7 +1330,7 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         INNER JOIN Result
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">FirstName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">LastName</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">DepartmentName</th>
@@ -1362,7 +1362,7 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
         INNER JOIN vs OUTER JOIN
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Join Type</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Rows Returned</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">NULLs for Missing Data?</th>
@@ -1446,7 +1446,7 @@ UPDATE vw_EmployeeNames SET FirstName = 'John' WHERE EmployeeID = 1;
         Standard View vs Materialized View
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Feature</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Standard View</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Materialized/Indexed View</th>
@@ -1574,7 +1574,7 @@ DROP VIEW vw_EmployeeNames;
         View vs Temporary Table
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Aspect</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">View</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Temporary Table</th>
@@ -1618,7 +1618,7 @@ DROP VIEW vw_EmployeeNames;
         Stored Procedure vs User-Defined Function
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Aspect</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Stored Procedure</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">User-Defined Function</th>
@@ -1812,33 +1812,6 @@ END;
 
 <b style="color:#1C4980;font-weight:bold;">2. What is the difference between an AFTER trigger and an INSTEAD OF trigger (e.g. in SQL Server)?</b>
 
-<p><b style="color:#B9770E;">Answer:</b><br>
-    <b>AFTER triggers</b> execute after the triggering event (e.g., after a row is inserted/updated/deleted). <b>INSTEAD OF triggers</b> execute in place of the triggering event, allowing you to override or customize the default action (commonly used on views).
-</p>
-
-<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
-    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
-        AFTER vs INSTEAD OF Triggers
-    </caption>
-    <thead>
-        <tr style="background:#FCF3CF;">
-            <th style="border:1px solid #D5D8DC; padding:8px;">Type</th>
-            <th style="border:1px solid #D5D8DC; padding:8px;">When It Fires</th>
-            <th style="border:1px solid #D5D8DC; padding:8px;">Typical Use</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="border:1px solid #D5D8DC; padding:8px;">AFTER</td>
-            <td style="border:1px solid #D5D8DC; padding:8px;">After the event completes</td>
-            <td style="border:1px solid #D5D8DC; padding:8px;">Auditing, logging, enforcing business rules</td>
-        </tr>
-        <tr>
-            <td style="border:1px solid #D5D8DC; padding:iggers to override default behavior.
-</p>
-
-<hr style="border:1px solidrgb(0, 0, 0);">
-
 <b style="color:#1C4980;font-weight:bold;">3. What are the “inserted” and “deleted” magic tables in SQL Server triggers?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1981,7 +1954,7 @@ END;
         SQL Isolation Levels and Phenomena
     </caption>
     <thead>
-        <tr style="background:#FCF3CF;">
+        <tr style="background:#D6EAF8;">
             <th style="border:1px solid #D5D8DC; padding:8px;">Level</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Dirty Reads</th>
             <th style="border:1px solid #D5D8DC; padding:8px;">Non-Repeatable Reads</th>
@@ -2120,29 +2093,74 @@ COMMIT;
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
-
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Performance Tuning & Query Optimization</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
+
 <b style="color:#1C4980;font-weight:bold;">1. What is a query execution plan and how do you use it to improve performance?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
-    A <b>query execution plan</b> is a detailed roadmap generated by the database engine showing how a SQL query will be executed (e.g., which indexes will be used, join order, scan types). Reviewing the plan helps identify bottlenecks, such as full table scans or missing indexes, and guides query optimization.
+    A <b>query execution plan</b> is a step-by-step breakdown of how the database engine will execute a SQL query. It shows the order of operations, join types, index usage, and estimated costs. Reviewing the plan helps identify bottlenecks (e.g., full table scans, missing indexes) and guides query optimization.
 </p>
 
 <ul>
-    <li><b>How to view:</b> Use <code>EXPLAIN</code> (MySQL/PostgreSQL), <code>SET SHOWPLAN</code> (SQL Server), or graphical tools.</li>
+    <li><b>How to View:</b> Use <code>EXPLAIN</code> (MySQL/PostgreSQL), <code>SET SHOWPLAN</code> (SQL Server), or graphical tools in database GUIs.</li>
     <li><b>Optimization:</b> Add indexes, rewrite queries, or adjust schema based on plan findings.</li>
 </ul>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        Common Execution Plan Operators
+    </caption>
+    <thead>
+        <tr style="background:#D6EAF8;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Operator</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Table Scan</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Reads all rows; slow for large tables</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Index Seek</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Efficient lookup using an index</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Nested Loop Join</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Good for small result sets</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Hash Join</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Efficient for large, unsorted data</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+```sql
+EXPLAIN SELECT * FROM Employees WHERE DepartmentID = 10;
+```
+<p><i>This shows how the query will be executed and whether an index is used.</i></p>
+
+<p>
+    <b>Summary:</b> Always review execution plans for slow queries to find and fix performance issues.
+</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">2. How would you optimize a slow SQL query in production?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Optimizing a slow query involves analyzing execution plans, indexing, and query rewriting.
+</p>
+
 <ul>
-    <li>Add appropriate indexes on columns used in WHERE, JOIN, and ORDER BY clauses.</li>
+    <li>Add indexes on columns used in WHERE, JOIN, and ORDER BY clauses.</li>
     <li>Rewrite queries to avoid unnecessary subqueries or correlated subqueries.</li>
     <li>Avoid <code>SELECT *</code>; select only needed columns.</li>
     <li>Use query execution plans to identify bottlenecks.</li>
@@ -2150,21 +2168,94 @@ COMMIT;
     <li>Update statistics and rebuild fragmented indexes.</li>
 </ul>
 
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        Optimization Techniques Comparison
+    </caption>
+    <thead>
+        <tr style="background:#D6EAF8;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Technique</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">When to Use</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Indexing</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Frequent filtering or joining on columns</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Query Rewrite</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Complex or inefficient queries</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Partitioning</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Very large tables</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <b>Summary:</b> Use a combination of indexing, query rewriting, and maintenance for best performance.
+</p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">3. What is the difference between UNION and UNION ALL in SQL, and when would you use each?</b>
 
-<ul>
-    <li><b>UNION:</b> Combines results from two queries and removes duplicate rows.</li>
-    <li><b>UNION ALL:</b> Combines results and keeps all duplicates.</li>
-    <li><b>Use UNION ALL</b> for better performance if you do not need to remove duplicates.</li>
-</ul>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    <b>UNION</b> combines results from two queries and removes duplicate rows. <b>UNION ALL</b> combines results and keeps all duplicates.
+</p>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        UNION vs UNION ALL
+    </caption>
+    <thead>
+        <tr style="background:#D6EAF8;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Operator</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Duplicates Removed?</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Performance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">UNION</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Yes</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Slower (needs sorting/deduplication)</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">UNION ALL</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Faster</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
+
+```sql
+SELECT Name FROM Employees
+UNION
+SELECT Name FROM Managers;
+
+SELECT Name FROM Employees
+UNION ALL
+SELECT Name FROM Managers;
+```
+
+<p>
+    <b>Summary:</b> Use <b>UNION ALL</b> for better performance if you do not need to remove duplicates.
+</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">4. How can you find duplicate rows in a table using SQL?</b>
 
-<p><b style="color:#B9770E;">Example:</b></p>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use <code>GROUP BY</code> and <code>HAVING COUNT(*) > 1</code> to find duplicates based on one or more columns.
+</p>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
 
 ```sql
 SELECT column1, column2, COUNT(*)
@@ -2174,9 +2265,19 @@ HAVING COUNT(*) > 1;
 ```
 <p><i>This finds rows where (column1, column2) are duplicated.</i></p>
 
+<p>
+    <b>Summary:</b> Adjust columns in <code>GROUP BY</code> to match your definition of "duplicate."
+</p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">5. Write a SQL query to find the 10th highest salary in an Employee table.</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use <code>ORDER BY</code> with <code>LIMIT</code> and <code>OFFSET</code> or a subquery with <code>DISTINCT</code> to get the 10th highest unique salary.
+</p>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
 
 ```sql
 SELECT MIN(Salary) AS TenthHighestSalary
@@ -2189,9 +2290,19 @@ FROM (
 ```
 <p><i>This returns the 10th highest unique salary.</i></p>
 
+<p>
+    <b>Summary:</b> Use <code>DISTINCT</code> to ignore duplicates; adjust <code>LIMIT</code> for other ranks.
+</p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">6. How would you retrieve the last 5 records (by date or ID) from a table?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Order by the relevant column in descending order and use <code>LIMIT</code>.
+</p>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
 
 ```sql
 SELECT *
@@ -2201,9 +2312,19 @@ LIMIT 5;
 ```
 <p><i>Replace <code>date_column</code> with your ordering column.</i></p>
 
+<p>
+    <b>Summary:</b> This returns the most recent 5 records.
+</p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">7. Write a SQL query to exclude specific values (e.g., select all rows except those where ID is X or Y).</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use <code>NOT IN</code> or <code>!=</code> in the WHERE clause to exclude specific values.
+</p>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
 
 ```sql
 SELECT *
@@ -2211,9 +2332,19 @@ FROM Student
 WHERE ID NOT IN (X, Y);
 ```
 
+<p>
+    <b>Summary:</b> Replace <code>X</code> and <code>Y</code> with the IDs to exclude.
+</p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">8. How do you retrieve the Nth record (e.g., the 3rd record) from a table?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use <code>ORDER BY</code> with <code>LIMIT</code> and <code>OFFSET</code> to get the Nth row.
+</p>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
 
 ```sql
 SELECT *
@@ -2222,38 +2353,138 @@ ORDER BY ordering_column
 LIMIT 1 OFFSET 2; -- 0-based offset; 2 = 3rd row
 ```
 
+<p>
+    <b>Summary:</b> Adjust <code>OFFSET</code> for the desired row number (N-1).
+</p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">9. How do you obtain the CREATE TABLE DDL for an existing table in SQL?</b>
 
-<ul>
-    <li><b>MySQL:</b> <code>SHOW CREATE TABLE table_name;</code></li>
-    <li><b>PostgreSQL:</b> Use <code>pg_dump</code> or query <code>information_schema</code>.</li>
-    <li><b>SQL Server:</b> Use SSMS "Script Table as" or <code>sp_helptext</code> for views/procs.</li>
-</ul>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use database-specific commands or tools to get the DDL.
+</p>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        DDL Retrieval Methods
+    </caption>
+    <thead>
+        <tr style="background:#D6EAF8;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Database</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Command/Tool</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">MySQL</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;"><code>SHOW CREATE TABLE table_name;</code></td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">PostgreSQL</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;"><code>pg_dump</code> or query <code>information_schema</code></td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">SQL Server</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">SSMS "Script Table as" or <code>sp_helptext</code> for views/procs</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <b>Summary:</b> Use the appropriate command for your database to script table definitions.
+</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">10. Explain the difference between the RANK() and DENSE_RANK() window functions.</b>
 
-<ul>
-    <li><b>RANK():</b> Assigns a unique rank, skipping numbers after ties (e.g., 1, 2, 2, 4).</li>
-    <li><b>DENSE_RANK():</b> Assigns consecutive ranks, no gaps after ties (e.g., 1, 2, 2, 3).</li>
-</ul>
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Both functions assign ranks to rows based on ordering, but handle ties differently.
+</p>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        RANK() vs DENSE_RANK()
+    </caption>
+    <thead>
+        <tr style="background:#D6EAF8;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Function</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Ranking Behavior</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Example Output</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">RANK()</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Skips rank after ties</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">1, 2, 2, 4</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">DENSE_RANK()</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">No gaps after ties</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">1, 2, 2, 3</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <b>Summary:</b> Use <b>RANK()</b> when you want gaps after ties; use <b>DENSE_RANK()</b> for consecutive ranking.
+</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">11. When would you use ROW_NUMBER(), RANK(), or DENSE_RANK() in a query? Give a use case.</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use these window functions for ranking, pagination, or deduplication.
+</p>
+
 <ul>
-    <li><b>ROW_NUMBER():</b> To assign a unique sequential number to each row (e.g., pagination).</li>
-    <li><b>RANK():</b> To rank rows with possible gaps after ties (e.g., competition ranking).</li>
-    <li><b>DENSE_RANK():</b> To rank rows without gaps after ties (e.g., leaderboard with shared positions).</li>
+    <li><b>ROW_NUMBER():</b> Assigns a unique sequential number to each row (e.g., for pagination).</li>
+    <li><b>RANK():</b> Ranks rows with possible gaps after ties (e.g., competition ranking).</li>
+    <li><b>DENSE_RANK():</b> Ranks rows without gaps after ties (e.g., leaderboard with shared positions).</li>
 </ul>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        Window Function Use Cases
+    </caption>
+    <thead>
+        <tr style="background:#D6EAF8;">
+            <th style="border:1px solid #D5D8DC; padding:8px;">Function</th>
+            <th style="border:1px solid #D5D8DC; padding:8px;">Typical Use Case</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">ROW_NUMBER()</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Pagination, deduplication</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">RANK()</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Competition ranking with gaps</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #D5D8DC; padding:8px;">DENSE_RANK()</td>
+            <td style="border:1px solid #D5D8DC; padding:8px;">Leaderboard without gaps</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <b>Summary:</b> Choose the function based on how you want to handle ties and numbering.
+</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">12. Write a SQL query to compute the median number of searches made by users, given a summary table of search counts.</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use window functions to rank and find the median value.
+</p>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
 
 ```sql
 SELECT AVG(search_count) AS median_searches
@@ -2267,9 +2498,19 @@ WHERE rn IN (FLOOR((total + 1) / 2), CEIL((total + 1) / 2));
 ```
 <p><i>This works for both even and odd row counts.</i></p>
 
+<p>
+    <b>Summary:</b> Median is the middle value (or average of two middle values) in ordered data.
+</p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">13. Write a SQL query to calculate the sum of odd-numbered and even-numbered measurements separately for each day.</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use <code>CASE</code> expressions to separate odd and even measurement numbers.
+</p>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
 
 ```sql
 SELECT
@@ -2280,9 +2521,19 @@ FROM measurements
 GROUP BY day;
 ```
 
+<p>
+    <b>Summary:</b> Use <code>MOD</code> or <code>%</code> operator to distinguish odd/even numbers.
+</p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 
 <b style="color:#1C4980;font-weight:bold;">14. Write a SQL query to get the average review rating for each product for each month.</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+    Use <code>GROUP BY</code> with date truncation to aggregate by month.
+</p>
+
+<p><b style="color:#B9770E;">Syntax & Example:</b></p>
 
 ```sql
 SELECT
@@ -2293,5 +2544,9 @@ FROM reviews
 GROUP BY product_id, DATE_TRUNC('month', review_date);
 ```
 <p><i>Replace <code>DATE_TRUNC</code> with the appropriate function for your SQL dialect.</i></p>
+
+<p>
+    <b>Summary:</b> Aggregating by truncated date groups results by month.
+</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
