@@ -8,16 +8,85 @@
     <b style="color:#154360; font-size:1.5em;">Data Types & Miscellaneous Concepts</b>
 </blockquote>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
 
 <hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">1. What is the difference between VARCHAR and NVARCHAR (or between non-Unicode and Unicode text types)?</b>
 
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">2. How do you decide which numeric data type to use (e.g., INT vs BIGINT vs DECIMAL) for a column?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">3. What are the differences between DATE, DATETIME, and TIMESTAMP data types in SQL?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">4. What is the difference between CHAR and VARCHAR types? When would you use each?</b>
+
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">5. What is a UUID/GUID data type and when might you use it as a key?</b>
+
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">6. How do TEXT or BLOB data types differ from VARCHAR/TEXT, and when would you use them?</b>
+
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">7. What are table constraints like NOT NULL, DEFAULT, UNIQUE, and CHECK? Give an example of each.</b>
+
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">8. What is a DEFAULT constraint (or AUTO_INCREMENT/IDENTITY), and how do you use it?</b>
+
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">9. What is SQL injection, and how can you prevent it (e.g. via parameterized queries or stored procedures)?</b>
+
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">10. What are some common differences between SQL dialects (such as MySQL, PostgreSQL, SQL Server) that you should be aware of?</b>
+
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">11. What is the difference between the DELETE, TRUNCATE, and DROP SQL statements?</b>
+
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">12. How do you use a Common Table Expression (CTE) with WITH in SQL, and what is a recursive CTE?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Normalization & Schema Design</b>
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">What is database normalization and what are the normal forms (1NF, 2NF, 3NF, BCNF)?</b>
 
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">Given a table with repeating groups of data (e.g. Customer and multiple phone numbers), how would you normalize the table to 3NF?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">Explain how denormalization can be used for performance, and what the trade-offs are (e.g. redundancy vs. speed).</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">What kinds of data anomalies (insertion, update, deletion anomalies) are prevented by normalization?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How would you design a table schema to handle a many-to-many relationship, for example between Students and Courses?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">Explain the concept of denormalization with an example scenario in a large database.</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">What is a surrogate key vs a natural key, and when would you choose each in table design?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How do you implement a 1-to-1 relationship versus a 1-to-many relationship in table design?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How do you enforce referential integrity without foreign key constraints? (e.g. using triggers)</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How would you handle schema migrations or changes in a production database environment?</b>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
@@ -26,6 +95,41 @@
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How would you design a database schema for an e-commerce system (e.g., with users, products, orders, payments, reviews)?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How would you scale a relational database to handle heavy read/write traffic? Discuss techniques such as sharding, replication, partitioning, and caching.</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How would you design tables to represent hierarchical data such as product categories and subcategories?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">What is database sharding and what benefits does it provide?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">What is database partitioning, and when would you use it?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">Explain the difference between OLTP (transactional) and OLAP (analytical) database schema design. </b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">What is a surrogate key, and why might you use it instead of a natural key?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How do you enforce referential integrity between tables? What role do foreign keys play?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How do you represent many-to-many, one-to-many, and one-to-one relationships in a relational schema?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">How do you handle changes to the database schema in production (schema migration/ versioning)?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">What is the CAP theorem (consistency, availability, partition tolerance) in the context of distributed database systems?</b>
+
+<hr style="border:1px solidrgb(0, 0, 0);">
+<b style="color:#1C4980;font-weight:bold;">When might you choose a NoSQL database over a SQL database for an application? What trade-offs are involved?</b>
+
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
@@ -4187,7 +4291,7 @@ FROM table_name;
 Suppose you have a <code>Scores</code> table:
 
 | Player | Score |
-|--------|-------|
+| ------ | ----- |
 | A      | 100   |
 | B      | 90    |
 | C      | 90    |
@@ -4196,7 +4300,7 @@ Suppose you have a <code>Scores</code> table:
 Applying <code>RANK()</code> and <code>DENSE_RANK()</code>:
 
 | Player | Score | RANK() | DENSE_RANK() |
-|--------|-------|--------|--------------|
+| ------ | ----- | ------ | ------------ |
 | A      | 100   | 1      | 1            |
 | B      | 90    | 2      | 2            |
 | C      | 90    | 2      | 2            |
@@ -4276,7 +4380,7 @@ Applying <code>RANK()</code> and <code>DENSE_RANK()</code>:
 Suppose you have a <code>Sales</code> table:
 
 | Employee | SalesAmount |
-|----------|-------------|
+| -------- | ----------- |
 | Alice    | 500         |
 | Bob      | 400         |
 | Carol    | 400         |
@@ -4297,7 +4401,7 @@ FROM Sales;
 Result:
 
 | Employee | SalesAmount | row_num | rank | dense_rank |
-|----------|-------------|---------|------|------------|
+| -------- | ----------- | ------- | ---- | ---------- |
 | Alice    | 500         | 1       | 1    | 1          |
 | Bob      | 400         | 2       | 2    | 2          |
 | Carol    | 400         | 3       | 2    | 2          |
@@ -4395,12 +4499,12 @@ FROM user_search_summary;
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 
 | user_id | search_count |
-|---------|-------------|
-| 1       | 5           |
-| 2       | 2           |
-| 3       | 7           |
-| 4       | 3           |
-| 5       | 4           |
+| ------- | ------------ |
+| 1       | 5            |
+| 2       | 2            |
+| 3       | 7            |
+| 4       | 3            |
+| 5       | 4            |
 
 <ul>
     <li>Ordered <code>search_count</code>: 2, 3, 4, 5, 7</li>
@@ -4442,17 +4546,17 @@ GROUP BY day;
 <p><b style="color:#B9770E;">Example Data:</b></p>
 
 | day        | measurement_number | value |
-|------------|-------------------|-------|
-| 2024-06-01 | 1                 | 10    |
-| 2024-06-01 | 2                 | 20    |
-| 2024-06-01 | 3                 | 30    |
-| 2024-06-02 | 1                 | 15    |
-| 2024-06-02 | 2                 | 25    |
+| ---------- | ------------------ | ----- |
+| 2024-06-01 | 1                  | 10    |
+| 2024-06-01 | 2                  | 20    |
+| 2024-06-01 | 3                  | 30    |
+| 2024-06-02 | 1                  | 15    |
+| 2024-06-02 | 2                  | 25    |
 
 <p><b style="color:#B9770E;">Result:</b></p>
 
 | day        | odd_sum | even_sum |
-|------------|---------|----------|
+| ---------- | ------- | -------- |
 | 2024-06-01 | 40      | 20       |
 | 2024-06-02 | 15      | 25       |
 
@@ -4573,7 +4677,7 @@ ORDER BY product_id, review_month;
 <p><b style="color:#B9770E;">Sample Data:</b></p>
 
 | product_id | review_date | rating |
-|------------|-------------|--------|
+| ---------- | ----------- | ------ |
 | 101        | 2024-05-10  | 4      |
 | 101        | 2024-05-15  | 5      |
 | 101        | 2024-06-01  | 3      |
@@ -4583,7 +4687,7 @@ ORDER BY product_id, review_month;
 <p><b style="color:#B9770E;">Sample Output:</b></p>
 
 | product_id | review_month | avg_rating |
-|------------|--------------|------------|
+| ---------- | ------------ | ---------- |
 | 101        | 2024-05-01   | 4.5        |
 | 101        | 2024-06-01   | 3.0        |
 | 102        | 2024-05-01   | 2.0        |
