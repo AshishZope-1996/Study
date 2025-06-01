@@ -1,57 +1,317 @@
-<h1 style="color:#154360; text-align:left; font-size:2.5em; font-weight:bold; margin-bottom:0; letter-spacing:1px;">
+<h1 style="color:#154360; text-align:center; font-size:2.5em; font-weight:bold; margin-bottom:0; letter-spacing:1px;">
     <span style="color:#1C4980;">SQL Interview Questions for Experienced Candidates (3+ years)</span>
 </h1>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Data Types & Miscellaneous Concepts</b>
 </blockquote>
 
-
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">1. What is the difference between VARCHAR and NVARCHAR (or between non-Unicode and Unicode text types)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<b>VARCHAR</b> stores variable-length, non-Unicode character data, using 1 byte per character (in most encodings). <b>NVARCHAR</b> stores variable-length, Unicode character data, using 2 bytes per character (UTF-16). Use <b>NVARCHAR</b> when you need to support multiple languages or special characters beyond ASCII.
+</p>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <caption style="caption-side: top; font-weight: bold; color: #1C4980; padding: 6px;">
+        VARCHAR vs NVARCHAR Comparison
+    </caption>
+    <thead>
+        <tr style="background:#D6EAF8;">
+            <th>Type</th>
+            <th>Encoding</th>
+            <th>Storage</th>
+            <th>Use Case</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>VARCHAR</td>
+            <td>Non-Unicode (ASCII/ANSI)</td>
+            <td>1 byte/char</td>
+            <td>English, Western languages</td>
+        </tr>
+        <tr>
+            <td>NVARCHAR</td>
+            <td>Unicode (UTF-16)</td>
+            <td>2 bytes/char</td>
+            <td>Internationalization, multi-language</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><b>Syntax Example:</b></p>
+
+```sql
+CREATE TABLE Example (
+    Name VARCHAR(50),
+    Description NVARCHAR(100)
+);
+```
+<p><i>Use NVARCHAR for columns that may store non-Latin characters.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">2. How do you decide which numeric data type to use (e.g., INT vs BIGINT vs DECIMAL) for a column?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+Choose numeric types based on the range and precision required:
+<ul>
+    <li><b>INT</b>: 4 bytes, range -2,147,483,648 to 2,147,483,647. Use for standard integer values (IDs, counts).</li>
+    <li><b>BIGINT</b>: 8 bytes, much larger range. Use for very large numbers (e.g., high-volume IDs).</li>
+    <li><b>DECIMAL(p,s)</b>: Fixed precision and scale. Use for financial data to avoid rounding errors.</li>
+    <li><b>FLOAT/REAL</b>: Approximate, floating-point numbers. Use for scientific or statistical data where precision is less critical.</li>
+</ul>
+<p><b>Syntax Example:</b></p>
+
+```sql
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    TotalAmount DECIMAL(12,2),
+    LargeCounter BIGINT
+);
+```
+<p><i>Use DECIMAL for money, INT for IDs, BIGINT for large counters.</i></p>
+
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">3. What are the differences between DATE, DATETIME, and TIMESTAMP data types in SQL?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>DATE</b>: Stores only the date (year, month, day).</li>
+    <li><b>DATETIME</b>: Stores date and time (year, month, day, hour, minute, second, sometimes fractions of a second).</li>
+    <li><b>TIMESTAMP</b>: Stores date and time, often with automatic time zone or row versioning (behavior varies by DBMS).</li>
+</ul>
+<table style="width:100%; border-collapse:collapse; border:1px solid #D5D8DC;">
+    <thead>
+        <tr style="background:#D6EAF8;">
+            <th>Type</th>
+            <th>Example Value</th>
+            <th>Use Case</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DATE</td>
+            <td>2024-06-01</td>
+            <td>Birthdays, due dates</td>
+        </tr>
+        <tr>
+            <td>DATETIME</td>
+            <td>2024-06-01 14:30:00</td>
+            <td>Event timestamps</td>
+        </tr>
+        <tr>
+            <td>TIMESTAMP</td>
+            <td>2024-06-01 14:30:00.123456</td>
+            <td>Row versioning, audit logs</td>
+        </tr>
+    </tbody>
+</table>
+<p><b>Syntax Example:</b></p>
+
+```sql
+CREATE TABLE Events (
+    EventDate DATE,
+    EventTimestamp DATETIME,
+    RowVersion TIMESTAMP
+);
+```
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">4. What is the difference between CHAR and VARCHAR types? When would you use each?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>CHAR(n)</b>: Fixed-length string. Always uses n bytes, padded with spaces if input is shorter. Use for values of consistent length (e.g., country codes).</li>
+    <li><b>VARCHAR(n)</b>: Variable-length string. Uses only as much space as needed, up to n bytes. Use for variable-length text (names, descriptions).</li>
+</ul>
+<p><b>Syntax Example:</b></p>
+
+```sql
+CREATE TABLE Example (
+    CountryCode CHAR(2),
+    CityName VARCHAR(100)
+);
+```
+<p><i>Use CHAR for fixed codes, VARCHAR for variable text.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">5. What is a UUID/GUID data type and when might you use it as a key?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+A <b>UUID</b> (Universally Unique Identifier) or <b>GUID</b> (Globally Unique Identifier) is a 128-bit value used to uniquely identify records across tables, databases, or systems. Use as a primary key when you need uniqueness across distributed systems or want to avoid key collisions (e.g., in replication or sharding scenarios).
+</p>
+<p><b>Syntax Example (SQL Server):</b></p>
+
+```sql
+CREATE TABLE Users (
+    UserID UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
+    UserName VARCHAR(50)
+);
+```
+<p><i>UUIDs are longer than INTs, but guarantee uniqueness even across servers.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">6. How do TEXT or BLOB data types differ from VARCHAR/TEXT, and when would you use them?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>TEXT</b>: Used for large amounts of character data (e.g., articles, comments). Size limit is much higher than VARCHAR.</li>
+    <li><b>BLOB</b>: Used for storing binary data (images, files, audio). Not intended for text.</li>
+    <li><b>VARCHAR</b>: For shorter, variable-length text (names, titles).</li>
+</ul>
+<p><b>Syntax Example (MySQL):</b></p>
+
+```sql
+CREATE TABLE Documents (
+    DocID INT PRIMARY KEY,
+    DocText TEXT,
+    DocFile BLOB
+);
+```
+<p><i>Use TEXT for long text, BLOB for binary data.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">7. What are table constraints like NOT NULL, DEFAULT, UNIQUE, and CHECK? Give an example of each.</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>NOT NULL</b>: Ensures a column cannot have NULL values.</li>
+    <li><b>DEFAULT</b>: Sets a default value if none is provided.</li>
+    <li><b>UNIQUE</b>: Ensures all values in a column are unique.</li>
+    <li><b>CHECK</b>: Enforces a condition on column values.</li>
+</ul>
+<p><b>Syntax Example:</b></p>
+
+```sql
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Email VARCHAR(100) UNIQUE,
+    Status VARCHAR(10) NOT NULL DEFAULT 'Active',
+    Age INT CHECK (Age >= 18)
+);
+```
+<p><i>Each constraint enforces data integrity in a different way.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">8. What is a DEFAULT constraint (or AUTO_INCREMENT/IDENTITY), and how do you use it?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>DEFAULT</b>: Assigns a default value if none is provided during insert.</li>
+    <li><b>AUTO_INCREMENT</b> (MySQL) / <b>IDENTITY</b> (SQL Server): Automatically generates unique values for a column, typically used for primary keys.</li>
+</ul>
+<p><b>Syntax Example (MySQL):</b></p>
+
+```sql
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    OrderDate DATE DEFAULT CURRENT_DATE
+);
+```
+<p><b>Syntax Example (SQL Server):</b></p>
+
+```sql
+CREATE TABLE Orders (
+    OrderID INT IDENTITY(1,1) PRIMARY KEY,
+    OrderDate DATE DEFAULT GETDATE()
+);
+```
+<p><i>Use for auto-generated keys and default values.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">9. What is SQL injection, and how can you prevent it (e.g. via parameterized queries or stored procedures)?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+<b>SQL injection</b> is a security vulnerability where attackers inject malicious SQL code via user input, potentially compromising the database. Prevent it by:
+<ul>
+    <li>Using <b>parameterized queries</b> (prepared statements) instead of string concatenation.</li>
+    <li>Using <b>stored procedures</b> with parameters.</li>
+    <li>Validating and sanitizing user input.</li>
+    <li>Limiting database permissions.</li>
+</ul>
+<p><b>Example (parameterized query in Python):</b></p>
+
+```python
+cursor.execute("SELECT * FROM Users WHERE username = %s", (username,))
+```
+<p><i>Never concatenate user input directly into SQL statements.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">10. What are some common differences between SQL dialects (such as MySQL, PostgreSQL, SQL Server) that you should be aware of?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+SQL dialects differ in:
+<ul>
+    <li>Data types (e.g., <code>AUTO_INCREMENT</code> in MySQL, <code>SERIAL</code> in PostgreSQL, <code>IDENTITY</code> in SQL Server).</li>
+    <li>String concatenation (<code>CONCAT()</code> in MySQL/PostgreSQL, <code>+</code> in SQL Server).</li>
+    <li>Limit/offset syntax (<code>LIMIT</code> in MySQL/PostgreSQL, <code>TOP</code> in SQL Server).</li>
+    <li>Functions (date/time, string, etc.).</li>
+    <li>Case sensitivity, quoting identifiers, and default behaviors.</li>
+</ul>
+<p><b>Example:</b></p>
+
+```sql
+-- MySQL
+SELECT * FROM Users LIMIT 10;
+
+-- SQL Server
+SELECT TOP 10 * FROM Users;
+
+-- PostgreSQL
+SELECT * FROM Users LIMIT 10;
+```
+<p><i>Always check documentation for your specific DBMS.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">11. What is the difference between the DELETE, TRUNCATE, and DROP SQL statements?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>DELETE</b>: Removes rows from a table based on a condition. Can be rolled back (transactional).</li>
+    <li><b>TRUNCATE</b>: Removes all rows from a table, resets identity columns. Cannot filter rows, often faster, may not be rolled back in all DBMS.</li>
+    <li><b>DROP</b>: Deletes the entire table structure and data.</li>
+</ul>
+<p><b>Syntax Example:</b></p>
+
+```sql
+DELETE FROM Employees WHERE Status = 'Inactive';
+TRUNCATE TABLE Employees;
+DROP TABLE Employees;
+```
+<p><i>Use DELETE for selective removal, TRUNCATE for all rows, DROP to remove the table entirely.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <b style="color:#1C4980;font-weight:bold;">12. How do you use a Common Table Expression (CTE) with WITH in SQL, and what is a recursive CTE?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+A <b>CTE</b> (Common Table Expression) is a temporary result set defined with <code>WITH</code> that can be referenced within a query. A <b>recursive CTE</b> is a CTE that references itself, useful for hierarchical data (e.g., org charts, trees).
+</p>
+<p><b>Syntax Example (Simple CTE):</b></p>
+
+```sql
+WITH HighEarners AS (
+    SELECT * FROM Employees WHERE Salary > 100000
+)
+SELECT * FROM HighEarners;
+```
+<p><b>Syntax Example (Recursive CTE):</b></p>
+
+```sql
+WITH OrgChart AS (
+    SELECT EmployeeID, ManagerID, 0 AS Level
+    FROM Employees
+    WHERE ManagerID IS NULL
+    UNION ALL
+    SELECT e.EmployeeID, e.ManagerID, oc.Level + 1
+    FROM Employees e
+    INNER JOIN OrgChart oc ON e.ManagerID = oc.EmployeeID
+)
+SELECT * FROM OrgChart;
+```
+<p><i>Recursive CTEs are powerful for traversing hierarchical relationships.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
@@ -59,34 +319,198 @@
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">What is database normalization and what are the normal forms (1NF, 2NF, 3NF, BCNF)?</b>
+<b style="color:#1C4980;font-weight:bold;">1. What is database normalization and what are the normal forms (1NF, 2NF, 3NF, BCNF)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<b>Normalization</b> is the process of organizing data to reduce redundancy and improve data integrity. The main normal forms are:
+<ul>
+    <li><b>1NF (First Normal Form):</b> No repeating groups or arrays; each field contains atomic values.</li>
+    <li><b>2NF (Second Normal Form):</b> 1NF + all non-key attributes fully depend on the entire primary key (no partial dependency).</li>
+    <li><b>3NF (Third Normal Form):</b> 2NF + no transitive dependencies (non-key attributes depend only on the key).</li>
+    <li><b>BCNF (Boyce-Codd Normal Form):</b> Every determinant is a candidate key (stricter than 3NF).</li>
+</ul>
+<p><b>Example:</b></p>
+
+```sql
+-- 1NF: No repeating groups
+CREATE TABLE Orders (
+    OrderID INT,
+    ProductID INT,
+    Quantity INT
+);
+```
+<p><i>Normalization prevents anomalies and ensures data consistency.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">Given a table with repeating groups of data (e.g. Customer and multiple phone numbers), how would you normalize the table to 3NF?</b>
+<b style="color:#1C4980;font-weight:bold;">2. Given a table with repeating groups of data (e.g. Customer and multiple phone numbers), how would you normalize the table to 3NF?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+Split the table into separate tables for each entity and relationship.
+<p><b>Example:</b></p>
+
+```sql
+-- Unnormalized:
+-- CustomerID | Name | Phone1 | Phone2 | Phone3
+
+-- 3NF:
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    Name VARCHAR(100)
+);
+
+CREATE TABLE CustomerPhones (
+    PhoneID INT PRIMARY KEY,
+    CustomerID INT,
+    PhoneNumber VARCHAR(20),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+```
+<p><i>Each phone number is a separate row, eliminating repeating groups.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">Explain how denormalization can be used for performance, and what the trade-offs are (e.g. redundancy vs. speed).</b>
+<b style="color:#1C4980;font-weight:bold;">3. Explain how denormalization can be used for performance, and what the trade-offs are (e.g. redundancy vs. speed).</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<b>Denormalization</b> is the process of intentionally introducing redundancy by combining tables or storing derived data to improve read performance. Trade-offs:
+<ul>
+    <li><b>Pros:</b> Faster queries, fewer joins, better reporting performance.</li>
+    <li><b>Cons:</b> Data redundancy, risk of inconsistencies, more complex updates.</li>
+</ul>
+<p><b>Example:</b> Storing <code>TotalOrderAmount</code> in the Orders table instead of calculating it from OrderItems each time.</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">What kinds of data anomalies (insertion, update, deletion anomalies) are prevented by normalization?</b>
+<b style="color:#1C4980;font-weight:bold;">4. What kinds of data anomalies (insertion, update, deletion anomalies) are prevented by normalization?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+Normalization prevents:
+<ul>
+    <li><b>Insertion anomaly:</b> Can't add data due to missing other data (e.g., can't add a phone without a customer).</li>
+    <li><b>Update anomaly:</b> Inconsistent updates due to redundant data (e.g., changing a customer's address in one row but not another).</li>
+    <li><b>Deletion anomaly:</b> Deleting a row removes unintended data (e.g., deleting the last order for a customer removes the customer record).</li>
+</ul>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How would you design a table schema to handle a many-to-many relationship, for example between Students and Courses?</b>
+<b style="color:#1C4980;font-weight:bold;">5. How would you design a table schema to handle a many-to-many relationship, for example between Students and Courses?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+Use a <b>junction table</b> (bridge table) to represent the relationship.
+<p><b>Example:</b></p>
+
+```sql
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(100)
+);
+
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    Title VARCHAR(100)
+);
+
+CREATE TABLE StudentCourses (
+    StudentID INT,
+    CourseID INT,
+    PRIMARY KEY (StudentID, CourseID),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
+```
+<p><i>Each row in StudentCourses links a student to a course.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">Explain the concept of denormalization with an example scenario in a large database.</b>
+<b style="color:#1C4980;font-weight:bold;">6. Explain the concept of denormalization with an example scenario in a large database.</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+In a reporting database, you might denormalize by storing customer name and address in the Orders table, even though this data is also in the Customers table. This avoids joins and speeds up reporting, but requires extra care to keep data in sync.
+<p><b>Example:</b></p>
+
+```sql
+-- Orders table includes redundant customer info for reporting speed
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    CustomerName VARCHAR(100),
+    CustomerAddress VARCHAR(200),
+    OrderDate DATE
+);
+```
+<p><i>Denormalization is a trade-off between speed and data integrity.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">What is a surrogate key vs a natural key, and when would you choose each in table design?</b>
+<b style="color:#1C4980;font-weight:bold;">7. What is a surrogate key vs a natural key, and when would you choose each in table design?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>Natural key:</b> A key made from real-world data (e.g., email, SSN).</li>
+    <li><b>Surrogate key:</b> An artificial key (e.g., auto-increment integer, UUID) with no business meaning.</li>
+</ul>
+<p><b>Choose surrogate keys</b> when natural keys are large, changeable, or not guaranteed unique. Surrogate keys simplify relationships and indexing.</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How do you implement a 1-to-1 relationship versus a 1-to-many relationship in table design?</b>
+<b style="color:#1C4980;font-weight:bold;">8. How do you implement a 1-to-1 relationship versus a 1-to-many relationship in table design?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>1-to-1:</b> Use a unique foreign key in one table referencing the primary key of another.</li>
+    <li><b>1-to-many:</b> Use a foreign key in the "many" table referencing the "one" table.</li>
+</ul>
+<p><b>Example:</b></p>
+
+```sql
+-- 1-to-1: Each User has one Profile
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY
+);
+CREATE TABLE Profiles (
+    ProfileID INT PRIMARY KEY,
+    UserID INT UNIQUE,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+-- 1-to-many: Each Department has many Employees
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY
+);
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+```
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How do you enforce referential integrity without foreign key constraints? (e.g. using triggers)</b>
+<b style="color:#1C4980;font-weight:bold;">9. How do you enforce referential integrity without foreign key constraints? (e.g. using triggers)</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+If foreign keys are not available, use <b>triggers</b> to enforce referential integrity by checking for valid references before insert/update/delete.
+<p><b>Example (MySQL):</b></p>
+
+```sql
+DELIMITER $$
+CREATE TRIGGER check_department_before_insert
+BEFORE INSERT ON Employees
+FOR EACH ROW
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM Departments WHERE DepartmentID = NEW.DepartmentID) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid DepartmentID';
+    END IF;
+END$$
+DELIMITER ;
+```
+<p><i>Triggers can enforce rules, but are harder to maintain than foreign keys.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How would you handle schema migrations or changes in a production database environment?</b>
+<b style="color:#1C4980;font-weight:bold;">10. How would you handle schema migrations or changes in a production database environment?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+Use a <b>migration tool</b> (e.g., Flyway, Liquibase, Alembic) to version and apply schema changes. Steps:
+<ul>
+    <li>Write migration scripts (ALTER TABLE, CREATE INDEX, etc.).</li>
+    <li>Test in staging before production.</li>
+    <li>Apply changes during maintenance windows.</li>
+    <li>Have rollback plans and backups.</li>
+</ul>
+<p><i>Never change production schemas manually; always use version control and automation.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 
@@ -95,41 +519,210 @@
 </blockquote>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How would you design a database schema for an e-commerce system (e.g., with users, products, orders, payments, reviews)?</b>
+<b style="color:#1C4980;font-weight:bold;">1. How would you design a database schema for an e-commerce system (e.g., with users, products, orders, payments, reviews)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+Design separate tables for each entity and use foreign keys for relationships.
+<p><b>Example Schema:</b></p>
+
+```sql
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY,
+    UserName VARCHAR(50)
+);
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Price DECIMAL(10,2)
+);
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    UserID INT,
+    OrderDate DATETIME,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+CREATE TABLE OrderItems (
+    OrderItemID INT PRIMARY KEY,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+CREATE TABLE Payments (
+    PaymentID INT PRIMARY KEY,
+    OrderID INT,
+    Amount DECIMAL(10,2),
+    PaymentDate DATETIME,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
+
+CREATE TABLE Reviews (
+    ReviewID INT PRIMARY KEY,
+    ProductID INT,
+    UserID INT,
+    Rating INT,
+    Comment TEXT,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+```
+<p><i>Each table represents a real-world entity; relationships are enforced via foreign keys.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How would you scale a relational database to handle heavy read/write traffic? Discuss techniques such as sharding, replication, partitioning, and caching.</b>
+<b style="color:#1C4980;font-weight:bold;">2. How would you scale a relational database to handle heavy read/write traffic? Discuss techniques such as sharding, replication, partitioning, and caching.</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>Replication:</b> Copy data to multiple servers for read scaling and high availability.</li>
+    <li><b>Sharding:</b> Split data across multiple databases/servers based on a key (e.g., user ID).</li>
+    <li><b>Partitioning:</b> Divide large tables into smaller, more manageable pieces (by range, list, hash).</li>
+    <li><b>Caching:</b> Use in-memory caches (Redis, Memcached) to reduce database load for frequent queries.</li>
+</ul>
+<p><i>Combine these techniques for large-scale systems.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How would you design tables to represent hierarchical data such as product categories and subcategories?</b>
+<b style="color:#1C4980;font-weight:bold;">3. How would you design tables to represent hierarchical data such as product categories and subcategories?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+Use a <b>self-referencing foreign key</b> to represent parent-child relationships.
+<p><b>Example:</b></p>
+
+```sql
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY,
+    CategoryName VARCHAR(100),
+    ParentCategoryID INT,
+    FOREIGN KEY (ParentCategoryID) REFERENCES Categories(CategoryID)
+);
+```
+<p><i>This allows for unlimited nesting of categories.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">What is database sharding and what benefits does it provide?</b>
+<b style="color:#1C4980;font-weight:bold;">4. What is database sharding and what benefits does it provide?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<b>Sharding</b> splits a large database into smaller, independent pieces (shards), each on a separate server. Benefits:
+<ul>
+    <li>Improved scalability (write and read).</li>
+    <li>Isolation of failures.</li>
+    <li>Better resource utilization.</li>
+</ul>
+<p><i>Sharding is complex but essential for very large systems.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">What is database partitioning, and when would you use it?</b>
+<b style="color:#1C4980;font-weight:bold;">5. What is database partitioning, and when would you use it?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<b>Partitioning</b> divides a table into smaller segments (partitions) based on a key (e.g., date, region). Use for:
+<ul>
+    <li>Improved query performance on large tables.</li>
+    <li>Easier data management (archiving, purging).</li>
+    <li>Parallel processing.</li>
+</ul>
+<p><b>Example (SQL Server):</b> Partitioning a sales table by year.</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">Explain the difference between OLTP (transactional) and OLAP (analytical) database schema design. </b>
+<b style="color:#1C4980;font-weight:bold;">6. Explain the difference between OLTP (transactional) and OLAP (analytical) database schema design. </b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>OLTP:</b> Highly normalized, optimized for fast inserts/updates, supports day-to-day transactions (e.g., e-commerce).</li>
+    <li><b>OLAP:</b> Denormalized (star/snowflake schema), optimized for complex queries and reporting, supports analytics (e.g., data warehouses).</li>
+</ul>
+<p><i>OLTP = speed and integrity; OLAP = query performance and aggregation.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">What is a surrogate key, and why might you use it instead of a natural key?</b>
+<b style="color:#1C4980;font-weight:bold;">8. What is a surrogate key, and why might you use it instead of a natural key?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+A <b>surrogate key</b> is an artificial, system-generated key (e.g., auto-increment integer) used as a primary key. Use it when natural keys are large, changeable, or not guaranteed unique. Surrogate keys simplify joins and indexing.
+<p><b>Example:</b></p>
+
+```sql
+CREATE TABLE Customers (
+    CustomerID INT IDENTITY PRIMARY KEY, -- surrogate key
+    Email VARCHAR(100) -- natural key
+);
+```
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How do you enforce referential integrity between tables? What role do foreign keys play?</b>
+<b style="color:#1C4980;font-weight:bold;">9. How do you enforce referential integrity between tables? What role do foreign keys play?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<b>Foreign keys</b> enforce referential integrity by ensuring that a value in one table (child) must exist in another table (parent). They prevent orphaned records and maintain data consistency.
+<p><b>Example:</b></p>
+
+```sql
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+```
+<p><i>Foreign keys ensure every order references a valid customer.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How do you represent many-to-many, one-to-many, and one-to-one relationships in a relational schema?</b>
+<b style="color:#1C4980;font-weight:bold;">10. How do you represent many-to-many, one-to-many, and one-to-one relationships in a relational schema?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+<ul>
+    <li><b>One-to-many:</b> Foreign key in the "many" table.</li>
+    <li><b>One-to-one:</b> Unique foreign key in one table referencing the other.</li>
+    <li><b>Many-to-many:</b> Junction table with foreign keys to both tables.</li>
+</ul>
+<p><b>Example:</b></p>
+
+```sql
+-- Many-to-many: Students and Courses
+CREATE TABLE StudentCourses (
+    StudentID INT,
+    CourseID INT,
+    PRIMARY KEY (StudentID, CourseID),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
+```
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">How do you handle changes to the database schema in production (schema migration/ versioning)?</b>
+<b style="color:#1C4980;font-weight:bold;">11. How do you handle changes to the database schema in production (schema migration/ versioning)?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+Use migration/versioning tools (Flyway, Liquibase, Alembic) to manage schema changes. Steps:
+<ul>
+    <li>Write migration scripts.</li>
+    <li>Test in staging.</li>
+    <li>Apply in production with backups and rollback plans.</li>
+</ul>
+<p><i>Never change schemas manually in production.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">What is the CAP theorem (consistency, availability, partition tolerance) in the context of distributed database systems?</b>
+<b style="color:#1C4980;font-weight:bold;">12. What is the CAP theorem (consistency, availability, partition tolerance) in the context of distributed database systems?</b>
+
+<p><b style="color:#B9770E;">Answer:</b><br>
+The <b>CAP theorem</b> states that a distributed system can only guarantee two out of three:
+<ul>
+    <li><b>Consistency:</b> All nodes see the same data at the same time.</li>
+    <li><b>Availability:</b> Every request receives a response (success/failure).</li>
+    <li><b>Partition tolerance:</b> The system continues to operate despite network partitions.</li>
+</ul>
+<p><i>Design choices depend on which two properties are prioritized.</i></p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
-<b style="color:#1C4980;font-weight:bold;">When might you choose a NoSQL database over a SQL database for an application? What trade-offs are involved?</b>
+<b style="color:#1C4980;font-weight:bold;">12. When might you choose a NoSQL database over a SQL database for an application? What trade-offs are involved?</b>
 
+<p><b style="color:#B9770E;">Answer:</b><br>
+Choose <b>NoSQL</b> when:
+<ul>
+    <li>Data is unstructured or schema-less (e.g., JSON documents).</li>
+    <li>Horizontal scalability is required (big data, high write throughput).</li>
+    <li>Flexible schema or rapid iteration is needed.</li>
+</ul>
+<p><b>Trade-offs:</b> NoSQL often sacrifices strong consistency and complex querying for scalability and flexibility. SQL is better for structured data and complex transactions.</p>
 
 <hr style="border:1px solidrgb(0, 0, 0);">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
