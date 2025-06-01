@@ -1,12 +1,15 @@
 
 
 <h3 style="color:#1C4980;text-align: center;">Indexing and Keys</h3>
+
 ---
+
 <table cellpadding="8" cellspacing="0" style="width:100%; border:none;color:#1C4980 border-collapse:collapse; font-family:inherit;">
   <thead>
     <tr style="color:#1C4980;">
-<th align="left" style="border:none; width:80px;">Sr. No.</th>      <th align="left" style="border:none;color:#1C4980">Question</th>
-      <th align="left" style="border:none;color:#1C4980">Page No.</th>
+      <th align="left" style="border:none;color:#1C4980; width:80px;">Sr. No.</th>
+      <th align="left" style="border:none;color:#1C4980;">Question</th>
+      <th align="left" style="border:none;color:#1C4980; width:15px;">Page No.</th>
     </tr>
   </thead>
   <tbody>
