@@ -2,12 +2,12 @@
     <span style="color:#1C4980;">SQL Interview Questions for Experienced Candidates (3+ years)</span>
 </h1>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Data Types & Miscellaneous Concepts</b>
 </blockquote>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What is the difference between VARCHAR and NVARCHAR (or between non-Unicode and Unicode text types)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -52,7 +52,7 @@ CREATE TABLE Example (
 ```
 <p><i>Use NVARCHAR for columns that may store non-Latin characters.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. How do you decide which numeric data type to use (e.g., INT vs BIGINT vs DECIMAL) for a column?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -74,7 +74,7 @@ CREATE TABLE Orders (
 ```
 <p><i>Use DECIMAL for money, INT for IDs, BIGINT for large counters.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. What are the differences between DATE, DATETIME, and TIMESTAMP data types in SQL?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -119,7 +119,7 @@ CREATE TABLE Events (
 );
 ```
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. What is the difference between CHAR and VARCHAR types? When would you use each?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -137,7 +137,7 @@ CREATE TABLE Example (
 ```
 <p><i>Use CHAR for fixed codes, VARCHAR for variable text.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. What is a UUID/GUID data type and when might you use it as a key?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -153,7 +153,7 @@ CREATE TABLE Users (
 ```
 <p><i>UUIDs are longer than INTs, but guarantee uniqueness even across servers.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. How do TEXT or BLOB data types differ from VARCHAR/TEXT, and when would you use them?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -173,7 +173,7 @@ CREATE TABLE Documents (
 ```
 <p><i>Use TEXT for long text, BLOB for binary data.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. What are table constraints like NOT NULL, DEFAULT, UNIQUE, and CHECK? Give an example of each.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -195,7 +195,7 @@ CREATE TABLE Employees (
 ```
 <p><i>Each constraint enforces data integrity in a different way.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">8. What is a DEFAULT constraint (or AUTO_INCREMENT/IDENTITY), and how do you use it?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -221,7 +221,7 @@ CREATE TABLE Orders (
 ```
 <p><i>Use for auto-generated keys and default values.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">9. What is SQL injection, and how can you prevent it (e.g. via parameterized queries or stored procedures)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -239,7 +239,7 @@ cursor.execute("SELECT * FROM Users WHERE username = %s", (username,))
 ```
 <p><i>Never concatenate user input directly into SQL statements.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">10. What are some common differences between SQL dialects (such as MySQL, PostgreSQL, SQL Server) that you should be aware of?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -265,7 +265,7 @@ SELECT * FROM Users LIMIT 10;
 ```
 <p><i>Always check documentation for your specific DBMS.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">11. What is the difference between the DELETE, TRUNCATE, and DROP SQL statements?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -283,7 +283,7 @@ DROP TABLE Employees;
 ```
 <p><i>Use DELETE for selective removal, TRUNCATE for all rows, DROP to remove the table entirely.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">12. How do you use a Common Table Expression (CTE) with WITH in SQL, and what is a recursive CTE?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -313,12 +313,12 @@ SELECT * FROM OrgChart;
 ```
 <p><i>Recursive CTEs are powerful for traversing hierarchical relationships.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Normalization & Schema Design</b>
 </blockquote>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What is database normalization and what are the normal forms (1NF, 2NF, 3NF, BCNF)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -341,7 +341,7 @@ CREATE TABLE Orders (
 ```
 <p><i>Normalization prevents anomalies and ensures data consistency.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. Given a table with repeating groups of data (e.g. Customer and multiple phone numbers), how would you normalize the table to 3NF?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -367,7 +367,7 @@ CREATE TABLE CustomerPhones (
 ```
 <p><i>Each phone number is a separate row, eliminating repeating groups.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. Explain how denormalization can be used for performance, and what the trade-offs are (e.g. redundancy vs. speed).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -378,7 +378,7 @@ CREATE TABLE CustomerPhones (
 </ul>
 <p><b>Example:</b> Storing <code>TotalOrderAmount</code> in the Orders table instead of calculating it from OrderItems each time.</p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. What kinds of data anomalies (insertion, update, deletion anomalies) are prevented by normalization?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -389,7 +389,7 @@ Normalization prevents:
     <li><b>Deletion anomaly:</b> Deleting a row removes unintended data (e.g., deleting the last order for a customer removes the customer record).</li>
 </ul>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. How would you design a table schema to handle a many-to-many relationship, for example between Students and Courses?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -417,7 +417,7 @@ CREATE TABLE StudentCourses (
 ```
 <p><i>Each row in StudentCourses links a student to a course.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. Explain the concept of denormalization with an example scenario in a large database.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -436,7 +436,7 @@ CREATE TABLE Orders (
 ```
 <p><i>Denormalization is a trade-off between speed and data integrity.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. What is a surrogate key vs a natural key, and when would you choose each in table design?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -446,7 +446,7 @@ CREATE TABLE Orders (
 </ul>
 <p><b>Choose surrogate keys</b> when natural keys are large, changeable, or not guaranteed unique. Surrogate keys simplify relationships and indexing.</p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">8. How do you implement a 1-to-1 relationship versus a 1-to-many relationship in table design?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -478,7 +478,7 @@ CREATE TABLE Employees (
 );
 ```
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">9. How do you enforce referential integrity without foreign key constraints? (e.g. using triggers)</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -499,7 +499,7 @@ DELIMITER ;
 ```
 <p><i>Triggers can enforce rules, but are harder to maintain than foreign keys.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">10. How would you handle schema migrations or changes in a production database environment?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -512,13 +512,13 @@ Use a <b>migration tool</b> (e.g., Flyway, Liquibase, Alembic) to version and ap
 </ul>
 <p><i>Never change production schemas manually; always use version control and automation.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Database Design Principles</b>
 </blockquote>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. How would you design a database schema for an e-commerce system (e.g., with users, products, orders, payments, reviews)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -573,7 +573,7 @@ CREATE TABLE Reviews (
 ```
 <p><i>Each table represents a real-world entity; relationships are enforced via foreign keys.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. How would you scale a relational database to handle heavy read/write traffic? Discuss techniques such as sharding, replication, partitioning, and caching.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -585,7 +585,7 @@ CREATE TABLE Reviews (
 </ul>
 <p><i>Combine these techniques for large-scale systems.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. How would you design tables to represent hierarchical data such as product categories and subcategories?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -602,7 +602,7 @@ CREATE TABLE Categories (
 ```
 <p><i>This allows for unlimited nesting of categories.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. What is database sharding and what benefits does it provide?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -614,7 +614,7 @@ CREATE TABLE Categories (
 </ul>
 <p><i>Sharding is complex but essential for very large systems.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. What is database partitioning, and when would you use it?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -626,7 +626,7 @@ CREATE TABLE Categories (
 </ul>
 <p><b>Example (SQL Server):</b> Partitioning a sales table by year.</p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. Explain the difference between OLTP (transactional) and OLAP (analytical) database schema design. </b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -636,7 +636,7 @@ CREATE TABLE Categories (
 </ul>
 <p><i>OLTP = speed and integrity; OLAP = query performance and aggregation.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">8. What is a surrogate key, and why might you use it instead of a natural key?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -650,7 +650,7 @@ CREATE TABLE Customers (
 );
 ```
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">9. How do you enforce referential integrity between tables? What role do foreign keys play?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -666,7 +666,7 @@ CREATE TABLE Orders (
 ```
 <p><i>Foreign keys ensure every order references a valid customer.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">10. How do you represent many-to-many, one-to-many, and one-to-one relationships in a relational schema?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -688,7 +688,7 @@ CREATE TABLE StudentCourses (
 );
 ```
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">11. How do you handle changes to the database schema in production (schema migration/ versioning)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -700,7 +700,7 @@ Use migration/versioning tools (Flyway, Liquibase, Alembic) to manage schema cha
 </ul>
 <p><i>Never change schemas manually in production.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">12. What is the CAP theorem (consistency, availability, partition tolerance) in the context of distributed database systems?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -712,7 +712,7 @@ The <b>CAP theorem</b> states that a distributed system can only guarantee two o
 </ul>
 <p><i>Design choices depend on which two properties are prioritized.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">12. When might you choose a NoSQL database over a SQL database for an application? What trade-offs are involved?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -724,12 +724,12 @@ Choose <b>NoSQL</b> when:
 </ul>
 <p><b>Trade-offs:</b> NoSQL often sacrifices strong consistency and complex querying for scalability and flexibility. SQL is better for structured data and complex transactions.</p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Indexing Strategies & Keys</b>
 </blockquote>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What is a SQL index and what are different types of indexes (clustered, non-clustered, unique, etc.)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -805,7 +805,7 @@ CREATE SPATIAL INDEX idx_location ON Locations(GeoPoint);
     <b>Summary:</b> Indexes are essential for optimizing query performance. Choose the appropriate index type based on your query patterns and data structure. While indexes speed up data retrieval, they can slow down data modifications and require additional storage, so use them judiciously.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. What is the difference between a heap (no clustered index) and a table with a clustered index, and how can you identify a heap table?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -911,7 +911,7 @@ WHERE object_id = OBJECT_ID('HeapTable');
     <b>Summary:</b> A heap is a table without a clustered index, storing data in no defined order and identified by <code>index_id = 0</code>. A clustered index table stores data in the order of the index key (<code>index_id = 1</code>), improving search and range query performance. Choose based on your workload and query patterns.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. What is the difference between a PRIMARY KEY and a UNIQUE KEY (or unique index) in SQL?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1003,7 +1003,7 @@ ALTER TABLE Employees ADD CONSTRAINT uq_emp_email_phone UNIQUE (Email, PhoneNumb
     <b>Summary:</b> Use <b>PRIMARY KEY</b> for the main unique identifier of a table (no NULLs, only one per table). Use <b>UNIQUE KEY</b> for enforcing alternate unique constraints (can be multiple per table, allows NULLs). Both help maintain data integrity, but PRIMARY KEY is essential for relational design and foreign key references.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. What are index “forwarding pointers” in a heap table, and how do they affect query performance?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1055,7 +1055,7 @@ CREATE CLUSTERED INDEX idx_id ON HeapTable(ID);
     <b>Summary:</b> Forwarding pointers in heap tables are created when updated rows are moved to new pages, leaving a pointer behind. They cause extra I/O and degrade query performance, especially with frequent updates. Regularly rebuilding the heap or adding a clustered index can eliminate forwarding pointers and restore optimal performance.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. What is a composite index, and how do you choose the order of columns in it for optimal performance?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1131,7 +1131,7 @@ CREATE INDEX idx_dept_salary ON Employees(DepartmentID, Salary);
     <b>Summary:</b> A composite index covers multiple columns and is most effective when queries filter on the leading column(s). Choose the column order based on selectivity and common query patterns to maximize performance.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. When should you use a covering index, and how does it improve the performance of a query?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1191,7 +1191,7 @@ CREATE INDEX idx_covering ON Employees(DepartmentID) INCLUDE (Salary, FirstName)
 <p>
     <b>Summary:</b> Covering indexes are highly effective for optimizing read-heavy workloads with predictable query patterns. They reduce I/O by allowing the database to serve queries directly from the index, improving speed and scalability.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. How does the existence of an index on a column affect INSERT, UPDATE, and DELETE performance on a table?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1278,7 +1278,7 @@ DELETE FROM Employees WHERE EmployeeID = 1;
     <b>Summary:</b> Indexes improve read (SELECT) performance but slow down write operations (INSERT, UPDATE, DELETE) due to the need to maintain index structures. Always balance the number and type of indexes based on your application's read/write workload.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">8. What is index selectivity, and why is it important for query optimization?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1354,7 +1354,7 @@ CREATE INDEX idx_gender ON Employees(Gender);
     <b>Summary:</b> Index selectivity is a key factor in query optimization. High-selectivity indexes enable efficient data retrieval and are preferred by the query optimizer. Always consider selectivity when designing indexes for your tables.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">9. How many clustered indexes can a table have, and why?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1420,7 +1420,7 @@ CREATE CLUSTERED INDEX idx_emp_name ON Employees(LastName); -- Error!
     <b>Summary:</b> Each table can have only <b>one clustered index</b> because it defines the physical order of the data rows. You can create multiple non-clustered indexes to support additional query patterns.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">10. What is index fragmentation, and how can it be resolved or mitigated in a large database?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1532,12 +1532,12 @@ ALTER INDEX idx_emp_id ON Employees REORGANIZE;
     <b>Summary:</b> Index fragmentation degrades query performance by causing inefficient I/O. Regularly detect, rebuild, or reorganize indexes to maintain optimal performance, especially in large, high-transaction databases.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Mastering SQL Joins</b>
 </blockquote>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What are the different types of SQL joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, <code>FULL JOIN</code>, <code>CROSS JOIN</code>, etc.) and when would you use each?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1657,7 +1657,7 @@ CROSS JOIN TableB b;
     - Use <b>FULL OUTER JOIN</b> to include all rows from both tables.<br>
     - Use <b>CROSS JOIN</b> for all combinations (rarely needed in practice).
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. What is the difference between a <code>CROSS JOIN</code> and a <code>FULL OUTER JOIN</code>?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1730,7 +1730,7 @@ FULL OUTER JOIN TableB b ON a.id = b.a_id;
     - Use <b>CROSS JOIN</b> for generating all possible combinations; use <b>FULL OUTER JOIN</b> when you want to see all data from both tables, including non-matching rows.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. Write a SQL query to retrieve the first and last names of employees along with the names of their managers (given <code>Employees</code> and <code>Managers</code> tables).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1784,7 +1784,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
     </tbody>
 </table>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. Write a SQL query to find the average salary for each department, given tables <code>Employees</code> (with <code>DepartmentID</code>) and <code>Departments</code> (with <code>DepartmentName</code>).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1813,7 +1813,7 @@ GROUP BY d.DepartmentName;
     - <b>GROUP BY d.DepartmentName</b> groups results by department.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. Write a SQL query to list all products that have never been ordered (products in a <code>Product</code> table with no matching rows in the <code>Orders</code> table).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1888,7 +1888,7 @@ WHERE p.ProductID NOT IN (
     </tbody>
 </table>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. Write a SQL query to list all employees who are also managers (for example, employees who appear as managers in the same table).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -1952,7 +1952,7 @@ INNER JOIN Employees m ON e.EmployeeID = m.ManagerID;
     - The approach can be extended to retrieve additional information, such as the number of direct reports each manager has.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. What is a <code>self-join</code>, and when might you use it? Provide an example scenario.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2021,7 +2021,7 @@ LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
     - Use table aliases to clearly distinguish the roles of each instance of the table in the query.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">8. How would you join more than two tables in a single SQL query? What factors affect the performance when joining multiple tables?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2117,7 +2117,7 @@ LEFT JOIN Managers m ON e.ManagerID = m.ManagerID;
     - Always test and optimize queries, especially as the number of joins increases.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">9. Explain how an <code>OUTER JOIN</code> works when one side has no matching rows. How does this differ from an <code>INNER JOIN</code> in practice?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2333,12 +2333,12 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
     - In practice, <b>OUTER JOIN</b> helps in reporting, auditing, and identifying missing relationships in your data.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Working with Views</b>
 </blockquote>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What is a database view, and can you update data in the base tables through it?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2390,7 +2390,7 @@ UPDATE vw_EmployeeNames SET FirstName = 'John' WHERE EmployeeID = 1;
     <b>Summary:</b> Views provide abstraction, security, and query simplification. You can update data through a view only if it is simple and directly maps to a single base table without complex logic.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. What is the difference between a standard view and a materialized (or indexed) view?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2457,7 +2457,7 @@ GROUP BY DepartmentID;
 <p>
     <b>Summary:</b> Use <b>standard views</b> for abstraction, security, and up-to-date data. Use <b>materialized views</b> or <b>indexed views</b> to boost performance for complex, resource-intensive queries where real-time data is not critical.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. What happens if a materialized view is being refreshed (complete refresh) and a user queries it at the same time?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2504,7 +2504,7 @@ GROUP BY DepartmentID;
     <b>Summary:</b> During a complete refresh, most databases serve the old data to users until the refresh is finished, ensuring uninterrupted access. Always check your database documentation for specific behavior and consider refresh strategies that balance performance and data freshness.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. When would you use a view in a database design? What benefits do views provide (e.g. security, abstraction)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2564,7 +2564,7 @@ SELECT EmployeeID, FirstName, LastName FROM Employees;
 <p>
     <b>Summary:</b> Views are essential for enforcing security, simplifying data access, and centralizing business logic. They enable you to present a tailored, consistent, and secure interface to your data, improving both usability and maintainability.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. Can you create an index on a view? If so, what are the implications (e.g. indexed view in SQL Server)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2619,7 +2619,7 @@ ON vw_SalesSummary(StoreID);
     <b>Summary:</b> Indexed views (materialized views) can significantly speed up complex queries by storing precomputed results and allowing indexing, but they come with additional storage and maintenance costs. Use them judiciously for performance-critical reporting and analytics.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. How do you modify or drop a view if the underlying table schema changes?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2681,7 +2681,7 @@ SELECT EmployeeID, FirstName FROM Employees;
     <b>Summary:</b> Always review and update dependent views after making changes to base table schemas. Modify the view to match the new structure, or drop and recreate it as needed to avoid errors and maintain data integrity.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. What is the difference between a view and a temporary table?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2755,11 +2755,11 @@ SELECT EmployeeID, FirstName, LastName FROM Employees WHERE IsActive = 1;
     <b>Summary:</b> <b>Views</b> provide abstraction, security, and simplified access to live data, while <b>temporary tables</b> are ideal for storing and processing intermediate results during complex operations. Choose based on your need for persistence, scope, and data manipulation.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Stored Procedures & Functions</b>
 </blockquote>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What is the difference between a stored procedure and a user-defined function in SQL (aside from return value)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2843,7 +2843,7 @@ END;
     <b>Summary:</b> Use stored procedures for complex operations, data modifications, and transaction control. Use user-defined functions for reusable computations or logic that can be embedded in queries. Functions are more restrictive but integrate seamlessly into SQL expressions, while procedures offer greater flexibility and control.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. What are the advantages and disadvantages of using stored procedures?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2875,7 +2875,7 @@ END;
     <b>Summary:</b> Stored procedures are powerful for encapsulating logic, improving performance, and enhancing security, but they require careful management to avoid maintainability and deployment challenges. Use them when centralized logic and performance gains outweigh the added complexity.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. Can you perform INSERT/UPDATE/DELETE operations inside a SQL function? Why or why not?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2912,7 +2912,7 @@ END;
     <b>Summary:</b> Use <b>stored procedures</b> for operations that modify data. Use <b>functions</b> for computations, lookups, or logic that must be embedded in queries and remain side-effect free.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. What is a table-valued function and when would you use one in a query?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -2978,7 +2978,7 @@ SELECT * FROM dbo.GetEmployeesByDept(10);
 <p>
     <b>Summary:</b> Table-valued functions are ideal for encapsulating and reusing set-based query logic. Use them to simplify queries, enforce consistency, and modularize business rules that return multiple rows.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. When would you use a stored procedure instead of inline SQL queries in an application?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3019,7 +3019,7 @@ END;
     <b>Summary:</b> Use stored procedures for reusable, secure, and efficient data operations, especially when logic is complex, shared, or requires transaction management. Inline SQL is suitable for simple, one-off queries, but stored procedures offer greater control and maintainability for enterprise applications.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. How do you pass parameters to and receive results from stored procedures?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3108,7 +3108,7 @@ SELECT @Result AS ExistsFlag;
     <b>Summary:</b> Stored procedures support flexible parameter passing and can return results via output parameters, result sets, or return values. Choose the method that best fits your use case and calling environment.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. How would you debug or test a slow or failing stored procedure in production?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3131,7 +3131,7 @@ Debugging or testing a slow or failing stored procedure in production requires a
     <b>Summary:</b> Debugging stored procedures involves analyzing execution plans, monitoring system resources, tracing logic, and testing in a safe environment. Always document findings and changes, and coordinate with your DBA or operations team when working in production.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">8. How do you grant a user permission to execute a specific stored procedure?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3172,7 +3172,7 @@ GRANT EXECUTE ON GetEmployeeByID TO username;
 <p>
     <b>Summary:</b> Use <code>GRANT EXECUTE</code> to securely allow users to run specific stored procedures, following the principle of least privilege and maintaining tight control over database access.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What is a trigger in SQL, and when would you use one? Give an example use case.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3216,7 +3216,7 @@ END;
     <b>Summary:</b> Triggers are powerful tools for automating responses to data changes, enforcing complex business logic, and maintaining data integrity. Use them judiciously, as they can introduce hidden logic and impact performance if overused.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. What is the difference between an AFTER trigger and an INSTEAD OF trigger (e.g. in SQL Server)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3287,7 +3287,7 @@ END;
 <p>
     <b>Summary:</b> Use <b>AFTER triggers</b> to respond to completed data changes on tables. Use <b>INSTEAD OF triggers</b> to override or customize DML operations, especially on views or when special handling is required.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. What are the “inserted” and “deleted” magic tables in SQL Server triggers?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3303,7 +3303,7 @@ END;
     <b>Example:</b> In an <code>AFTER UPDATE</code> trigger, <code>inserted</code> has new values, <code>deleted</code> has old values.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. How can triggers be used to enforce business rules or data integrity (e.g. auditing changes, simulating foreign keys)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3333,7 +3333,7 @@ END;
 ```
 <p><i>This trigger blocks deletion of a department if employees are assigned to it.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. What are the potential drawbacks of using triggers (such as performance impact or hidden logic)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3351,7 +3351,7 @@ END;
     <b>Summary:</b> Use triggers judiciously; document their behavior and monitor performance.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. How do INSTEAD OF triggers on a view work?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3380,7 +3380,7 @@ END;
 ```
 <p><i>This trigger allows updates to the <code>FirstName</code> column via the view.</i></p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. Can triggers call stored procedures, and are there any limitations to doing that?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3398,12 +3398,12 @@ END;
     <b>Summary:</b> Triggers can call stored procedures, but keep logic efficient and avoid transactional conflicts.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Transactions & Concurrency Control</b>
 </blockquote>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What are the ACID properties of a database transaction (atomicity, consistency, isolation, durability)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3456,7 +3456,7 @@ The <b>ACID</b> properties are a set of four key guarantees that ensure reliable
     <b>Summary:</b> The ACID properties are essential for reliable, predictable, and safe database operations. They protect data integrity and enable robust multi-user applications.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. What are the different SQL isolation levels (READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE), and what phenomena do they prevent (dirty reads, non-repeatable reads, phantom reads)?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3558,7 +3558,7 @@ SQL isolation levels define how transaction integrity is maintained when multipl
     <b>Tip:</b> Always test your application's behavior under different isolation levels to ensure the right balance between consistency and performance.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. What is a deadlock in database terms, and how can you prevent or resolve deadlocks?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3643,7 +3643,7 @@ A <b>deadlock</b> is a situation in a database where two or more transactions ar
 <p>
     <b>Summary:</b> Deadlocks are a natural risk in concurrent systems. Prevent them by designing transactions carefully and resolving them by letting the database engine choose a victim and retrying as needed.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. How do you control transactions in SQL (BEGIN, COMMIT, ROLLBACK)? Give an example of using a transaction in a stored procedure or batch.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3733,7 +3733,7 @@ END;
     <b>Summary:</b> Use <code>BEGIN TRANSACTION</code>, <code>COMMIT</code>, and <code>ROLLBACK</code> to control atomicity and consistency in SQL. Transactions are critical for reliable, error-proof data operations.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. If you run a long SELECT query on a table while another transaction is updating rows in that table, will your session see the old data or new data by default? (Consider default isolation level behavior.)</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3788,7 +3788,7 @@ END;
     <b>Summary:</b> With the default <b>READ COMMITTED</b> isolation, your SELECT may see a mix of old and new data depending on when each row is read and when updates are committed. For consistent results, use <b>REPEATABLE READ</b> or <b>SERIALIZABLE</b> isolation levels.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. What is the difference between pessimistic and optimistic locking, and when would you use each?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3867,7 +3867,7 @@ WHERE account_id = 1 AND version = 5;
 <p>
     <b>Summary:</b> <b>Pessimistic locking</b> prevents conflicts by locking data up front but can reduce performance. <b>Optimistic locking</b> allows more concurrency and only checks for conflicts at update time, making it ideal for most modern applications where write conflicts are infrequent.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. What is a savepoint in a transaction, and how do you use it?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3931,7 +3931,7 @@ COMMIT;
     <b>Summary:</b> Savepoints provide flexible, granular control over transaction rollback, making them invaluable for robust error handling and complex transactional workflows.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">8. How do two-phase commit protocols work in distributed transactions?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -3998,7 +3998,7 @@ The <b>two-phase commit (2PC)</b> protocol is a standard method for ensuring <b>
 <p>
     <b>Summary:</b> The <b>two-phase commit protocol</b> is the foundation for reliable distributed transactions, ensuring all-or-nothing outcomes across multiple systems. While robust, it can introduce blocking and performance trade-offs, so it's best used when strong consistency is required.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">9. How can you identify and terminate a blocking or long-running transaction in a SQL database?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4091,7 +4091,7 @@ SELECT pg_terminate_backend(12345);
     <b>Summary:</b> Use system views and monitoring tools to identify blocking or long-running transactions, and terminate them using the appropriate command for your database system. Regular monitoring and quick intervention help maintain database health and application responsiveness.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">10. What is deadlock detection, and how does the database engine choose a deadlock victim?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4152,12 +4152,12 @@ Deadlock detection is a mechanism used by database engines to identify situation
     <b>Summary:</b> Deadlock detection ensures that your database does not hang indefinitely due to resource contention. By automatically identifying and resolving deadlocks, the engine maintains system availability and allows applications to handle errors gracefully—often by retrying the failed transaction.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 
 <blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Performance Tuning & Query Optimization</b>
 </blockquote>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">1. What is a query execution plan and how do you use it to improve performance?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4210,7 +4210,7 @@ EXPLAIN SELECT * FROM Employees WHERE DepartmentID = 10;
     <b>Summary:</b> Always review execution plans for slow queries to identify and resolve performance bottlenecks.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">2. How would you optimize a slow SQL query in production?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4255,7 +4255,7 @@ Optimizing a slow query involves a systematic approach:
     <b>Summary:</b> Use a combination of indexing, query rewriting, and regular maintenance for optimal performance.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">3. What is the difference between UNION and UNION ALL in SQL, and when would you use each?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4303,7 +4303,7 @@ SELECT Name FROM Managers;
     <b>Summary:</b> Use <b>UNION ALL</b> for better performance if you do not need to remove duplicates.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">4. How can you find duplicate rows in a table using SQL?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4383,7 +4383,7 @@ ON t.column1 = dup.column1 AND t.column2 = dup.column2;
     <b>Summary:</b> Use <code>GROUP BY</code> and <code>HAVING COUNT(*) &gt; 1</code> to find duplicates. Adjust the columns in <code>GROUP BY</code> to match your definition of a duplicate row.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">5. Write a SQL query to find the 10th highest salary in an Employee table.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4467,7 +4467,7 @@ LIMIT 1;
     <b>Summary:</b> Use <code>DISTINCT</code> to ignore duplicate salaries. Choose the approach that fits your SQL dialect and performance needs. Window functions are preferred for clarity and efficiency in modern databases.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">6. How would you retrieve the last 5 records (by date or ID) from a table?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4551,7 +4551,7 @@ ORDER BY date_column ASC;
     <b>Summary:</b> Use <code>ORDER BY ... DESC LIMIT 5</code> to get the last 5 records by date or ID. Adjust the column and syntax for your database system.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">7. Write a SQL query to exclude specific values (e.g., select all rows except those where ID is X or Y).</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4656,7 +4656,7 @@ WHERE Name NOT IN ('Ashish', 'Sunil');
     <b>Summary:</b> Use <code>NOT IN</code> to exclude multiple values, or <code>!=</code>/<code>&lt;&gt;</code> for single values. Adjust the column and values as needed for your query.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">8. How do you retrieve the Nth record (e.g., the 3rd record) from a table?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4752,7 +4752,7 @@ WHERE rn = N;
     <b>Summary:</b> Use <code>ORDER BY</code> with <code>LIMIT 1 OFFSET N-1</code> (or <code>ROW_NUMBER()</code> in SQL Server/Oracle) to retrieve the Nth record in a specified order.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">9. How do you obtain the CREATE TABLE DDL for an existing table in SQL?</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4857,7 +4857,7 @@ CREATE TABLE `employees` (
     <b>Summary:</b> Use the appropriate command or tool for your database system to generate the CREATE TABLE DDL for an existing table. This is essential for migrations, backups, and documentation.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">10. Explain the difference between the RANK() and DENSE_RANK() window functions.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -4941,7 +4941,7 @@ Applying <code>RANK()</code> and <code>DENSE_RANK()</code>:
     <b>Summary:</b> <b>RANK()</b> leaves gaps after ties; <b>DENSE_RANK()</b> does not. Choose based on your ranking requirements.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">11. When would you use ROW_NUMBER(), RANK(), or DENSE_RANK() in a query? Give a use case.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -5036,7 +5036,7 @@ Result:
     <b>Summary:</b> Use <code>ROW_NUMBER()</code> for unique row numbering, <code>RANK()</code> for rankings with gaps after ties, and <code>DENSE_RANK()</code> for consecutive rankings without gaps. Choose based on your business logic and how you want to handle ties.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">12. Write a SQL query to compute the median number of searches made by users, given a summary table of search counts.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -5107,7 +5107,7 @@ FROM user_search_summary;
 <p>
     <b>Summary:</b> To compute the median in SQL, use window functions to rank and select the middle value(s), or use <code>PERCENTILE_CONT(0.5)</code> if available. The median provides a robust measure of central tendency, especially when data contains outliers.
 </p>
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">13. Write a SQL query to calculate the sum of odd-numbered and even-numbered measurements separately for each day.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -5162,7 +5162,7 @@ GROUP BY day;
     <b>Summary:</b> Use <code>CASE</code> with <code>SUM()</code> and <code>MOD()</code> (or <code>%</code>) to separate and aggregate odd and even measurement values for each day.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
 <b style="color:#1C4980;font-weight:bold;">14. Write a SQL query to get the average review rating for each product for each month.</b>
 
 <p><b style="color:#B9770E;">Answer:</b><br>
@@ -5294,4 +5294,4 @@ ORDER BY product_id, review_month;
     <b>Summary:</b> Use <code>GROUP BY</code> with a date truncation or formatting function to aggregate average ratings per product per month. Adjust the date function for your database system.
 </p>
 
-<hr style="border:1px solidrgb(0, 0, 0);">
+<hr style="border:1px solid #D5D8DC;">
