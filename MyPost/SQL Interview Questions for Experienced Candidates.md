@@ -3,7 +3,7 @@
 </h1>
 
 <hr style="border:1px solid #D5D8DC;">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Data Types & Miscellaneous Concepts</b>
 </blockquote>
 
@@ -314,7 +314,7 @@ SELECT * FROM OrgChart;
 <p><i>Recursive CTEs are powerful for traversing hierarchical relationships.</i></p>
 
 <hr style="border:1px solid #D5D8DC;">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Normalization & Schema Design</b>
 </blockquote>
 
@@ -514,7 +514,7 @@ Use a <b>migration tool</b> (e.g., Flyway, Liquibase, Alembic) to version and ap
 
 <hr style="border:1px solid #D5D8DC;">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Database Design Principles</b>
 </blockquote>
 
@@ -725,7 +725,7 @@ Choose <b>NoSQL</b> when:
 <p><b>Trade-offs:</b> NoSQL often sacrifices strong consistency and complex querying for scalability and flexibility. SQL is better for structured data and complex transactions.</p>
 
 <hr style="border:1px solid #D5D8DC;">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Indexing Strategies & Keys</b>
 </blockquote>
 
@@ -1533,7 +1533,7 @@ ALTER INDEX idx_emp_id ON Employees REORGANIZE;
 </p>
 
 <hr style="border:1px solid #D5D8DC;">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Mastering SQL Joins</b>
 </blockquote>
 
@@ -2335,7 +2335,7 @@ INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 
 <hr style="border:1px solid #D5D8DC;">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Working with Views</b>
 </blockquote>
 <hr style="border:1px solid #D5D8DC;">
@@ -2756,7 +2756,7 @@ SELECT EmployeeID, FirstName, LastName FROM Employees WHERE IsActive = 1;
 </p>
 
 <hr style="border:1px solid #D5D8DC;">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Stored Procedures & Functions</b>
 </blockquote>
 <hr style="border:1px solid #D5D8DC;">
@@ -3399,7 +3399,7 @@ END;
 </p>
 
 <hr style="border:1px solid #D5D8DC;">
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Transactions & Concurrency Control</b>
 </blockquote>
 
@@ -4154,7 +4154,7 @@ Deadlock detection is a mechanism used by database engines to identify situation
 
 <hr style="border:1px solid #D5D8DC;">
 
-<blockquote style="border-left: 5px solid #F1C40F; background: #FCF3CF; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
+<blockquote style="border-left: 5px solid #3498DB; background: #EAF2F8; padding: 0.7em 1.2em; border-radius:0.005px; text-align:left;">
     <b style="color:#154360; font-size:1.5em;">Performance Tuning & Query Optimization</b>
 </blockquote>
 <hr style="border:1px solid #D5D8DC;">
