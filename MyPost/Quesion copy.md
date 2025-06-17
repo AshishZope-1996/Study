@@ -632,7 +632,8 @@
       <td align="center" style="border:none; color:#1C4980; white-space:nowrap; vertical-align:top;"></td>
     </tr>
     <tr>
-      <td align="center" style="border:none; color:#1C4980; white-space:nowrap; vertical-align:top;">12.</td>
+      <td align="center" 
+      style="border:none; color:#1C4980; white-space:nowrap; vertical-align:top;">12.</td>
       <td style="border:none; color:#1C4980; white-space:normal; vertical-align:top;">How do you use a Common Table Expression (CTE) with WITH in SQL, and what is a recursive CTE?</td>
       <td align="center" style="border:none; color:#1C4980; white-space:nowrap; vertical-align:top;"></td>
     </tr>
