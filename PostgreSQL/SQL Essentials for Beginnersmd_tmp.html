@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SQL Essentials for Beginnersmd.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="sql-essentials-for-beginners--deep-dive-with-examples">SQL Essentials for Beginners — Deep Dive with Examples</h2>
+<hr>
+<h3 id="1-what-is-sql-ddl-dml-dcl-tcl-dql">1. What is SQL? (DDL, DML, DCL, TCL, DQL)</h3>
+<p><strong>Structured Query Language (SQL)</strong> is the standard language used to communicate with relational databases. SQL is categorized into several types of commands:</p>
+<h4 id="ddl-%E2%80%93-data-definition-language">DDL – Data Definition Language</h4>
+<p>Defines the structure of the database schema.</p>
+<ul>
+<li><strong>CREATE</strong>: Creates new objects (tables, views, etc.)</li>
+<li><strong>ALTER</strong>: Modifies existing objects</li>
+<li><strong>DROP</strong>: Deletes objects</li>
+<li><strong>TRUNCATE</strong>: Removes all records quickly</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> employees (
+  <span class="hljs-keyword">id</span> <span class="hljs-built_in">INT</span> PRIMARY <span class="hljs-keyword">KEY</span>,
+  <span class="hljs-keyword">name</span> <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">100</span>),
+  department <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>)
+);
+
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> employees <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">COLUMN</span> salary <span class="hljs-built_in">INT</span>;
+
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> employees;
+
+<span class="hljs-keyword">TRUNCATE</span> <span class="hljs-keyword">TABLE</span> employees;
+</div></code></pre>
+<h4 id="dml-%E2%80%93-data-manipulation-language">DML – Data Manipulation Language</h4>
+<p>Used to work with the data itself.</p>
+<ul>
+<li><strong>INSERT</strong>: Adds new data</li>
+<li><strong>UPDATE</strong>: Modifies existing data</li>
+<li><strong>DELETE</strong>: Removes existing records</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> employees (<span class="hljs-keyword">id</span>, <span class="hljs-keyword">name</span>, department) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-string">'Ashish'</span>, <span class="hljs-string">'IT'</span>);
+
+<span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> department = <span class="hljs-string">'Finance'</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span>;
+</div></code></pre>
+<h4 id="dcl-%E2%80%93-data-control-language">DCL – Data Control Language</h4>
+<p>Controls access to data.</p>
+<ul>
+<li><strong>GRANT</strong>: Provides privileges</li>
+<li><strong>REVOKE</strong>: Removes privileges</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span>, <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> employees <span class="hljs-keyword">TO</span> hr_user;
+
+<span class="hljs-keyword">REVOKE</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> employees <span class="hljs-keyword">FROM</span> hr_user;
+</div></code></pre>
+<h4 id="tcl-%E2%80%93-transaction-control-language">TCL – Transaction Control Language</h4>
+<p>Manages transactions and ensures data integrity.</p>
+<ul>
+<li><strong>COMMIT</strong>: Saves changes</li>
+<li><strong>ROLLBACK</strong>: Reverts to the last commit</li>
+<li><strong>SAVEPOINT</strong>: Marks a point within a transaction</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">BEGIN</span>;
+<span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> department = <span class="hljs-string">'HR'</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">SAVEPOINT</span> before_update;
+<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TO</span> <span class="hljs-keyword">SAVEPOINT</span> before_update;
+<span class="hljs-keyword">COMMIT</span>;
+</div></code></pre>
+<h4 id="dql-%E2%80%93-data-query-language">DQL – Data Query Language</h4>
+<p>Retrieves data from the database.</p>
+<ul>
+<li><strong>SELECT</strong>: Used to query data</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, department <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> department = <span class="hljs-string">'IT'</span>;
+</div></code></pre>
+<hr>
+<h3 id="2-sql-data-types--in-depth-guide">2. SQL Data Types — In-Depth Guide</h3>
+<p>Data types specify the kind of data that each column in a table can hold. Choosing the right data type is crucial for data integrity, performance, and storage efficiency.</p>
+<h4 id="numeric-types">Numeric Types</h4>
+<ul>
+<li><strong>INT / INTEGER</strong>: Whole numbers, typically 4 bytes.<br>
+Example: <code>age INT</code></li>
+<li><strong>SMALLINT / BIGINT</strong>: Smaller/larger ranges of integers.</li>
+<li><strong>DECIMAL(p, s)</strong>: Fixed-point numbers with precision (<code>p</code>) and scale (<code>s</code>).<br>
+Example: <code>salary DECIMAL(10, 2)</code> (up to 10 digits, 2 after decimal)</li>
+<li><strong>NUMERIC</strong>: Synonym for <code>DECIMAL</code> in many databases.</li>
+<li><strong>FLOAT / REAL / DOUBLE PRECISION</strong>: Approximate, floating-point numbers.</li>
+</ul>
+<h4 id="characterstring-types">Character/String Types</h4>
+<ul>
+<li><strong>CHAR(n)</strong>: Fixed-length string (padded with spaces if shorter).</li>
+<li><strong>VARCHAR(n)</strong>: Variable-length string, up to <code>n</code> characters.</li>
+<li><strong>TEXT</strong>: Large variable-length string (size limit depends on DBMS).</li>
+</ul>
+<h4 id="date-and-time-types">Date and Time Types</h4>
+<ul>
+<li><strong>DATE</strong>: Stores year, month, and day.</li>
+<li><strong>TIME</strong>: Stores time of day (hours, minutes, seconds).</li>
+<li><strong>TIMESTAMP</strong>: Date and time, often with time zone support.</li>
+<li><strong>INTERVAL</strong>: Represents a span of time (PostgreSQL).</li>
+</ul>
+<h4 id="boolean-type">Boolean Type</h4>
+<ul>
+<li><strong>BOOLEAN</strong>: Stores <code>TRUE</code>, <code>FALSE</code>, or <code>NULL</code>.</li>
+</ul>
+<h4 id="auto-incrementserial-types">Auto-Increment/Serial Types</h4>
+<ul>
+<li><strong>SERIAL</strong>: Auto-incrementing integer (PostgreSQL).</li>
+<li><strong>IDENTITY</strong>: Standard SQL auto-increment (supported in some DBMS).</li>
+<li><strong>AUTO_INCREMENT</strong>: MySQL auto-incrementing integer.</li>
+</ul>
+<h4 id="other-types">Other Types</h4>
+<ul>
+<li><strong>BLOB / BYTEA</strong>: Binary data (images, files).</li>
+<li><strong>UUID</strong>: Universally unique identifier.</li>
+<li><strong>ENUM</strong>: Set of predefined values (MySQL, PostgreSQL).</li>
+</ul>
+<h4 id="example-table-definition">Example Table Definition</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> orders (
+    order_id <span class="hljs-built_in">SERIAL</span> PRIMARY <span class="hljs-keyword">KEY</span>,  
+    customer_name <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,       
+    order_date <span class="hljs-built_in">DATE</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CURRENT_DATE</span>,
+    total_amount <span class="hljs-built_in">DECIMAL</span>(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>), 
+    is_paid <span class="hljs-built_in">BOOLEAN</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">FALSE</span>  
+);
+</div></code></pre>
+<h4 id="tips">Tips</h4>
+<ul>
+<li>Use the smallest data type that fits your needs for better performance.</li>
+<li>Always specify length for <code>CHAR</code> and <code>VARCHAR</code>.</li>
+<li>Use <code>NOT NULL</code> to enforce required fields.</li>
+<li>Use <code>DEFAULT</code> to set automatic values for new rows.</li>
+<li>Check your database documentation for supported types and their limits.</li>
+</ul>
+<hr>
+<h3 id="3-basic-clauses-select-from-where--in-depth-guide">3. Basic Clauses: SELECT, FROM, WHERE — In-Depth Guide</h3>
+<p>The <code>SELECT</code>, <code>FROM</code>, and <code>WHERE</code> clauses form the foundation of nearly every SQL query. Mastering their usage is essential for effective data retrieval and manipulation.</p>
+<h4 id="select-clause">SELECT Clause</h4>
+<p>The <code>SELECT</code> clause specifies which columns or expressions you want to retrieve from the database. It can include:</p>
+<ul>
+<li><strong>Column names</strong>: Retrieve specific columns.</li>
+<li><strong>Expressions</strong>: Perform calculations or transformations (e.g., <code>salary * 12</code>).</li>
+<li><strong>Functions</strong>: Use built-in functions (e.g., <code>UPPER(name)</code>, <code>COUNT(*)</code>).</li>
+<li><strong>Aliases</strong>: Rename columns or expressions for clarity using <code>AS</code>.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Select specific columns</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, salary <span class="hljs-keyword">FROM</span> employees;
+
+<span class="hljs-comment">-- Select all columns</span>
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees;
+
+<span class="hljs-comment">-- Use expressions and aliases</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, salary * <span class="hljs-number">12</span> <span class="hljs-keyword">AS</span> yearly_salary <span class="hljs-keyword">FROM</span> employees;
+
+<span class="hljs-comment">-- Use functions</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">UPPER</span>(<span class="hljs-keyword">name</span>) <span class="hljs-keyword">AS</span> uppercase_name <span class="hljs-keyword">FROM</span> employees;
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Use only the columns you need for better performance.</li>
+<li>Aliases (<code>AS</code>) make results more readable, especially for calculated fields.</li>
+</ul>
+<h4 id="from-clause">FROM Clause</h4>
+<p>The <code>FROM</code> clause identifies the table(s) from which to retrieve data. It can reference:</p>
+<ul>
+<li><strong>Single table</strong>: The most basic usage.</li>
+<li><strong>Multiple tables</strong>: For joins (covered in advanced topics).</li>
+<li><strong>Subqueries</strong>: Use a query as a virtual table.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Select from a single table</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees;
+
+<span class="hljs-comment">-- Select from a subquery (derived table)</span>
+<span class="hljs-keyword">SELECT</span> avg_salary <span class="hljs-keyword">FROM</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(salary) <span class="hljs-keyword">AS</span> avg_salary <span class="hljs-keyword">FROM</span> employees) <span class="hljs-keyword">AS</span> stats;
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Always specify the correct table name.</li>
+<li>Use table aliases for clarity, especially in complex queries.</li>
+</ul>
+<h4 id="where-clause">WHERE Clause</h4>
+<p>The <code>WHERE</code> clause filters rows based on specified conditions. Only rows that satisfy the condition(s) are returned.</p>
+<p><strong>Supported Operators:</strong></p>
+<ul>
+<li><strong>Comparison</strong>: <code>=</code>, <code>&lt;&gt;</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li><strong>Logical</strong>: <code>AND</code>, <code>OR</code>, <code>NOT</code></li>
+<li><strong>Pattern matching</strong>: <code>LIKE</code>, <code>ILIKE</code> (case-insensitive in PostgreSQL)</li>
+<li><strong>Set membership</strong>: <code>IN</code>, <code>NOT IN</code></li>
+<li><strong>Range</strong>: <code>BETWEEN ... AND ...</code></li>
+<li><strong>NULL checks</strong>: <code>IS NULL</code>, <code>IS NOT NULL</code></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Simple condition</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> department = <span class="hljs-string">'IT'</span>;
+
+<span class="hljs-comment">-- Multiple conditions</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> department = <span class="hljs-string">'IT'</span> <span class="hljs-keyword">AND</span> salary &gt; <span class="hljs-number">50000</span>;
+
+<span class="hljs-comment">-- Pattern matching</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'A%'</span>;
+
+<span class="hljs-comment">-- Set membership</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> department <span class="hljs-keyword">IN</span> (<span class="hljs-string">'HR'</span>, <span class="hljs-string">'Finance'</span>);
+
+<span class="hljs-comment">-- Range</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> salary <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">40000</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">60000</span>;
+
+<span class="hljs-comment">-- NULL check</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> manager_id <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>;
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Use parentheses to group conditions and control logical precedence.</li>
+<li>Avoid using functions on columns in <code>WHERE</code> if possible, as it may prevent index usage and slow down queries.</li>
+<li>Always use parameterized queries in applications to prevent SQL injection.</li>
+</ul>
+<h4 id="advanced-usage">Advanced Usage</h4>
+<ul>
+<li><strong>Subqueries in WHERE</strong>: Filter based on results from another query.<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> department_id <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">FROM</span> departments <span class="hljs-keyword">WHERE</span> location = <span class="hljs-string">'NY'</span>);
+</div></code></pre>
+</li>
+<li><strong>Expressions and Calculations</strong>: Use arithmetic or string operations in conditions.<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> (salary * <span class="hljs-number">1.1</span>) &gt; <span class="hljs-number">60000</span>;
+</div></code></pre>
+</li>
+<li><strong>Filtering on Derived Columns</strong>: Use subqueries or Common Table Expressions (CTEs) if you need to filter on calculated columns.</li>
+</ul>
+<hr>
+<h3 id="4-filtering-data-and-or-not-in-between-like">4. Filtering Data: AND, OR, NOT, IN, BETWEEN, LIKE</h3>
+<p>Used to apply complex conditions to filter query results.</p>
+<ul>
+<li><code>AND</code>: Both conditions must be true</li>
+<li><code>OR</code>: At least one condition must be true</li>
+<li><code>NOT</code>: Negates the condition</li>
+<li><code>IN</code>: Matches any value from a list</li>
+<li><code>BETWEEN</code>: Value falls within range (inclusive)</li>
+<li><code>LIKE</code>: Pattern matching using <code>%</code> (wildcard) and <code>_</code></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> department = <span class="hljs-string">'IT'</span> <span class="hljs-keyword">AND</span> salary &gt; <span class="hljs-number">50000</span>;
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> department = <span class="hljs-string">'HR'</span> <span class="hljs-keyword">OR</span> department = <span class="hljs-string">'Finance'</span>;
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> department = <span class="hljs-string">'HR'</span>;
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> department <span class="hljs-keyword">IN</span> (<span class="hljs-string">'HR'</span>, <span class="hljs-string">'Finance'</span>);
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> salary <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">40000</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">60000</span>;
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'A%'</span>;
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Combine filters using parentheses for clarity</li>
+</ul>
+<hr>
+<h3 id="5-sorting-results-order-by">5. Sorting Results: ORDER BY</h3>
+<p>Sorts results based on one or more columns.</p>
+<ul>
+<li><strong>ASC</strong>: Ascending (default)</li>
+<li><strong>DESC</strong>: Descending</li>
+</ul>
+<p><strong>Syntax:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column1 <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> column1 <span class="hljs-keyword">ASC</span>|<span class="hljs-keyword">DESC</span>;
+</div></code></pre>
+<p><strong>Examples:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, salary <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> salary <span class="hljs-keyword">DESC</span>;
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> department <span class="hljs-keyword">ASC</span>, salary <span class="hljs-keyword">DESC</span>;
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Some databases allow <code>NULLS FIRST</code> or <code>NULLS LAST</code></li>
+</ul>
+<hr>
+<h3 id="6-aliases-as">6. Aliases: AS</h3>
+<p>Aliases rename columns or tables for clarity.</p>
+<p><strong>Syntax:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">column</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">alias</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">table</span>;
+</div></code></pre>
+<p><strong>Column Alias:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">AS</span> employee_name, salary * <span class="hljs-number">12</span> <span class="hljs-keyword">AS</span> yearly_salary <span class="hljs-keyword">FROM</span> employees;
+</div></code></pre>
+<p><strong>Table Alias:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> e.name, d.name <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">AS</span> e <span class="hljs-keyword">JOIN</span> departments <span class="hljs-keyword">AS</span> d <span class="hljs-keyword">ON</span> e.department_id = d.id;
+</div></code></pre>
+<p><strong>Note:</strong> <code>AS</code> is optional but improves readability.</p>
+<hr>
+<h3 id="7-handling-nulls-is-null-coalesce-ifnull">7. Handling NULLs: IS NULL, COALESCE, IFNULL</h3>
+<p>NULL represents unknown or missing values.</p>
+<ul>
+<li><code>IS NULL</code> / <code>IS NOT NULL</code>: Check for NULLs</li>
+<li><code>COALESCE()</code>: Returns first non-null value</li>
+<li><code>IFNULL()</code> / <code>NVL()</code>: Returns fallback if NULL (MySQL/Oracle)</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> manager_id <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>;
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, <span class="hljs-keyword">COALESCE</span>(manager_id, <span class="hljs-string">'No Manager'</span>) <span class="hljs-keyword">AS</span> reporting_to <span class="hljs-keyword">FROM</span> employees;
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, <span class="hljs-keyword">IFNULL</span>(manager_id, <span class="hljs-string">'No Manager'</span>) <span class="hljs-keyword">AS</span> reporting_to <span class="hljs-keyword">FROM</span> employees;
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li><code>= NULL</code> will not work — use <code>IS NULL</code></li>
+<li>Use <code>COALESCE()</code> for defaulting display/report values</li>
+</ul>
+<hr>
+<p>Would you like to continue with advanced topics like Joins, Aggregations, or Constraints?</p>
+
+</body>
+</html>
