@@ -6,7 +6,7 @@ Apache Spark is a unified analytics engine for large-scale data processing and m
 
 * Spark **advantages** include easy parallelism, in-memory speed, and fault-tolerance via data lineage.  It can handle batch and real-time (streaming) workloads.
 * Spark **resiliency**: Its core data structure, the **Resilient Distributed Dataset (RDD)**, is an immutable, fault-tolerant collection split across cluster nodes.  Spark tracks RDD lineage so lost partitions can be recomputed on failure.
-* Spark **apis**: While RDDs offer low-level control (functional transformations), higher-level APIs like **DataFrames** (and the analogous Dataset in Scala/Java) provide schema, SQL querying, and optimizations.  In Python, we generally use DataFrames and Spark SQL; Python lacks the statically-typed Dataset API.
+* Spark **apis**: While RDDs offer low-level control (functional transformations), higher-level APIs like **DataFrames** (and the analogous Dataset in Scala/Java) provide schema, SQL querying, and optimizations.  In Python, we generally use DataFrames and Spark SQL; Python lacks the statically-typed Dataset API
 
 ## 2. Spark Programming Model: RDDs, DataFrames, Datasets
 
